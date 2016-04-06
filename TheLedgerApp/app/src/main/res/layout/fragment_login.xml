@@ -63,12 +63,15 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_height"
             android:layout_marginTop="@dimen/fifteen_padding"
             android:elevation="@dimen/five_padding"
             android:minHeight="@dimen/button_height"
             android:padding="@dimen/ten_padding"
-            android:text="@string/login_sign_in_text" />
+            android:text="@string/login_sign_in_text"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_sixteen"/>
 
         <TextView
             android:id="@+id/forgot_password_text_button"
@@ -81,13 +84,33 @@
     </LinearLayout>
 
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/create_account_button"
+    <RelativeLayout
+        android:id="@+id/create_account_view_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_alignParentBottom="true"
-        android:minHeight="@dimen/button_height"
-        android:text="@string/login_create_account_text"
-        android:textSize="@dimen/text_thirteen" />
+        android:background="@color/colorPrimary"
+        android:clickable="true"
+        >
+
+        <TextView
+            android:id="@+id/create_account_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/login_create_account_text"
+            android:textSize="@dimen/text_sixteen"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+           android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_account_circle_white_24dp"
+            android:layout_toEndOf="@+id/create_account_text"
+            android:layout_marginStart="@dimen/ten_padding"
+            android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
 
 </RelativeLayout>

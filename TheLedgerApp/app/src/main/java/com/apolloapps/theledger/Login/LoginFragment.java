@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -32,8 +33,8 @@ public class LoginFragment extends BaseFragment {
     Button mSignIn;
     @Bind(R.id.forgot_password_text_button)
     TextView mForgotCredentials;
-    @Bind(R.id.create_account_button)
-    Button mCreateAccount;
+    @Bind(R.id.create_account_view_button)
+    RelativeLayout mCreateAccount;
 
     private LoginFragmentListener mListener;
 
@@ -87,7 +88,6 @@ public class LoginFragment extends BaseFragment {
     public interface LoginFragmentListener{
         void signIn(String username, String password, boolean rememberMe);
         void createAccount();
-        void rememeberMe();
         void forgotCredentials();
 
     }
