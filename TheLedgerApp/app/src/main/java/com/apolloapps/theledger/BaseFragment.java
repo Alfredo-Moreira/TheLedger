@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 /**
  * Created by AMoreira on 4/4/16.
  */
-public class BaseFragement extends Fragment {
+public class BaseFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
@@ -57,6 +57,13 @@ public class BaseFragement extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    public Context getContext(){
+        return this.getContext();
+    }
+    public String getStringResource(int id) {
+        return getString(id);
     }
 
 }

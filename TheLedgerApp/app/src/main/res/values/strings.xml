@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">TheLedger</string>
+    <string name="app_name">The Ledger</string>
+    <string name="launch_welcome_message">Welcome</string>
+
+
+    //Errors
+    <string name="listener_not_implemented">Activity needs to implement listener</string>
 </resources>

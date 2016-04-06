@@ -1,5 +1,6 @@
 package com.apolloapps.theledger;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
@@ -75,5 +76,9 @@ public class BaseActivity extends AppCompatActivity {
 
     public Toolbar getToolbar() {
         return mToolbar;
+    }
+
+    public Context getActivityContext(){
+        return this.getBaseContext();
     }
 }
