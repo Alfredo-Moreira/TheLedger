@@ -2,7 +2,15 @@
     <string name="app_name">The Ledger</string>
 
     //FontPath
-    <string name="regular_font">font/</string>
+    <string name="regular_font">font/Roboto-Regular.ttf</string>
+    <string name="bold_font">font/Roboto-Bold.ttf</string>
+    <string name="medium_font">font/Roboto-Medium.ttf</string>
+    <string name="italic_font">font/Roboto-Italic.ttf</string>
+    <string name="light_font">font/Roboto-Light.ttf</string>
+
+
+
+    //String that would need Translation bellow
 
     //Launch
     <string name="launch_welcome_message">Welcome</string>
