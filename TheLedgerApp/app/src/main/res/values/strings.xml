@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">The Ledger</string>
 
+    //FontPath
+    <string name="regular_font">font/</string>
+
     //Launch
     <string name="launch_welcome_message">Welcome</string>
 
