@@ -21,8 +21,7 @@ public class LaunchFragment extends BaseFragment {
     private LaunchFragmentListener mListener;
 
     public static LaunchFragment newInstance() {
-        LaunchFragment fragment = new LaunchFragment();
-        return fragment;
+        return  new LaunchFragment();
     }
 
     @Override

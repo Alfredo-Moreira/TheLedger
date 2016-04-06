@@ -12,6 +12,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getFragmentManager().beginTransaction().add(LoginFragment.newInstance(),null).addToBackStack(null).commit();
     }
 
     @Override
