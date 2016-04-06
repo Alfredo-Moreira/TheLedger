@@ -115,7 +115,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/ten_padding"
             android:layout_toEndOf="@+id/create_account_text"
-            android:src="@mipmap/ic_account_circle_white_24dp" />
+            android:src="@drawable/ic_account_circle_white_24dp" />
 
     </RelativeLayout>
 
