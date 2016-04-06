@@ -27,12 +27,12 @@ public class BaseActivity extends AppCompatActivity {
         if(mToolbar != null) {
             setUpToolBar();
         } else {
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    BaseActivity.this.onBackPressed();
-                }
-            });
+           // mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+             //   @Override
+               // public void onClick(View v) {
+                 //   BaseActivity.this.onBackPressed();
+               // }
+            // });
         }
 
     }
