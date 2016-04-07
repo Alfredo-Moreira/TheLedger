@@ -1,7 +1,6 @@
 package com.apolloapps.theledger.Launch;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apolloapps.theledger.BaseFragment;
-import com.apolloapps.theledger.Login.LoginActivity;
-import com.apolloapps.theledger.Login.LoginFragment;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Utils.AppConstants;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by AMoreira on 4/5/16.
@@ -20,8 +18,9 @@ import com.apolloapps.theledger.Utils.AppConstants;
 public class LaunchFragment extends BaseFragment {
 
 
-    private Runnable mRunnable;
+
     private LaunchFragmentListener mListener;
+    private LaunchAsyncAnimationClass mAsyncAnimationClass;
 
     public static LaunchFragment newInstance() {
         return  new LaunchFragment();
@@ -30,7 +29,7 @@ public class LaunchFragment extends BaseFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        
+
         if(activity instanceof LaunchFragmentListener) {
             mListener = (LaunchFragmentListener) activity;
         } else {
@@ -42,13 +41,17 @@ public class LaunchFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
 
+        ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_launch, container, false);
+        ButterKnife.bind(this, viewGroup);
+        return viewGroup;
     }
 
     @Override
@@ -65,8 +68,7 @@ public class LaunchFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        createRunnable();
-        mRunnable.run();
+        mListener.startAnimation();
     }
 
     @Override
@@ -74,21 +76,7 @@ public class LaunchFragment extends BaseFragment {
         super.onStart();
     }
 
-
-    private void createRunnable() {
-        mRunnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(AppConstants.FIVE_SECONDS);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                mListener.startLogin();
-            }
-        };
-    }
     public interface LaunchFragmentListener {
-        void startLogin();
+        void startAnimation();
     }
 }

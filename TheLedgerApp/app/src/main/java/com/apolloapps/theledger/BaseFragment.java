@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 /**
  * Created by AMoreira on 4/4/16.
@@ -64,6 +65,10 @@ public class BaseFragment extends Fragment {
     }
     public String getStringResource(int id) {
         return getString(id);
+    }
+
+    public String getInput(EditText input) {
+        return input.getText().toString().trim();
     }
 
 }

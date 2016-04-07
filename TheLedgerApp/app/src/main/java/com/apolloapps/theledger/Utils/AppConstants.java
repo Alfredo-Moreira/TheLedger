@@ -5,6 +5,6 @@ package com.apolloapps.theledger.Utils;
  */
 public class AppConstants {
 
-    public static final int FIVE_SECONDS = 5000;
+    public static final int THREE_SECONDS = 3000;
 
 }
