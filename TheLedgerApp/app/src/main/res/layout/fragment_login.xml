@@ -8,22 +8,25 @@
         android:id="@+id/login_header"
         layout="@layout/view_login_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/login_header_height"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/login_container_scroll_view"
        />
 
     <ScrollView
+        android:layout_below="@+id/login_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:id="@+id/login_container_scroll_view">
-    <LinearLayout
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical"
+        android:focusableInTouchMode="true"
         android:padding="@dimen/ten_padding">
 
         <TextView
@@ -96,36 +99,39 @@
             android:text="@string/login_forgot_username_password_text" />
     </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/create_account_view_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/create_account_text"
+                fontPath="@string/medium_font"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/login_create_account_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_sixteen" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/ten_padding"
+                android:layout_toEndOf="@+id/create_account_text"
+                android:src="@drawable/ic_account_circle_white_24dp" />
+
+        </RelativeLayout>
+        </FrameLayout>
+
     </ScrollView>
 
 
-    <RelativeLayout
-        android:id="@+id/create_account_view_button"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        android:clickable="true">
 
-        <TextView
-            android:id="@+id/create_account_text"
-            fontPath="@string/medium_font"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="@string/login_create_account_text"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_sixteen" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/ten_padding"
-            android:layout_toEndOf="@+id/create_account_text"
-            android:src="@drawable/ic_account_circle_white_24dp" />
-
-    </RelativeLayout>
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
+import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
 /**
@@ -16,6 +17,7 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_no_actionbar);
         getFragmentManager().beginTransaction().replace(R.id.container, LoginFragment.newInstance()).addToBackStack(null).commit();
+
     }
 
     @Override
@@ -46,7 +48,9 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
     @Override
     public void signIn(String username, String password, boolean rememberMe) {
         //To be replaced with Actual Login flow
-        startActivity(new Intent(this, DashboardActivity.class));
+        Preferences.INSTANCE.saveRememberMeState(rememberMe);
+        Preferences.INSTANCE.saveUsername(username);
+       // startActivity(new Intent(this, DashboardActivity.class));
     }
 
     @Override
