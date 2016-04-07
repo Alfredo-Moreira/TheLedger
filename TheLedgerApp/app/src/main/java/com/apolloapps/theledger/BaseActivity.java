@@ -1,5 +1,6 @@
 package com.apolloapps.theledger;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
@@ -26,12 +27,12 @@ public class BaseActivity extends AppCompatActivity {
         if(mToolbar != null) {
             setUpToolBar();
         } else {
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    BaseActivity.this.onBackPressed();
-                }
-            });
+           // mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+             //   @Override
+               // public void onClick(View v) {
+                 //   BaseActivity.this.onBackPressed();
+               // }
+            // });
         }
 
     }
@@ -75,5 +76,9 @@ public class BaseActivity extends AppCompatActivity {
 
     public Toolbar getToolbar() {
         return mToolbar;
+    }
+
+    public Context getActivityContext(){
+        return this.getBaseContext();
     }
 }
