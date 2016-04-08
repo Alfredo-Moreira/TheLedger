@@ -20,7 +20,6 @@ public class LaunchFragment extends BaseFragment {
 
 
     private LaunchFragmentListener mListener;
-    private LaunchAsyncAnimationClass mAsyncAnimationClass;
 
     public static LaunchFragment newInstance() {
         return  new LaunchFragment();

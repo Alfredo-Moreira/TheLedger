@@ -1,19 +1,19 @@
 package com.apolloapps.theledger;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * Created by AMoreira on 4/4/16.
  */
 public class BaseActivity extends AppCompatActivity {
 
-    private Toolbar mToolbar;
+    public Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,32 +23,48 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mToolbar =(Toolbar) findViewById(R.id.toolbar);
-        if(mToolbar != null) {
-            setUpToolBar();
-        } else {
-           // mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-             //   @Override
-               // public void onClick(View v) {
-                 //   BaseActivity.this.onBackPressed();
-               // }
-            // });
-        }
-
     }
 
-    private void setUpToolBar() {
-        final Drawable upArrow = ResourcesCompat.getDrawable(getResources(), R.drawable.abc_ic_ab_back_mtrl_am_alpha, null);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                break;
+            case R.id.action_about:
+                break;
+            case R.id.action_user:
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void setUpToolBar(Toolbar toolbar, String title) {
+        setSupportActionBar(toolbar);
+        setActionBarTitle(title);
+
     }
 
     public void setActionBarTitle(String title) {
-        mToolbar.setTitle(title);
+        getSupportActionBar().setTitle(title);
+
     }
 
+    public Toolbar getToolBar(int id) {
+        mToolbar = (Toolbar) findViewById(id);
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        return mToolbar;
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -66,7 +82,11 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override

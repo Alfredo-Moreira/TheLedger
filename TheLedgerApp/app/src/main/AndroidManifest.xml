@@ -4,7 +4,7 @@
     android:versionName="1.0.0">
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="21"
         android:targetSdkVersion="23" />
 
     <application
@@ -26,6 +26,9 @@
         </activity>
         <activity
             android:name=".Login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Dashboard.DashboardActivity"
             android:screenOrientation="portrait" />
     </application>
 
