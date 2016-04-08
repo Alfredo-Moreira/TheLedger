@@ -17,18 +17,15 @@ public class PreferenceHelper {
     }
 
     protected void setBoolean(String key, boolean value) {
-        mPreferences.edit().putBoolean(key,value);
-        mPreferences.edit().commit();
+        mPreferences.edit().putBoolean(key, value).commit();
     }
 
     protected void setString(String key, String value) {
-        mPreferences.edit().putString(key, value);
-        mPreferences.edit().commit();
+        mPreferences.edit().putString(key, value).commit();
     }
 
     protected void setInt(String key,int value) {
-        mPreferences.edit().putInt(key, value);
-        mPreferences.edit().commit();
+        mPreferences.edit().putInt(key, value).commit();
     }
 
     protected boolean getBoolean(String key) {

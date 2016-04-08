@@ -1,10 +1,8 @@
 package com.apolloapps.theledger.Login;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
-import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
@@ -48,19 +46,27 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
     @Override
     public void signIn(String username, String password, boolean rememberMe) {
         //To be replaced with Actual Login flow
-        Preferences.INSTANCE.saveRememberMeState(rememberMe);
-        Preferences.INSTANCE.saveUsername(username);
+        savePreferences(username, rememberMe);
        // startActivity(new Intent(this, DashboardActivity.class));
     }
 
     @Override
     public void createAccount() {
-        startActivity(new Intent(this, DashboardActivity.class));
+        //startActivity(new Intent(this, DashboardActivity.class));
     }
 
     @Override
     public void forgotCredentials() {
-        startActivity(new Intent(this, DashboardActivity.class));
+        //startActivity(new Intent(this, DashboardActivity.class));
 
+    }
+
+    private void savePreferences(String username, boolean rememberMe) {
+        Preferences.INSTANCE.saveRememberMeState(rememberMe);
+        if (rememberMe) {
+            Preferences.INSTANCE.saveUsername(username);
+        } else {
+            Preferences.INSTANCE.saveUsername(null);
+        }
     }
 }

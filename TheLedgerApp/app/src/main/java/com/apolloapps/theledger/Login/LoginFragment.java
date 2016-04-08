@@ -2,7 +2,6 @@ package com.apolloapps.theledger.Login;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.apolloapps.theledger.BaseFragment;
-import com.apolloapps.theledger.Preferences.PreferenceHelper;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
@@ -67,6 +65,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this, viewGroup);
+        setUp();
         return viewGroup;
     }
 
@@ -89,7 +88,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
-        setUp();
     }
 
     @Override
@@ -124,9 +122,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     }
 
     private void setUp(){
-        boolean temp = Preferences.INSTANCE.getRememberMeState();
         mRememberMe.setChecked(Preferences.INSTANCE.getRememberMeState());
-        mUsername.setText(Preferences.INSTANCE.getUsername());
+        if (Preferences.INSTANCE.getRememberMeState()) {
+            mUsername.setText(Preferences.INSTANCE.getUsername());
+        }
         mRememberMe.setOnCheckedChangeListener(this);
         mSignInButton.setOnClickListener(this);
         mCreateAccount.setOnClickListener(this);

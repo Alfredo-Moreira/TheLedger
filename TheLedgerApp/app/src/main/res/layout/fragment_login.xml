@@ -19,27 +19,30 @@
         android:fillViewport="true"
         android:id="@+id/login_container_scroll_view">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:focusableInTouchMode="true"
-        android:padding="@dimen/ten_padding">
+        android:gravity="top">
+
 
         <TextView
             fontPath="@string/regular_font"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login_username_text"
+            android:layout_marginEnd="@dimen/ten_padding"
+            android:layout_marginStart="@dimen/ten_padding"
+            android:layout_marginTop="@dimen/ten_padding"
             android:textSize="@dimen/text_thirteen" />
 
         <EditText
             android:id="@+id/username_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/ten_padding"
+            android:layout_marginStart="@dimen/ten_padding"
             android:inputType="text" />
 
         <TextView
@@ -47,17 +50,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login_password_text"
+            android:layout_marginEnd="@dimen/ten_padding"
+            android:layout_marginStart="@dimen/ten_padding"
             android:textSize="@dimen/text_thirteen" />
 
         <EditText
             android:id="@+id/password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/ten_padding"
+            android:layout_marginStart="@dimen/ten_padding"
             android:inputType="textPassword" />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/ten_padding"
+            android:layout_marginStart="@dimen/ten_padding">
 
             <TextView
                 fontPath="@string/regular_font"
@@ -84,9 +93,10 @@
             android:background="@color/colorPrimary"
             android:elevation="@dimen/five_padding"
             android:minHeight="@dimen/button_height"
-            android:padding="@dimen/ten_padding"
             android:text="@string/login_sign_in_text"
             android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/ten_padding"
+            android:layout_marginStart="@dimen/ten_padding"
             android:textSize="@dimen/text_sixteen" />
 
         <TextView
@@ -95,15 +105,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/ten_padding"
+            android:layout_marginBottom="@dimen/ten_padding"
             android:clickable="true"
             android:text="@string/login_forgot_username_password_text" />
-    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="false" />
+
 
         <RelativeLayout
             android:id="@+id/create_account_view_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
-            android:layout_gravity="bottom"
             android:background="@color/colorPrimary"
             android:clickable="true">
 
@@ -125,9 +141,9 @@
                 android:layout_marginStart="@dimen/ten_padding"
                 android:layout_toEndOf="@+id/create_account_text"
                 android:src="@drawable/ic_account_circle_white_24dp" />
-
         </RelativeLayout>
-        </FrameLayout>
+    </LinearLayout>
+
 
     </ScrollView>
 

@@ -31,4 +31,4 @@ public class MainApplication extends MultiDexApplication {
         Preferences.INSTANCE.createPreferences(MainApplication.this);
     }
 
-}
+}   
