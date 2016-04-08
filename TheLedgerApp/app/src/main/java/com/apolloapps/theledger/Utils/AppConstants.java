@@ -6,5 +6,6 @@ package com.apolloapps.theledger.Utils;
 public class AppConstants {
 
     public static final int THREE_SECONDS = 3000;
+    public static final int DEFAULT_INT_RETURN = -9999;
 
 }

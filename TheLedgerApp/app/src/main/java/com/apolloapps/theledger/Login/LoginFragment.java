@@ -3,13 +3,17 @@ package com.apolloapps.theledger.Login;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.apolloapps.theledger.BaseFragment;
+import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
 import butterknife.Bind;
@@ -23,6 +27,12 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     EditText mUsername;
     @Bind(R.id.password_text_input)
     EditText mPassword;
+    @Bind(R.id.remember_me_switch)
+    SwitchCompat mRememberMe;
+    @Bind(R.id.sign_in_button)
+    Button mSignInButton;
+    @Bind(R.id.create_account_view_button)
+    RelativeLayout mCreateAccount;
 
 
     private LoginFragmentListener mListener;
@@ -55,6 +65,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this, viewGroup);
+        setUp();
         return viewGroup;
     }
 
@@ -103,17 +114,21 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.remember_me_switch:
-                if (isChecked) {
-                    buttonView.setChecked(!isChecked);
-
-                } else {
-                    buttonView.setChecked(isChecked);
-
-                }
+                mRemembered = isChecked;
                 break;
             default:
                 break;
         }
+    }
+
+    private void setUp(){
+        mRememberMe.setChecked(Preferences.INSTANCE.getRememberMeState());
+        if (Preferences.INSTANCE.getRememberMeState()) {
+            mUsername.setText(Preferences.INSTANCE.getUsername());
+        }
+        mRememberMe.setOnCheckedChangeListener(this);
+        mSignInButton.setOnClickListener(this);
+        mCreateAccount.setOnClickListener(this);
     }
 
     public interface LoginFragmentListener{
