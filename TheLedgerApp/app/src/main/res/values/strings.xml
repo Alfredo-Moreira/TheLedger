@@ -20,7 +20,7 @@
     <string name="login_password_text">Password</string>
     <string name="login_remember_me_text">Remember Username</string>
     <string name="login_create_account_text">Create Account</string>
-    <string name="login_forgot_username_password_text">Forgot Username/Password</string>
+    <string name="login_forgot_username_password_text"><u>Forgot Username/Password</u></string>
     <string name="login_sign_in_text">Sign In</string>
 
     //Dashboard

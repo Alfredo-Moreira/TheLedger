@@ -1,7 +1,6 @@
 package com.apolloapps.theledger.Dashboard;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.apolloapps.theledger.Dashboard.Features.FeatureBaseClass;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,17 +34,17 @@ public class DashboardListItemView extends RelativeLayout {
     private OnClickListener mListener;
 
     public DashboardListItemView(Context context) {
-        this(context,null,0);
+        this(context, null, 0);
     }
 
-    public DashboardListItemView(Context context, AttributeSet attrs){
-        this(context,attrs,0);
+    public DashboardListItemView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
     public DashboardListItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        View view = LayoutInflater.from(context).inflate(R.layout.view_dashboard_item,null);
-        ButterKnife.bind(this,view);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_dashboard_item, null);
+        ButterKnife.bind(this, view);
         addView(view);
     }
 
@@ -58,5 +56,7 @@ public class DashboardListItemView extends RelativeLayout {
     }
 
     @OnClick(R.id.list_cell_container)
-    void onClick(){mListener.onClick(this);}
+    void onClick() {
+        mListener.onClick(this);
+    }
 }

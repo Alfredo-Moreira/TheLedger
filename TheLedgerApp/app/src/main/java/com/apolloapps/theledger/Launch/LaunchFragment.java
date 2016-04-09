@@ -18,18 +18,17 @@ import butterknife.ButterKnife;
 public class LaunchFragment extends BaseFragment {
 
 
-
     private LaunchFragmentListener mListener;
 
     public static LaunchFragment newInstance() {
-        return  new LaunchFragment();
+        return new LaunchFragment();
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        if(activity instanceof LaunchFragmentListener) {
+        if (activity instanceof LaunchFragmentListener) {
             mListener = (LaunchFragmentListener) activity;
         } else {
             throw new RuntimeException(getStringResource(R.string.listener_not_implemented));

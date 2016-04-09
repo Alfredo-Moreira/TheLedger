@@ -1,6 +1,7 @@
 package com.apolloapps.theledger.Login;
 
 import android.app.Activity;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Preferences.Preferences;
@@ -23,6 +25,8 @@ import butterknife.ButterKnife;
  * Created by AMoreira on 4/5/16.
  */
 public class LoginFragment extends BaseFragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+    @Bind(R.id.forgot_password_text_button)
+    TextView mForgotCredentials;
     @Bind(R.id.username_text_input)
     EditText mUsername;
     @Bind(R.id.password_text_input)
@@ -121,7 +125,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
         }
     }
 
-    private void setUp(){
+    private void setUp() {
         mRememberMe.setChecked(Preferences.INSTANCE.getRememberMeState());
         if (Preferences.INSTANCE.getRememberMeState()) {
             mUsername.setText(Preferences.INSTANCE.getUsername());
@@ -129,11 +133,15 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
         mRememberMe.setOnCheckedChangeListener(this);
         mSignInButton.setOnClickListener(this);
         mCreateAccount.setOnClickListener(this);
+        mForgotCredentials.setOnClickListener(this);
+        mForgotCredentials.setPaintFlags(mForgotCredentials.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
-    public interface LoginFragmentListener{
+    public interface LoginFragmentListener {
         void signIn(String username, String password, boolean rememberMe);
+
         void createAccount();
+
         void forgotCredentials();
 
     }

@@ -9,7 +9,6 @@ import com.apolloapps.theledger.Dashboard.Features.FeatureBaseClass;
 import com.apolloapps.theledger.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -23,8 +22,8 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     public DashboardAdapter(Context context, DashboardFragment.DashBoardFragmentListener listener) {
 
-        String [] features = context.getResources().getStringArray(R.array.available_features);
-        for(String feature : features ) {
+        String[] features = context.getResources().getStringArray(R.array.available_features);
+        for (String feature : features) {
             try {
                 Class<?> clazz = Class.forName(feature);
                 FeatureBaseClass object = (FeatureBaseClass) clazz.newInstance();
@@ -48,7 +47,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public DashboardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       DashboardListItemView view = new DashboardListItemView(parent.getContext());
+        DashboardListItemView view = new DashboardListItemView(parent.getContext());
         return new DashboardViewHolder(view);
     }
 
@@ -57,7 +56,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
         holder.mDashboardListItemView.setContents(mAvailableFeatures.get(position), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DashboardListItemView  view = (DashboardListItemView) v;
+                DashboardListItemView view = (DashboardListItemView) v;
                 mListener.startFeature(view.mFeature.getFeatureClass());
             }
         });
@@ -66,7 +65,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public int getItemCount() {
-        if(mAvailableFeatures.isEmpty()){
+        if (mAvailableFeatures.isEmpty()) {
             return 0;
         }
         return mAvailableFeatures.size();

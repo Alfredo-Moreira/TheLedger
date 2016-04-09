@@ -12,8 +12,8 @@ public class PreferenceHelper {
 
     private SharedPreferences mPreferences;
 
-    public PreferenceHelper(Context context,String preferences) {
-        mPreferences = context.getSharedPreferences(preferences,context.MODE_PRIVATE);
+    public PreferenceHelper(Context context, String preferences) {
+        mPreferences = context.getSharedPreferences(preferences, context.MODE_PRIVATE);
     }
 
     protected void setBoolean(String key, boolean value) {
@@ -24,12 +24,12 @@ public class PreferenceHelper {
         mPreferences.edit().putString(key, value).commit();
     }
 
-    protected void setInt(String key,int value) {
+    protected void setInt(String key, int value) {
         mPreferences.edit().putInt(key, value).commit();
     }
 
     protected boolean getBoolean(String key) {
-       return mPreferences.getBoolean(key,false);
+        return mPreferences.getBoolean(key, false);
     }
 
     protected String getString(String key) {
@@ -39,7 +39,6 @@ public class PreferenceHelper {
     protected int getInt(String key) {
         return mPreferences.getInt(key, AppConstants.DEFAULT_INT_RETURN);
     }
-
 
 
 }

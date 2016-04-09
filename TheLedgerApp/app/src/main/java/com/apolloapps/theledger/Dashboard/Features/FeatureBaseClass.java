@@ -12,7 +12,10 @@ public abstract class FeatureBaseClass {
     public String mClass;
 
     public abstract void init(Context context);
+
     public abstract String getFeatureName();
+
     public abstract int getFeatureDrawableId();
+
     public abstract String getFeatureClass();
 }

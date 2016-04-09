@@ -103,12 +103,13 @@
         <TextView
             android:id="@+id/forgot_password_text_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/fifty_padding"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_marginTop="@dimen/ten_padding"
             android:layout_marginBottom="@dimen/ten_padding"
             android:clickable="true"
-            android:text="@string/login_forgot_username_password_text" />
+            android:text="@string/login_forgot_username_password_text"/>
 
         <View
             android:layout_width="match_parent"
