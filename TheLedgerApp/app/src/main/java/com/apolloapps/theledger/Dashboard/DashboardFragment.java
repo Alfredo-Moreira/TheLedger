@@ -1,14 +1,22 @@
 package com.apolloapps.theledger.Dashboard;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Outline;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
-import com.apolloapps.theledger.BaseActivity;
+
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
 
@@ -20,8 +28,14 @@ import butterknife.ButterKnife;
  */
 public class DashboardFragment extends BaseFragment {
 
+    @Bind(R.id.add_button)
+    ImageView mAddButton;
+    @Bind(R.id.dashboard_list_view)
+    RecyclerView mDashboardList;
 
     private DashBoardFragmentListener mListener;
+    private DashboardAdapter mAdapter;
+    private LinearLayoutManager mLayoutManager;
 
     public static DashboardFragment newInstance() {
         return new DashboardFragment();
@@ -34,11 +48,10 @@ public class DashboardFragment extends BaseFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
-        if (context instanceof DashBoardFragmentListener) {
-            Activity activity = (Activity) context;
+        if (activity instanceof DashBoardFragmentListener) {
             mListener = (DashBoardFragmentListener) activity;
         } else {
             throw new RuntimeException(getStringResource(R.string.listener_not_implemented));
@@ -51,6 +64,7 @@ public class DashboardFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_dashboard, container, false);
         ButterKnife.bind(this, viewGroup);
+        setUp(getActivity());
         return viewGroup;
     }
 
@@ -76,6 +90,28 @@ public class DashboardFragment extends BaseFragment {
     }
 
     public interface DashBoardFragmentListener {
-
+        void startFeature(String classPath);
     }
+
+    private void setUpAddButton() {
+        mAddButton.setOutlineProvider(new ViewOutlineProvider() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void getOutline(View view, Outline outline) {
+                int diameter = getResources().getDimensionPixelOffset(R.dimen.fifty_padding);
+                outline.setOval(0, 0,diameter,diameter);
+            }
+        });
+        mAddButton.setClipToOutline(true);
+    }
+
+    private void setUp(Context context){
+        mAdapter = new DashboardAdapter(context,mListener);
+        mLayoutManager = new LinearLayoutManager(context);
+        mDashboardList.setAdapter(mAdapter);
+        mDashboardList.setLayoutManager(mLayoutManager);
+        mDashboardList.setHasFixedSize(true);
+        setUpAddButton();
+    }
+
 }

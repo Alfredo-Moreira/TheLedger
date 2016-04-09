@@ -60,9 +60,6 @@ public class BaseFragment extends Fragment {
         super.onDestroy();
     }
 
-    public Context getContext(){
-        return this.getContext();
-    }
     public String getStringResource(int id) {
         return getString(id);
     }

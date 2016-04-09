@@ -94,10 +94,6 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public Toolbar getToolbar() {
-        return mToolbar;
-    }
-
     public Context getActivityContext(){
         return this.getBaseContext();
     }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //Padding Dimensions
+    <dimen name="one_padding">1dp</dimen>
+    <dimen name="four_padding">4dp</dimen>
     <dimen name="five_padding">5dp</dimen>
     <dimen name="ten_padding">10dp</dimen>
     <dimen name="fifteen_padding">15dp</dimen>
+    <dimen name="twenty_five_padding">25dp</dimen>
     <dimen name="fifty_padding">50dp</dimen>
 
     //Text Size

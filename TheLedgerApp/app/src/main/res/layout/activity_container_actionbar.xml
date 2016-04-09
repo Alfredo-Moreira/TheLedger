@@ -11,7 +11,7 @@
         android:background="@color/colorPrimary"
         android:elevation="@dimen/five_padding"
         android:titleTextAppearance="@style/Toolbar.TitleText"
-        app:theme="@style/ActionBarTheme"/>
+        android:theme="@style/ActionBarTheme"/>
 
     <FrameLayout
         android:id="@+id/container"
