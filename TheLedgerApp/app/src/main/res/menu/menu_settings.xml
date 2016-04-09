@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".BaseActivity">
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Settings"
+        android:showAsAction="never"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="200"
+        android:title="About"
+        android:showAsAction="never"/>
+
+
+    <item
+        android:id="@+id/action_user"
+        android:orderInCategory="200"
+        android:title="User"
+        android:icon="@drawable/ic_person_outline_white_24dp"
+        app:showAsAction="ifRoom"></item>
+
+
+</menu>
+
+
+
+

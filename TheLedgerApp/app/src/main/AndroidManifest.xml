@@ -1,11 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apolloapps.theledger"
-    android:versionCode="1000000"
+    android:versionCode="1000001"
     android:versionName="1.0.0">
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="21"
         android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MainApplication"
@@ -27,6 +29,13 @@
         <activity
             android:name=".Login.LoginActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Dashboard.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ea117771d46dafa0b39c2041d64c8d198b3d4cec" />
     </application>
+
 
 </manifest>

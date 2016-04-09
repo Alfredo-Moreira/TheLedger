@@ -3,6 +3,9 @@ package com.apolloapps.theledger;
 import android.support.multidex.MultiDexApplication;
 
 import com.apolloapps.theledger.Preferences.Preferences;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.ndk.CrashlyticsNdk;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by AMoreira on 4/4/16.
@@ -14,6 +17,7 @@ public class MainApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics(), new CrashlyticsNdk());
         setUp();
     }
 

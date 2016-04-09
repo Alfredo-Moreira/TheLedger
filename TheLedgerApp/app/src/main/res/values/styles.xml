@@ -11,17 +11,22 @@
 
     //Action Bar Theme
 
-    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.ActionBar" />
+    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:actionOverflowButtonStyle">@style/OverFlow</item>
+    </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
     </style>
 
     <style name="NoTitleBaseTheme" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_more_vert_white_24dp</item>
     </style>
 
 </resources>
