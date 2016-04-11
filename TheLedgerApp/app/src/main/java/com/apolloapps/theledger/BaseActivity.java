@@ -36,7 +36,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_send_feedback:
                 break;
             case R.id.action_about:
                 break;
@@ -93,6 +93,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public Context getActivityContext() {
-        return this.getBaseContext();
+        return this;
     }
 }
