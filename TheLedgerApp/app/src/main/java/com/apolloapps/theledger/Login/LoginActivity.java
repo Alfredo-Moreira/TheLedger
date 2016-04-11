@@ -5,15 +5,19 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.apolloapps.theledger.AccountManagement.AccountManagementActivity;
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
+
+
 /**
  * Created by AMoreira on 4/5/16.
  */
 public class LoginActivity extends BaseActivity implements LoginFragment.LoginFragmentListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,7 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
 
     @Override
     public void createAccount() {
-        //startActivity(new Intent(this, DashboardActivity.class));
+        startActivity(new Intent(this, AccountManagementActivity.class));
     }
 
     @Override
@@ -67,11 +71,11 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
     }
 
     private void savePreferences(String username, boolean rememberMe) {
-        Preferences.INSTANCE.saveRememberMeState(rememberMe);
+       Preferences.INSTANCE.saveRememberMeState(rememberMe);
         if (rememberMe) {
             Preferences.INSTANCE.saveUsername(username);
         } else {
-            Preferences.INSTANCE.saveUsername(null);
+           Preferences.INSTANCE.saveUsername(null);
         }
     }
 

@@ -3,11 +3,17 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/fragment_root" android:background="@color/white">
 
+    <include android:id="@+id/header"
+        layout="@layout/view_login_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_header_height"/>
+
     <android.support.v7.widget.RecyclerView
         android:paddingTop="@dimen/ten_padding"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/dashboard_list_view"
+        android:layout_below="@+id/header"
         android:layout_above="@+id/secondary_menus_container" />
 
 

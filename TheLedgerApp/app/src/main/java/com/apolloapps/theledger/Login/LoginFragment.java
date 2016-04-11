@@ -18,6 +18,7 @@ import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

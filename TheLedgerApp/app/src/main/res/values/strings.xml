@@ -32,6 +32,9 @@
     //Dashboard
     <string name="dashboard_action_bar_title">Dashboard</string>
 
+    //Create Account
+    <string name="create_account_action_bar_title">Create Account</string>
+
 
     //Errors
     <string name="listener_not_implemented">Activity needs to implement listener</string>

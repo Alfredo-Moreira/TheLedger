@@ -6,6 +6,7 @@ import com.apolloapps.theledger.Preferences.Preferences;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.ndk.CrashlyticsNdk;
 
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -32,7 +33,7 @@ public class MainApplication extends MultiDexApplication {
 
     private void setUp() {
         setMainApplication(MainApplication.this);
-        Preferences.INSTANCE.createPreferences(MainApplication.this);
+        Preferences.INSTANCE.createPreferences(getApplicationContext());
     }
 
 }   
