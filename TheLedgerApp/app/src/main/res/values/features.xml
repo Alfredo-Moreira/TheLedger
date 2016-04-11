@@ -4,6 +4,7 @@
     <string-array name="available_features">
         <item>com.apolloapps.theledger.Dashboard.Features.AccountFeature</item>
         <item>com.apolloapps.theledger.Dashboard.Features.BillsFeature</item>
+        <item>com.apolloapps.theledger.Dashboard.Features.CheckListFeature</item>
     </string-array>
 
 
@@ -14,4 +15,7 @@
     <string name="bills_feature">Bills</string>
     <string name="bills_class_path">com.apolloapps.theledger.Dashboard.Features.BillsFeature</string>
     <drawable name="bills_drawable">@drawable/ic_credit_card_black_24dp</drawable>
+    <string name="check_list_feature">Check List</string>
+    <string name="check_list_class_path">com.apolloapps.theledger.Dashboard.Features.CheckListFeature</string>
+    <drawable name="chrck_list_drawable">@drawable/ic_assignment_turned_in_black_24dp</drawable>
 </resources>

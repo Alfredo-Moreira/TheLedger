@@ -2,7 +2,6 @@ package com.apolloapps.theledger;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -37,11 +36,9 @@ public class BaseActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_send_feedback:
                 break;
             case R.id.action_about:
-                break;
-            case R.id.action_user:
                 break;
             default:
                 break;
@@ -65,6 +62,7 @@ public class BaseActivity extends AppCompatActivity {
         mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
         return mToolbar;
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -94,7 +92,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public Context getActivityContext(){
-        return this.getBaseContext();
+    public Context getActivityContext() {
+        return this;
     }
 }

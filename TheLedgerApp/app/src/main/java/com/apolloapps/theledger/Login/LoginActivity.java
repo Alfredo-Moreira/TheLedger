@@ -1,7 +1,9 @@
 package com.apolloapps.theledger.Login;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
@@ -12,6 +14,7 @@ import com.apolloapps.theledger.R;
  * Created by AMoreira on 4/5/16.
  */
 public class LoginActivity extends BaseActivity implements LoginFragment.LoginFragmentListener {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,4 +74,6 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
             Preferences.INSTANCE.saveUsername(null);
         }
     }
+
+
 }

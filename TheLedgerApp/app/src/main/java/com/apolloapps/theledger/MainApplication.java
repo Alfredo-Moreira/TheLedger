@@ -5,6 +5,7 @@ import android.support.multidex.MultiDexApplication;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.ndk.CrashlyticsNdk;
+
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -21,13 +22,12 @@ public class MainApplication extends MultiDexApplication {
         setUp();
     }
 
+    public MainApplication getMainApplication() {
+        return mInstance;
+    }
 
     private static void setMainApplication(MainApplication mainApplication) {
         mInstance = mainApplication;
-    }
-
-    public MainApplication getMainApplication() {
-        return mInstance;
     }
 
     private void setUp() {

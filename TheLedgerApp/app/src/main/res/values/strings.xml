@@ -11,7 +11,13 @@
 
 
     //String that would need Translation bellow
-
+    //Menus
+    <string name="send_feedback">Send Feedback</string>
+    <string name="about">About</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="help">Help</string>
+    <string name="settings">Settings</string>
     //Launch
     <string name="launch_welcome_message">Welcome</string>
 
@@ -20,7 +26,7 @@
     <string name="login_password_text">Password</string>
     <string name="login_remember_me_text">Remember Username</string>
     <string name="login_create_account_text">Create Account</string>
-    <string name="login_forgot_username_password_text">Forgot Username/Password</string>
+    <string name="login_forgot_username_password_text"><u>Forgot Username/Password</u></string>
     <string name="login_sign_in_text">Sign In</string>
 
     //Dashboard

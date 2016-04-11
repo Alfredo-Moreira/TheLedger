@@ -1,7 +1,6 @@
 package com.apolloapps.theledger.Dashboard;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 /**
  * Created by AMoreira on 4/8/16.

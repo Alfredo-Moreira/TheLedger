@@ -4,3 +4,7 @@
  - Login Screen initial setUp(NetworkLayer missing)
  - Dasboard initial set up
  - Crashlytics set up
+
+1.0.0 (10000002) 04/11/2016
+ 
+ - Dashboard Improvements

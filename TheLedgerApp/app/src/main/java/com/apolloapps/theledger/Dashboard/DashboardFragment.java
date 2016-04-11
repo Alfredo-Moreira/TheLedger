@@ -13,9 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
@@ -89,29 +87,29 @@ public class DashboardFragment extends BaseFragment {
         super.onResume();
     }
 
-    public interface DashBoardFragmentListener {
-        void startFeature(String classPath);
-    }
-
     private void setUpAddButton() {
         mAddButton.setOutlineProvider(new ViewOutlineProvider() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void getOutline(View view, Outline outline) {
                 int diameter = getResources().getDimensionPixelOffset(R.dimen.fifty_padding);
-                outline.setOval(0, 0,diameter,diameter);
+                outline.setOval(0, 0, diameter, diameter);
             }
         });
         mAddButton.setClipToOutline(true);
     }
 
-    private void setUp(Context context){
-        mAdapter = new DashboardAdapter(context,mListener);
+    private void setUp(Context context) {
+        mAdapter = new DashboardAdapter(context, mListener);
         mLayoutManager = new LinearLayoutManager(context);
         mDashboardList.setAdapter(mAdapter);
         mDashboardList.setLayoutManager(mLayoutManager);
         mDashboardList.setHasFixedSize(true);
         setUpAddButton();
+    }
+
+    public interface DashBoardFragmentListener {
+        void startFeature(String classPath);
     }
 
 }
