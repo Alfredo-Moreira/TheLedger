@@ -11,7 +11,13 @@
 
 
     //String that would need Translation bellow
-
+    //Menus
+    <string name="send_feedback">Send Feedback</string>
+    <string name="about">About</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="help">Help</string>
+    <string name="settings">Settings</string>
     //Launch
     <string name="launch_welcome_message">Welcome</string>
 

@@ -6,12 +6,12 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Settings"
+        android:title="@string/send_feedback"
         android:showAsAction="never"/>
     <item
         android:id="@+id/action_about"
         android:orderInCategory="200"
-        android:title="About"
+        android:title="@string/about"
         android:showAsAction="never"/>
 
 </menu>
