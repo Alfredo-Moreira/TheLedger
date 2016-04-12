@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
  * Created by AMoreira on 4/4/16.
@@ -50,11 +49,11 @@ public class BaseActivity extends AppCompatActivity {
     public void setUpToolBar(Toolbar toolbar, String title, boolean setBackArrow) {
         setSupportActionBar(toolbar);
         setActionBarTitle(title);
-        setBackArrowToolbar(toolbar,setBackArrow);
+        setBackArrowToolbar(toolbar, setBackArrow);
     }
 
-    public void setBackArrowToolbar(Toolbar toolbar,boolean set) {
-        if(set) {
+    public void setBackArrowToolbar(Toolbar toolbar, boolean set) {
+        if (set) {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -68,7 +67,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setToolbarVisibility(Toolbar toolbar, boolean visible) {
-        if(visible) {
+        if (visible) {
             toolbar.setVisibility(View.VISIBLE);
         } else {
             toolbar.setVisibility(View.GONE);
@@ -76,7 +75,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void setLowerMenuVisibility(LinearLayout menu, boolean visible) {
-        if(visible) {
+        if (visible) {
             menu.setVisibility(View.VISIBLE);
         } else {
             menu.setVisibility(View.GONE);

@@ -3,6 +3,7 @@ package com.apolloapps.theledger.AccountManagement;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
 import com.apolloapps.theledger.R;
 
 /**
@@ -19,9 +20,9 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(R.id.toolbar),getString(R.string.create_account_action_bar_title),true);
-        setLowerMenuVisibility(getLowerMenu(R.id.secondary_menus_container),false);
-        getFragmentManager().beginTransaction().replace(R.id.container,CreateAccountFragment.newInstance()).addToBackStack(null).commit();
+        setUpToolBar(getToolBar(R.id.toolbar), getString(R.string.create_account_action_bar_title), true);
+        setLowerMenuVisibility(getLowerMenu(R.id.secondary_menus_container), false);
+        getFragmentManager().beginTransaction().replace(R.id.container, CreateAccountFragment.newInstance()).addToBackStack(null).commit();
     }
 
     @Override
@@ -49,8 +50,10 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
         super.onStop();
     }
 
+
     @Override
-    public void createAccount() {
+    public void createAccount(PersonalAccountModel account) {
+        //retrieve info from account and do network request
 
     }
 }

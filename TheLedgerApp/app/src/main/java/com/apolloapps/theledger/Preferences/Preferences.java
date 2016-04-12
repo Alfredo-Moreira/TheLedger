@@ -7,7 +7,7 @@ import android.content.Context;
  * Created by AMoreira on 4/7/16.
  */
 
-public enum  Preferences{
+public enum Preferences {
     INSTANCE;
 
     private final String MY_PREFERENCES = "TheLedgerPreferences";

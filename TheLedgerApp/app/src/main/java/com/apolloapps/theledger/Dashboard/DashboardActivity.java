@@ -25,7 +25,7 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setToolbarVisibility(getToolBar(R.id.toolbar),false);
+        setToolbarVisibility(getToolBar(R.id.toolbar), false);
         getFragmentManager().beginTransaction().replace(R.id.container, DashboardFragment.newInstance(), null).commit();
     }
 

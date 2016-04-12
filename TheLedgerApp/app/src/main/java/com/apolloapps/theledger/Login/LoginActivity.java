@@ -1,16 +1,13 @@
 package com.apolloapps.theledger.Login;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.apolloapps.theledger.AccountManagement.AccountManagementActivity;
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
-
 
 
 /**
@@ -71,11 +68,11 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
     }
 
     private void savePreferences(String username, boolean rememberMe) {
-       Preferences.INSTANCE.saveRememberMeState(rememberMe);
+        Preferences.INSTANCE.saveRememberMeState(rememberMe);
         if (rememberMe) {
             Preferences.INSTANCE.saveUsername(username);
         } else {
-           Preferences.INSTANCE.saveUsername(null);
+            Preferences.INSTANCE.saveUsername(null);
         }
     }
 

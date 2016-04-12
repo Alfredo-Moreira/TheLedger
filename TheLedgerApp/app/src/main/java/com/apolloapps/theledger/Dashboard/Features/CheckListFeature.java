@@ -10,9 +10,9 @@ import com.apolloapps.theledger.R;
 public class CheckListFeature extends FeatureBaseClass {
     @Override
     public void init(Context context) {
-      mClass=context.getString(R.string.check_list_class_path);
-        mFeatureDrawableId=R.drawable.chrck_list_drawable;
-        mFeatureName=context.getString(R.string.check_list_feature);
+        mClass = context.getString(R.string.check_list_class_path);
+        mFeatureDrawableId = R.drawable.chrck_list_drawable;
+        mFeatureName = context.getString(R.string.check_list_feature);
     }
 
     @Override
