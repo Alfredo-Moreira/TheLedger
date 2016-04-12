@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 
 import com.apolloapps.theledger.Utils.AppConstants;
 
+
 /**
  * Created by AMoreira on 4/7/16.
  */
+
 public class PreferenceHelper {
 
     private SharedPreferences mPreferences;

@@ -8,6 +8,7 @@
     <color name="button_pressed">#9575CD</color>
     <color name="button_disabled">#9E9E9E</color>
     <color name="pressed_list_view">#0f000000</color>
-    <color name="lower_menu_unpressed">#424242</color>
-    <color name="lower_menu_pressed">#9E9E9E</color>
+    <color name="text_color">#212121</color>
+    <color name="text_button_unpressed">#212121</color>
+    <color name="text_button_pressed">#424242</color>
 </resources>

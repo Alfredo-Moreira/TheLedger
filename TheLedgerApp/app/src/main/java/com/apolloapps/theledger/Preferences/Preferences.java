@@ -2,9 +2,11 @@ package com.apolloapps.theledger.Preferences;
 
 import android.content.Context;
 
+
 /**
  * Created by AMoreira on 4/7/16.
  */
+
 public enum Preferences {
     INSTANCE;
 
@@ -12,6 +14,7 @@ public enum Preferences {
     private final String REMEMBER_ME = "RememberMe";
     private final String USERNAME = "Username";
     private PreferenceHelper mPreferenceHelper;
+
 
     public void createPreferences(Context context) {
         mPreferenceHelper = new PreferenceHelper(context, MY_PREFERENCES);

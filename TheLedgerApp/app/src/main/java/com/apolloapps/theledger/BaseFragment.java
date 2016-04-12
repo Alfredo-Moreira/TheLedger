@@ -68,4 +68,11 @@ public class BaseFragment extends Fragment {
         return input.getText().toString().trim();
     }
 
+    public boolean validateInput(String input) {
+        if (input.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
 }

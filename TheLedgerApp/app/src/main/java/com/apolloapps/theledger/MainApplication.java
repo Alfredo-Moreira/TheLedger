@@ -32,7 +32,7 @@ public class MainApplication extends MultiDexApplication {
 
     private void setUp() {
         setMainApplication(MainApplication.this);
-        Preferences.INSTANCE.createPreferences(MainApplication.this);
+        Preferences.INSTANCE.createPreferences(getApplicationContext());
     }
 
 }   

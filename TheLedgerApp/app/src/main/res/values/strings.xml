@@ -22,15 +22,26 @@
     <string name="launch_welcome_message">Welcome</string>
 
     //Login
-    <string name="login_username_text">Username</string>
-    <string name="login_password_text">Password</string>
-    <string name="login_remember_me_text">Remember Username</string>
-    <string name="login_create_account_text">Create Account</string>
-    <string name="login_forgot_username_password_text"><u>Forgot Username/Password</u></string>
-    <string name="login_sign_in_text">Sign In</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Username</string>
+    <string name="create_account">Create Account</string>
+    <string name="forgot_username_password"><u>Forgot Username/Password</u></string>
+    <string name="sign_in">Sign In</string>
 
     //Dashboard
     <string name="dashboard_action_bar_title">Dashboard</string>
+
+    //Create Account
+    <string name="create_account_action_bar_title">Create Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="show_password">Show Password</string>
+    <string name="phone_number">Phone Number (Optional)</string>
+    <string name="email">Email (Optional)</string>
+
+    //Edit Account
+    <string name="save_changes">Save Changes</string>
 
 
     //Errors
