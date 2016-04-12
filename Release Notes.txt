@@ -8,3 +8,8 @@
 1.0.0 (10000002) 04/11/2016
  
  - Dashboard Improvements
+
+1.0.0 (10000003) 04/12/2016
+ 
+ - Create and Edit Account initial setup
+

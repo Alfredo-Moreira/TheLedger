@@ -6,4 +6,8 @@ import com.apolloapps.theledger.BaseFragment;
  * Created by AMoreira on 4/11/16.
  */
 public class EditAccountFragment extends BaseFragment {
+
+    public static EditAccountFragment newInstance(){
+        return new EditAccountFragment();
+    }
 }
