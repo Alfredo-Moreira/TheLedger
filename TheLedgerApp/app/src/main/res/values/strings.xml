@@ -47,6 +47,7 @@
     //Errors
     <string name="listener_not_implemented">Activity needs to implement listener</string>
     <string name="feature_not_available">This feature is not available</string>
+    <string name="account_management_error">Need select create account or edit account</string>
 
     //Dialog
     <string name="dialog_ok">Ok</string>

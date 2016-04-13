@@ -1,10 +1,12 @@
 package com.apolloapps.theledger.Dashboard;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.R;
+import com.apolloapps.theledger.Settings.SettingsActivity;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
@@ -25,7 +27,7 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setToolbarVisibility(getToolBar(R.id.toolbar), false);
+        setUpToolBar(getToolBar(R.id.toolbar), null, false, false);
         getFragmentManager().beginTransaction().replace(R.id.container, DashboardFragment.newInstance(), null).commit();
     }
 
@@ -70,6 +72,21 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
         // } catch (ClassNotFoundException e) {
         // AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
         //}
+    }
+
+    @Override
+    public void startProfile() {
+
+    }
+
+    @Override
+    public void startHelp() {
+
+    }
+
+    @Override
+    public void startSettings() {
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
     @Override

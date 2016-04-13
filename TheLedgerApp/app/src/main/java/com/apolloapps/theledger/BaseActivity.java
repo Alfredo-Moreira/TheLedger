@@ -7,12 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 
 /**
  * Created by AMoreira on 4/4/16.
  */
 public class BaseActivity extends AppCompatActivity {
+
+    protected Bundle mBundle;
+    private Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +48,19 @@ public class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setUpToolBar(Toolbar toolbar, String title, boolean setBackArrow) {
-        setSupportActionBar(toolbar);
-        setActionBarTitle(title);
-        setBackArrowToolbar(toolbar, setBackArrow);
+    public void setUpToolBar(Toolbar toolbar, String title, boolean setVisible, boolean setBackArrow) {
+        if (setVisible) {
+            setSupportActionBar(toolbar);
+            setActionBarTitle(title);
+            setBackArrowToolbar(toolbar, setBackArrow);
+            setToolbarVisibility(toolbar, setVisible);
+        } else {
+            setToolbarVisibility(toolbar, setVisible);
+        }
     }
 
-    public void setBackArrowToolbar(Toolbar toolbar, boolean set) {
+
+    private void setBackArrowToolbar(Toolbar toolbar, boolean set) {
         if (set) {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -66,7 +74,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void setToolbarVisibility(Toolbar toolbar, boolean visible) {
+    private void setToolbarVisibility(Toolbar toolbar, boolean visible) {
         if (visible) {
             toolbar.setVisibility(View.VISIBLE);
         } else {
@@ -74,15 +82,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void setLowerMenuVisibility(LinearLayout menu, boolean visible) {
-        if (visible) {
-            menu.setVisibility(View.VISIBLE);
-        } else {
-            menu.setVisibility(View.GONE);
-        }
-    }
-
-    public void setActionBarTitle(String title) {
+    private void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
 
     }
@@ -93,10 +93,6 @@ public class BaseActivity extends AppCompatActivity {
         return toolbar;
     }
 
-    public LinearLayout getLowerMenu(int id) {
-        LinearLayout menu = (LinearLayout) findViewById(id);
-        return menu;
-    }
 
     @Override
     protected void onResume() {
@@ -130,4 +126,5 @@ public class BaseActivity extends AppCompatActivity {
     public Context getActivityContext() {
         return this;
     }
+
 }

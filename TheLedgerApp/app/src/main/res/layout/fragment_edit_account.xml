@@ -21,45 +21,61 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="First Name" />
+                android:text="@string/first_name"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_thirteen" />
 
             <EditText
                 android:id="@+id/first_name_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@color/input_text_color"
+                android:textSize="@dimen/text_sixteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Last Name" />
+                android:text="@string/last_name"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_thirteen" />
 
             <EditText
                 android:id="@+id/last_name_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@color/input_text_color"
+                android:textSize="@dimen/text_sixteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/username" />
+                android:text="@string/username"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_thirteen" />
 
             <EditText
                 android:id="@+id/username_text_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/input_text_color"
+                android:textSize="@dimen/text_sixteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/password" />
+                android:text="@string/password"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_thirteen" />
 
             <EditText
                 android:id="@+id/password_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/input_text_color"
+                android:textSize="@dimen/text_sixteen" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -71,7 +87,9 @@
                     android:layout_gravity="start"
                     android:layout_marginStart="@dimen/ten_padding"
                     android:gravity="center_vertical"
-                    android:text="Show Password" />
+                    android:text="@string/show_password"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_sixteen" />
 
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/show_password_switch"
@@ -85,24 +103,32 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Phone Number(Optional)" />
+                android:text="@string/phone_number"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_thirteen" />
 
             <EditText
                 android:id="@+id/phone_number_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textColor="@color/input_text_color"
+                android:textSize="@dimen/text_sixteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email(Optional)" />
+                android:text="@string/email"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_thirteen" />
 
             <EditText
                 android:id="@+id/email_address_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/input_text_color"
+                android:textSize="@dimen/text_sixteen" />
         </LinearLayout>
 
 
