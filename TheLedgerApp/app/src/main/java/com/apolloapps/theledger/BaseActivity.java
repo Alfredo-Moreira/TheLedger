@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 /**
@@ -14,7 +13,6 @@ import android.view.View;
 public class BaseActivity extends AppCompatActivity {
 
     protected Bundle mBundle;
-    private Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +31,11 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()) {
-            case R.id.action_send_feedback:
-                break;
-            case R.id.action_about:
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public void setUpToolBar(Toolbar toolbar, String title, boolean setVisible, boolean setBackArrow) {
         if (setVisible) {
             setSupportActionBar(toolbar);
-            setActionBarTitle(title);
+            setToolBarTitle(title);
             setBackArrowToolbar(toolbar, setBackArrow);
             setToolbarVisibility(toolbar, setVisible);
         } else {
@@ -82,7 +66,7 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    private void setActionBarTitle(String title) {
+    public void setToolBarTitle(String title) {
         getSupportActionBar().setTitle(title);
 
     }

@@ -11,6 +11,7 @@
 
 
     //String that would need Translation bellow
+
     //Menus
     <string name="send_feedback">Send Feedback</string>
     <string name="about">About</string>
@@ -18,6 +19,7 @@
     <string name="profile">Profile</string>
     <string name="help">Help</string>
     <string name="settings">Settings</string>
+
     //Launch
     <string name="launch_welcome_message">Welcome</string>
 
@@ -28,6 +30,13 @@
     <string name="create_account">Create Account</string>
     <string name="forgot_username_password"><u>Forgot Username/Password</u></string>
     <string name="sign_in">Sign In</string>
+
+    //Settings
+
+
+
+    //About
+    <string name="donate">DONATE</string>
 
     //Dashboard
     <string name="dashboard_action_bar_title">Dashboard</string>
@@ -55,4 +64,8 @@
     <string name="dialog_error">Error</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_out_message">Are you sure you want to sign out?</string>
+
+    //Copyright
+    <string name="reference_disclaimer">The following software was used in the production of this product. The above software contains the following licence and notice below:</string>
+    <string name="reference_thank_you">The following libraries are third party software that were used to produce the Ledger. We thank the open source community for their contribution.</string>
 </resources>

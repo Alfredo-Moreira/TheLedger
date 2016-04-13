@@ -4,4 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_header"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/twenty_five_padding"
+        android:layout_marginEnd="@dimen/twenty_five_padding">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Libraries Used"
+            android:textSize="@dimen/text_thirty"/>
+        <TextView
+            android:paddingTop="@dimen/ten_padding"
+            android:paddingBottom="@dimen/ten_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/reference_thank_you"/>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/about_header"
+        android:id="@+id/about_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/donate_button"
+        android:padding="@dimen/ten_padding"
+        android:paddingTop="@dimen/twenty_five_padding"
+        android:scrollbars="vertical"
+        android:scrollbarSize="@dimen/one_padding"
+        android:fadeScrollbars="false"/>
+
+    <Button
+        android:id="@+id/donate_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_padding"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_selector"
+        android:text="@string/donate"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_sixteen" />
 </RelativeLayout>
