@@ -30,7 +30,6 @@
         android:paddingBottom="@dimen/five_padding"
         android:background="@drawable/list_view_selector"
         android:clickable="true"
-        android:text="link"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_sixteen" />
 
@@ -54,8 +53,7 @@
             android:id="@+id/reference_description_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/ten_padding"
-            android:text="This is the description" />
+            android:padding="@dimen/ten_padding" />
 
     </RelativeLayout>
 

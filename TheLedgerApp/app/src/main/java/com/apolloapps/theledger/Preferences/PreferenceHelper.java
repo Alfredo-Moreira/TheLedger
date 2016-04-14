@@ -3,7 +3,7 @@ package com.apolloapps.theledger.Preferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.apolloapps.theledger.Utils.AppConstants;
+import com.apolloapps.theledger.Common.AppConstants;
 
 
 /**

@@ -1,13 +1,12 @@
 package com.apolloapps.theledger.AccountManagement;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Utils.AppConstants;
+import com.apolloapps.theledger.Common.AppConstants;
 
 /**
  * Created by AMoreira on 4/11/16.

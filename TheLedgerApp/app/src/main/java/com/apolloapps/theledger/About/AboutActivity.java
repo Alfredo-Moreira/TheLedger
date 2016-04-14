@@ -1,18 +1,19 @@
 package com.apolloapps.theledger.About;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.R;
+import com.apolloapps.theledger.Common.AppConstants;
 
 /**
  * Created by AMoreira on 4/13/16.
  */
 public class AboutActivity extends BaseActivity implements AboutFragment.AboutFragmentListener {
+
+    private Intent mViewLinkIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,13 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
 
     @Override
     public void followLink(String link) {
-
+        mViewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        mViewLinkIntent.setPackage(AppConstants.GOOGLE_CHROME);
+        if (mViewLinkIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mViewLinkIntent);
+        } else {
+            mViewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            startActivity(mViewLinkIntent);
+        }
     }
 }

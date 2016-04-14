@@ -8,7 +8,7 @@ import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Utils.AppConstants;
+import com.apolloapps.theledger.Common.AppConstants;
 
 
 /**

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="references_count">2</integer>
+    <integer name="references_count">1</integer>
 
 
     <string name="butter_title">Butter Knife</string>
@@ -19,8 +19,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 
-    <string name="crahslytics_title">Crashlytics</string>
-    <string name="craslytics_link">Link</string>
-    <string name="crashlytics_descriptions">Descriptions</string>
-    
 </resources>
