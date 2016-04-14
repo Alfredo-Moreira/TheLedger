@@ -1,12 +1,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apolloapps.theledger">
+    package="com.apolloapps.theledger"
+    android:versionCode="1000003"
+    android:versionName="1.0.0">
 
-    <application android:allowBackup="true"
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/NoTitleBaseTheme">
 
+        <activity
+            android:name=".Launch.LaunchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Dashboard.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AccountManagement.AccountManagementActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ea117771d46dafa0b39c2041d64c8d198b3d4cec" />
     </application>
+
 
 </manifest>

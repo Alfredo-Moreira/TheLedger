@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/fragment_root" android:background="@color/white">
+
+    <include android:id="@+id/header"
+        layout="@layout/view_login_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_header_height"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:paddingTop="@dimen/ten_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dashboard_list_view"
+        android:layout_below="@+id/header"
+        android:layout_above="@+id/secondary_menus_container" />
+
+
+    <ImageView
+        android:id="@+id/add_button"
+        android:layout_above="@+id/secondary_menus_container"
+        android:layout_width="@dimen/fifty_padding"
+        android:layout_height="@dimen/fifty_padding"
+        android:layout_marginBottom="@dimen/twenty_five_padding"
+        android:layout_marginEnd="@dimen/twenty_five_padding"
+        android:src="@drawable/ic_add_circle_white_24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="@dimen/one_padding"
+        android:tint="@color/white"
+        android:background="@drawable/add_button_oval"
+        android:clickable="true"
+        android:stateListAnimator="@anim/add_button_anim"/>
+
+
+</RelativeLayout>

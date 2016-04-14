@@ -1,3 +1,57 @@
 <resources>
-    <string name="app_name">TheLedger</string>
+    <string name="app_name">The Ledger</string>
+
+    //FontPath
+    <string name="regular_font">font/Roboto-Regular.ttf</string>
+    <string name="bold_font">font/Roboto-Bold.ttf</string>
+    <string name="medium_font">font/Roboto-Medium.ttf</string>
+    <string name="italic_font">font/Roboto-Italic.ttf</string>
+    <string name="light_font">font/Roboto-Light.ttf</string>
+
+
+
+    //String that would need Translation bellow
+    //Menus
+    <string name="send_feedback">Send Feedback</string>
+    <string name="about">About</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="help">Help</string>
+    <string name="settings">Settings</string>
+    //Launch
+    <string name="launch_welcome_message">Welcome</string>
+
+    //Login
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember Username</string>
+    <string name="create_account">Create Account</string>
+    <string name="forgot_username_password"><u>Forgot Username/Password</u></string>
+    <string name="sign_in">Sign In</string>
+
+    //Dashboard
+    <string name="dashboard_action_bar_title">Dashboard</string>
+
+    //Create Account
+    <string name="create_account_action_bar_title">Create Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="show_password">Show Password</string>
+    <string name="phone_number">Phone Number (Optional)</string>
+    <string name="email">Email (Optional)</string>
+
+    //Edit Account
+    <string name="save_changes">Save Changes</string>
+
+
+    //Errors
+    <string name="listener_not_implemented">Activity needs to implement listener</string>
+    <string name="feature_not_available">This feature is not available</string>
+
+    //Dialog
+    <string name="dialog_ok">Ok</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_error">Error</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="sign_out_message">Are you sure you want to sign out?</string>
 </resources>
