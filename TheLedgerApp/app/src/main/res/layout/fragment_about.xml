@@ -39,6 +39,7 @@
         android:fadeScrollbars="false"/>
 
     <Button
+        android:visibility="gone"
         android:id="@+id/donate_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_padding"

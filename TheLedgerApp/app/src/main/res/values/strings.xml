@@ -59,7 +59,7 @@
     <string name="account_management_error">Need select create account or edit account</string>
 
     //Dialog
-    <string name="dialog_ok">Ok</string>
+    <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_error">Error</string>
     <string name="sign_out">Sign Out</string>
