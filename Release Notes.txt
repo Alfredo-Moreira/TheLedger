@@ -13,3 +13,9 @@
  
  - Create and Edit Account initial setup
 
+1.0.0 (10000004) 04/15/2016
+ 
+ - Help, Settings, about initial set up.
+ - App color changes
+
+
