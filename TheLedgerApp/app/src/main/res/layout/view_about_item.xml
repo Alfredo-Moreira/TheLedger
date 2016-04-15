@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_cell_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/fifteen_padding"
+    android:layout_marginTop="@dimen/ten_padding"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/reference_title_text"
+        fontPath="@string/bold_font"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/twenty_five_padding"
+        android:layout_marginTop="@dimen/ten_padding"
+        android:textColor="@color/input_text_color"
+        android:textSize="@dimen/text_sixteen"/>
+
+    <TextView
+        android:layout_below="@+id/reference_title_text"
+        android:id="@+id/reference_link_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ten_padding"
+        android:layout_marginStart="@dimen/thirty_five_padding"
+        android:layout_marginEnd="@dimen/thirty_five_padding"
+        android:layout_marginTop="@dimen/ten_padding"
+        android:paddingTop="@dimen/five_padding"
+        android:paddingBottom="@dimen/five_padding"
+        android:background="@drawable/list_view_selector"
+        android:clickable="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_sixteen" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reference_link_text"
+        android:id="@+id/reference_description_container"
+        android:background="@color/pressed_list_view"
+        android:layout_marginStart="@dimen/thirty_five_padding"
+        android:layout_marginEnd="@dimen/thirty_five_padding">
+        <TextView
+            android:id="@+id/reference_disclaimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reference_disclaimer"
+            android:padding="@dimen/ten_padding"/>
+
+        <TextView
+            android:layout_below="@+id/reference_disclaimer"
+            android:id="@+id/reference_description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten_padding" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

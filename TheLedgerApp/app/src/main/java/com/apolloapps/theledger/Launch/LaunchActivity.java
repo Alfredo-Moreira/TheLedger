@@ -7,7 +7,7 @@ import android.os.Handler;
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Login.LoginActivity;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Utils.AppConstants;
+import com.apolloapps.theledger.Common.AppConstants;
 
 /**
  * Created by AMoreira on 4/5/16.

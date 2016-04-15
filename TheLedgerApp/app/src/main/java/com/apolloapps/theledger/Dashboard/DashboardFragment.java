@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
@@ -24,12 +25,18 @@ import butterknife.ButterKnife;
 /**
  * Created by AMoreira on 4/6/16.
  */
-public class DashboardFragment extends BaseFragment {
+public class DashboardFragment extends BaseFragment implements View.OnClickListener {
 
     @Bind(R.id.add_button)
     ImageView mAddButton;
     @Bind(R.id.dashboard_list_view)
     RecyclerView mDashboardList;
+    @Bind(R.id.lower_menu_profile)
+    RelativeLayout mMenuProfile;
+    @Bind(R.id.lower_menu_help)
+    RelativeLayout mMenuHelp;
+    @Bind(R.id.lower_menu_setting)
+    RelativeLayout mMenuSettings;
 
     private DashBoardFragmentListener mListener;
     private DashboardAdapter mAdapter;
@@ -106,10 +113,44 @@ public class DashboardFragment extends BaseFragment {
         mDashboardList.setLayoutManager(mLayoutManager);
         mDashboardList.setHasFixedSize(true);
         setUpAddButton();
+        setUpOnClickListeners();
+    }
+
+    private void setUpOnClickListeners() {
+        mMenuHelp.setOnClickListener(this);
+        mMenuSettings.setOnClickListener(this);
+        mMenuProfile.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.lower_menu_home:
+
+                break;
+            case R.id.lower_menu_profile:
+
+                break;
+            case R.id.lower_menu_help:
+
+                break;
+            case R.id.lower_menu_setting:
+                mListener.startSettings();
+                break;
+            default:
+                break;
+        }
     }
 
     public interface DashBoardFragmentListener {
         void startFeature(String classPath);
+
+        void startProfile();
+
+        void startHelp();
+
+        void startSettings();
+
     }
 
 }

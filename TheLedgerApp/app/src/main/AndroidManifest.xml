@@ -35,7 +35,14 @@
         <activity
             android:name=".AccountManagement.AccountManagementActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Settings.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".About.AboutActivity"
+            android:screenOrientation="portrait" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ea117771d46dafa0b39c2041d64c8d198b3d4cec" />

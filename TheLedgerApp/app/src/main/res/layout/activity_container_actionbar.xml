@@ -20,10 +20,4 @@
         android:layout_above="@+id/secondary_menus_container"
         android:background="@color/white" />
 
-
-    <include
-        android:id="@+id/secondary_menus_container"
-        layout="@layout/lower_menu" />
-
-
 </RelativeLayout>

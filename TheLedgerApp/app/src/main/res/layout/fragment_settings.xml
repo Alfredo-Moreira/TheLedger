@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/create_account_button"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/twenty_five_padding"
+        android:padding="@dimen/ten_padding"
+        android:layout_alignParentEnd="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Set Passcode"
+                android:layout_marginStart="@dimen/fifteen_padding"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_sixteen" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/ten_padding" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/about_option"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:background="@drawable/list_view_selector"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about"
+                android:layout_marginStart="@dimen/fifteen_padding"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_twenty_four" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/sign_out_button_selector"
+        android:text="@string/sign_out"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_sixteen" />
+
+</RelativeLayout>
