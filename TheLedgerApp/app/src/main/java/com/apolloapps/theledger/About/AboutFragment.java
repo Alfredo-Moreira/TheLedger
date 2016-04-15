@@ -1,6 +1,6 @@
 package com.apolloapps.theledger.About;
+
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,10 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.apolloapps.theledger.BaseFragment;
-import com.apolloapps.theledger.Common.References;
+import com.apolloapps.theledger.Common.ReferencesList;
 import com.apolloapps.theledger.R;
 
 import butterknife.Bind;
@@ -22,14 +21,12 @@ import butterknife.ButterKnife;
  */
 public class AboutFragment extends BaseFragment implements View.OnClickListener {
 
-    @Bind(R.id.donate_button)
-    Button mDonate;
     @Bind(R.id.about_list)
     RecyclerView mAboutList;
 
     private AboutFragmentListener mListener;
     private AboutAdapter mAdapter;
-    private References mReferences;
+    private ReferencesList mReferencesList;
 
     public static AboutFragment newInstance(){
         return new AboutFragment();
@@ -69,6 +66,7 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener = null;
     }
 
     @Override
@@ -79,24 +77,19 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.donate_button:
-                mListener.donate();
-                break;
             default:
                 break;
         }
     }
     private void setUp(){
-        mDonate.setOnClickListener(this);
-        mReferences = new References(getActivity());
-        mAdapter = new AboutAdapter(mReferences,mListener);
+        mReferencesList = new ReferencesList(getActivity());
+        mAdapter = new AboutAdapter(mReferencesList, mListener);
         mAboutList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAboutList.setAdapter(mAdapter);
         mAboutList.setHasFixedSize(true);
     }
 
     public interface AboutFragmentListener {
-        void donate();
         void followLink(String link);
     }
 }

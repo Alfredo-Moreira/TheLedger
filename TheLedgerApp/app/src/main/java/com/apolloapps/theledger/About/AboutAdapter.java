@@ -4,10 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apolloapps.theledger.Common.References;
-import com.apolloapps.theledger.DataManager.Models.ReferenceModel;
-
-import java.util.List;
+import com.apolloapps.theledger.Common.ReferencesList;
 
 
 /**
@@ -15,12 +12,12 @@ import java.util.List;
  */
 public class AboutAdapter extends RecyclerView.Adapter<AboutViewHolder> {
     private int mReferencesTotal;
-    private References mReferences;
+    private ReferencesList mReferencesList;
     private AboutFragment.AboutFragmentListener mListener;
 
-    public AboutAdapter( References references, AboutFragment.AboutFragmentListener listener) {
-        mReferencesTotal = references.getReferenceCount();
-        mReferences = references;
+    public AboutAdapter(ReferencesList referencesList, AboutFragment.AboutFragmentListener listener) {
+        mReferencesTotal = referencesList.getReferenceCount();
+        mReferencesList = referencesList;
         mListener = listener;
     }
 
@@ -32,10 +29,10 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutViewHolder> {
 
     @Override
     public void onBindViewHolder(AboutViewHolder holder, final int position) {
-        holder.mAboutListItemView.setContents(mReferences.getReferenceObject(position), new View.OnClickListener() {
+        holder.mAboutListItemView.setContents(mReferencesList.getReferenceObject(position), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.followLink(mReferences.getReferenceObject(position).getReferenceLink());
+                mListener.followLink(mReferencesList.getReferenceObject(position).getReferenceLink());
             }
         });
 
@@ -43,6 +40,9 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mReferencesTotal;
+        if (!mReferencesList.isEmpty()) {
+            return mReferencesTotal;
+        }
+        return 0;
     }
 }

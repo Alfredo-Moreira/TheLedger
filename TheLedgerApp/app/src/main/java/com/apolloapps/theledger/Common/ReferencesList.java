@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Created by AMoreira on 4/13/16.
  */
-public class References {
+public class ReferencesList {
     private List<ReferenceModel> mReferencesList;
     private int mReferenceCount;
 
-    public References(Context context){
+    public ReferencesList(Context context){
         mReferencesList = new ArrayList<>();
         mReferenceCount = context.getResources().getInteger(R.integer.references_count);
         addAllReferences(context);
@@ -29,12 +29,18 @@ public class References {
         mReferencesList.add(new ReferenceModel(context.getString(R.string.gson_title),
                 context.getString(R.string.gson_link),
                 context.getString(R.string.gson_descriptions)));
+        mReferencesList.add(new ReferenceModel(context.getString(R.string.calligraphy_title),
+                context.getString(R.string.calligraphy_link),
+                context.getString(R.string.calligraphy_description)));
     }
     public ReferenceModel getReferenceObject(int position) {
         return mReferencesList.get(position);
     }
     public int getReferenceCount() {
         return mReferenceCount;
+    }
+    public boolean isEmpty() {
+        return mReferencesList.isEmpty();
     }
 
 

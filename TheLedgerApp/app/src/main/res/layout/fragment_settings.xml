@@ -8,32 +8,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/create_account_button"
+        android:layout_above="@+id/secondary_menus_container"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/twenty_five_padding"
         android:padding="@dimen/ten_padding"
         android:layout_alignParentEnd="true">
 
         <FrameLayout
-            android:layout_width="match_parent"
             android:layout_height="@dimen/fifty_padding"
-            android:visibility="gone">
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/twenty_five_padding">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Set Passcode"
+                android:text="@string/set_passcode"
                 android:layout_marginStart="@dimen/fifteen_padding"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_sixteen" />
+                android:textSize="@dimen/text_twenty_four" />
 
             <android.support.v7.widget.SwitchCompat
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
                 android:layout_marginEnd="@dimen/ten_padding" />
         </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_padding"
+            android:layout_margin="@dimen/five_padding"
+            android:background="@color/menu_selected_state" />
 
         <FrameLayout
             android:id="@+id/about_option"
@@ -53,17 +58,33 @@
 
         </FrameLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_padding"
+            android:layout_margin="@dimen/five_padding"
+            android:background="@color/menu_selected_state" />
+
+        <FrameLayout
+            android:id="@+id/donate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:background="@drawable/list_view_selector"
+            android:clickable="true">
+
+            <TextView
+                fontPath="@string/medium_font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/fifteen_padding"
+                android:text="@string/donate"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_twenty_four" />
+
+
+        </FrameLayout>
+
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/create_account_button"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/sign_out_button_selector"
-        android:text="@string/sign_out"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_sixteen" />
 
 </RelativeLayout>

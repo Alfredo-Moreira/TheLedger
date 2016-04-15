@@ -2,7 +2,6 @@ package com.apolloapps.theledger.Settings;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.apolloapps.theledger.About.AboutActivity;
 import com.apolloapps.theledger.BaseActivity;
@@ -22,20 +21,9 @@ public class SettingsActivity extends BaseActivity implements SettingsFragment.S
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(R.id.toolbar), getString(R.string.settings), true, true);
+        setUpToolBar(getToolBar(), getString(R.string.settings), true, true);
+        setUpLowerMenu(getLowerMenu(), true);
         getFragmentManager().beginTransaction().replace(R.id.container, SettingsFragment.newInstance()).addToBackStack(null).commit();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        super.onOptionsItemSelected(item);
-        switch (item.getItemId()) {
-            case R.id.action_send_feedback:
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -67,4 +55,10 @@ public class SettingsActivity extends BaseActivity implements SettingsFragment.S
     public void startAbout() {
         startActivity(new Intent(this, AboutActivity.class));
     }
+
+    @Override
+    public void startDonate() {
+        getFragmentManager().beginTransaction().replace(R.id.container, DonateFragment.newInstance(), null).addToBackStack(null).commit();
+    }
+
 }

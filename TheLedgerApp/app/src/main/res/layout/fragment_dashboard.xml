@@ -19,11 +19,11 @@
 
     <ImageView
         android:id="@+id/add_button"
-        android:layout_above="@+id/secondary_menus_container"
         android:layout_width="@dimen/fifty_padding"
         android:layout_height="@dimen/fifty_padding"
         android:layout_marginBottom="@dimen/twenty_five_padding"
         android:layout_marginEnd="@dimen/twenty_five_padding"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/ic_add_circle_white_24dp"
         android:layout_alignParentEnd="true"
         android:elevation="@dimen/one_padding"
@@ -31,10 +31,6 @@
         android:background="@drawable/add_button_oval"
         android:clickable="true"
         android:stateListAnimator="@anim/add_button_anim"/>
-
-    <include
-        android:id="@+id/secondary_menus_container"
-        layout="@layout/lower_menu" />
 
 
 </RelativeLayout>

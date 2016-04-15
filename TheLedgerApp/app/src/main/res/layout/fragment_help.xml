@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_root">
+
+    <LinearLayout
+        android:paddingTop="@dimen/fifteen_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_marginTop="@dimen/twenty_five_padding"
+            android:id="@+id/send_feed_back"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:background="@drawable/list_view_selector"
+            android:clickable="true">
+
+            <TextView
+                fontPath="@string/medium_font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/fifteen_padding"
+                android:text="@string/send_feedback"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_twenty_four" />
+
+
+        </FrameLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_padding"
+            android:background="@color/menu_selected_state"
+            android:layout_margin="@dimen/five_padding"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:background="@drawable/list_view_selector"
+            android:clickable="true"
+            android:id="@+id/tutorial">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tutorial"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/fifteen_padding"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_twenty_four"/>
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

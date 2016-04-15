@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#882CC4</color>
-    <color name="colorPrimaryDark">#511A61</color>
-    <color name="colorAccent">#D12E72</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#1F285A</color>
+    <color name="colorAccent">#2196F3</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="button_pressed">#D19AE1</color>
+    <color name="button_pressed">#9FA8DA</color>
     <color name="button_disabled">#9E9E9E</color>
     <color name="pressed_list_view">#0f000000</color>
     <color name="menu_unpressed_state">#4F4F4F</color>
+    <color name="menu_selected_state">#3B3B3B</color>
     <color name="menu_pressed_state">#DCDCDC</color>
     <color name="text_color">#3F3F3F</color>
     <color name="additional_information_color">#E5E5E5</color>

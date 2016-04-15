@@ -3,7 +3,6 @@ package com.apolloapps.theledger.Settings;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,8 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
 
     @Bind(R.id.about_option)
     FrameLayout mAboutPage;
+    @Bind(R.id.donate)
+    FrameLayout mDonatePage;
 
     public SettingsFragmentListener mListener;
 
@@ -57,7 +58,10 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
 
     public void setUp() {
         mAboutPage.setOnClickListener(this);
+        mDonatePage.setOnClickListener(this);
+        setSelectedMenuState(R.id.lower_menu_setting);
     }
+
 
     @Override
     public void onDestroy() {
@@ -67,6 +71,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener = null;
     }
 
     @Override
@@ -85,14 +90,19 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
             case R.id.about_option:
                 mListener.startAbout();
                 break;
+            case R.id.donate:
+                mListener.startDonate();
+                break;
+            case R.id.send_feed_back:
+
             default:
                 break;
         }
     }
 
     public interface SettingsFragmentListener {
-
         void startAbout();
 
+        void startDonate();
     }
 }
