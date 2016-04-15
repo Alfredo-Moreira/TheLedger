@@ -19,9 +19,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.</string>
 
-    <string name="butter_title">Google Gson</string>
-    <string name="butter_link">http://mvnrepository.com/artifact/com.google.code.gson/gson/2.3.1</string>
-    <string name="butter_descriptions">Copyright 2014 Google, Inc.
+    <string name="gson_title">Google Gson</string>
+    <string name="gson_link">http://mvnrepository.com/artifact/com.google.code.gson/gson/2.3.1</string>
+    <string name="gson_descriptions">Copyright 2014 Google, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Libraries Used"
+            android:text="@string/libraries_used"
             android:textSize="@dimen/text_thirty"/>
         <TextView
             android:paddingTop="@dimen/ten_padding"

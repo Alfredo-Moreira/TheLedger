@@ -93,8 +93,6 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
         mAboutList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAboutList.setAdapter(mAdapter);
         mAboutList.setHasFixedSize(true);
-
-
     }
 
     public interface AboutFragmentListener {

@@ -37,6 +37,7 @@
 
     //About
     <string name="donate">DONATE</string>
+    <string name="libraries_used">Libraries Used</string>
 
     //Dashboard
     <string name="dashboard_action_bar_title">Dashboard</string>

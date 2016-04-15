@@ -26,6 +26,9 @@ public class References {
         mReferencesList.add(new ReferenceModel(context.getString(R.string.butter_title),
                 context.getString(R.string.butter_link),
                 context.getString(R.string.butter_descriptions)));
+        mReferencesList.add(new ReferenceModel(context.getString(R.string.gson_title),
+                context.getString(R.string.gson_link),
+                context.getString(R.string.gson_descriptions)));
     }
     public ReferenceModel getReferenceObject(int position) {
         return mReferencesList.get(position);
