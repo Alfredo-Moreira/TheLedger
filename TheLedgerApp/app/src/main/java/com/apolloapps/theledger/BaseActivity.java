@@ -1,28 +1,32 @@
 package com.apolloapps.theledger;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+
+import com.apolloapps.theledger.Dashboard.DashboardActivity;
+import com.apolloapps.theledger.Help.HelpActivity;
+import com.apolloapps.theledger.Login.LoginActivity;
+import com.apolloapps.theledger.Settings.SettingsActivity;
+import com.apolloapps.theledger.Utils.AlertDialogCreator;
+
+import static android.content.DialogInterface.BUTTON_NEGATIVE;
+import static android.content.DialogInterface.BUTTON_POSITIVE;
 
 /**
  * Created by AMoreira on 4/4/16.
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements DialogInterface.OnClickListener, View.OnClickListener {
 
     protected Bundle mBundle;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
+    protected int mSelectedMenu;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,6 +35,18 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_sign_out:
+                AlertDialogCreator.showDefaultDialog(this, getString(R.string.sign_out), getString(R.string.sign_out_message), this, this, null);
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void setUpToolBar(Toolbar toolbar, String title, boolean setVisible, boolean setBackArrow) {
         if (setVisible) {
@@ -71,27 +87,44 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    public Toolbar getToolBar(int id) {
-        Toolbar toolbar = (Toolbar) findViewById(id);
+    public Toolbar getToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         return toolbar;
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
+    public void setUpLowerMenu(LinearLayout layout, boolean visible) {
+        setUpOnClickListener();
+        if (visible) {
+            layout.setVisibility(View.VISIBLE);
+        } else {
+            layout.setVisibility(View.GONE);
+        }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+    public LinearLayout getLowerMenu() {
+        LinearLayout lowerMenu = (LinearLayout) findViewById(R.id.secondary_menus_container);
+        return lowerMenu;
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+    private void setUpOnClickListener() {
+        findViewById(R.id.lower_menu_home).setOnClickListener(this);
+        findViewById(R.id.lower_menu_profile).setOnClickListener(this);
+        findViewById(R.id.lower_menu_help).setOnClickListener(this);
+        findViewById(R.id.lower_menu_setting).setOnClickListener(this);
     }
+
+    public void setSelectedMenu(int id) {
+        mSelectedMenu = id;
+    }
+
+    private boolean isMenuSelected(int id) {
+        if (mSelectedMenu == id) {
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -109,6 +142,68 @@ public class BaseActivity extends AppCompatActivity {
 
     public Context getActivityContext() {
         return this;
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which) {
+            case BUTTON_NEGATIVE:
+                dialog.dismiss();
+                break;
+            case BUTTON_POSITIVE:
+                //clear session variables TODO
+                backToLogin();
+                break;
+        }
+    }
+
+    private void backToLogin() {
+        startActivity(new Intent(this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.lower_menu_home:
+                if (!isMenuSelected(R.id.lower_menu_home)) {
+                    startDashboard();
+                }
+                break;
+            case R.id.lower_menu_profile:
+                if (!isMenuSelected(R.id.lower_menu_profile)) {
+                    startProfile();
+                }
+                break;
+            case R.id.lower_menu_help:
+                if (!isMenuSelected(R.id.lower_menu_help)) {
+                    startHelp();
+                }
+                break;
+            case R.id.lower_menu_setting:
+                if (!isMenuSelected(R.id.lower_menu_setting)) {
+                    startSettings();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void startDashboard() {
+        startActivity(new Intent(this, DashboardActivity.class));
+    }
+
+    private void startProfile() {
+        //placeholder
+    }
+
+    private void startHelp() {
+        startActivity(new Intent(this, HelpActivity.class));
+    }
+
+    private void startSettings() {
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
 }

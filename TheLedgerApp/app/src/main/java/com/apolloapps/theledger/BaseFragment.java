@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 /**
  * Created by AMoreira on 4/4/16.
@@ -77,6 +78,12 @@ public class BaseFragment extends Fragment {
             return true;
         }
         return false;
+    }
+
+    public void setSelectedMenuState(int id) {
+        RelativeLayout menu = (RelativeLayout) getActivity().findViewById(id);
+        menu.setBackgroundColor(getResources().getColor(R.color.menu_selected_state));
+        ((BaseActivity) getActivity()).setSelectedMenu(id);
     }
 
 }

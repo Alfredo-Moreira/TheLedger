@@ -10,6 +10,7 @@
 
 
 
+
     //String that would need Translation bellow
 
     //Menus
@@ -32,12 +33,17 @@
     <string name="sign_in">Sign In</string>
 
     //Settings
+    <string name="set_passcode">Set Passcode</string>
+
+    //Help
+    <string name="tutorial">Tutorial</string>
 
 
 
     //About
-    <string name="donate">DONATE</string>
+    <string name="donate">Donate</string>
     <string name="libraries_used">Libraries Used</string>
+    <string name="donate_action_bar_title">Donate</string>
 
     //Dashboard
     <string name="dashboard_action_bar_title">Dashboard</string>

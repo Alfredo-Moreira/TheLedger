@@ -23,7 +23,8 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(R.id.toolbar),getString(R.string.about),true,true);
+        setUpToolBar(getToolBar(), getString(R.string.about), true, true);
+        setUpLowerMenu(getLowerMenu(), true);
         getFragmentManager().beginTransaction().replace(R.id.container,AboutFragment.newInstance(),null).addToBackStack(null).commit();
     }
 
@@ -59,10 +60,6 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
         super.onStop();
     }
 
-    @Override
-    public void donate() {
-        getFragmentManager().beginTransaction().replace(R.id.container,DonateFragment.newInstance(),null).addToBackStack(null).commit();
-    }
 
     @Override
     public void followLink(String link) {

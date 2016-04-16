@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.Login.LoginActivity;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Settings.SettingsActivity;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
@@ -27,7 +27,8 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(R.id.toolbar), null, false, false);
+        setUpToolBar(getToolBar(), null, false, false);
+        setUpLowerMenu(getLowerMenu(), true);
         getFragmentManager().beginTransaction().replace(R.id.container, DashboardFragment.newInstance(), null).commit();
     }
 
@@ -59,7 +60,7 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
                 break;
             case BUTTON_POSITIVE:
                 //clear session variables TODO
-                DashboardActivity.super.onBackPressed();
+                backToLogin();
                 break;
         }
     }
@@ -75,22 +76,11 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     }
 
     @Override
-    public void startProfile() {
-
-    }
-
-    @Override
-    public void startHelp() {
-
-    }
-
-    @Override
-    public void startSettings() {
-        startActivity(new Intent(this, SettingsActivity.class));
-    }
-
-    @Override
     public void onCancel(DialogInterface dialog) {
         dialog.dismiss();
+    }
+
+    private void backToLogin() {
+        startActivity(new Intent(this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 }

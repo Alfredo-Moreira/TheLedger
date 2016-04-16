@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="references_count">2</integer>
+    <integer name="references_count">3</integer>
 
 
     <string name="butter_title">Butter Knife</string>
     <string name="butter_link">http://jakewharton.github.io/butterknife/</string>
-    <string name="butter_descriptions">Copyright 2013 Jake Wharton
+    <string name="butter_descriptions">
+        Copyright 2013 Jake Wharton
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,7 +22,8 @@ limitations under the License.</string>
 
     <string name="gson_title">Google Gson</string>
     <string name="gson_link">http://mvnrepository.com/artifact/com.google.code.gson/gson/2.3.1</string>
-    <string name="gson_descriptions">Copyright 2014 Google, Inc.
+    <string name="gson_descriptions">
+        Copyright 2014 Google, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -34,5 +36,24 @@ limitations under the License.</string>
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.</string>
+
+
+    <string name="calligraphy_title">Calligraphy</string>
+    <string name="calligraphy_link">https://github.com/chrisjenx/Calligraphy</string>
+    <string name="calligraphy_description">
+        Copyright 2013 Christopher Jenkins
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+    </string>
 
 </resources>

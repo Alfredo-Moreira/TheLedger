@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Common.AppConstants;
 
 /**
  * Created by AMoreira on 4/11/16.
@@ -31,7 +31,8 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(R.id.toolbar), getString(R.string.create_account_action_bar_title), true, true);
+        setUpToolBar(getToolBar(), getString(R.string.create_account_action_bar_title), true, true);
+        setUpLowerMenu(getLowerMenu(), false);
         mBundle = getIntent().getExtras();
         //select fragment
         if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.CREATE_ACCOUNT) {
