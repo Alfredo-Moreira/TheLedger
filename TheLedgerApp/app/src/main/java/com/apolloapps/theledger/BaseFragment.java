@@ -73,7 +73,7 @@ public class BaseFragment extends Fragment {
         return getResources().getInteger(id);
     }
 
-    public boolean validateInput(String input) {
+    public boolean isInvalidInput(String input) {
         if (input.isEmpty()) {
             return true;
         }

@@ -2,6 +2,7 @@ package com.apolloapps.theledger.Help;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.R;
@@ -9,7 +10,7 @@ import com.apolloapps.theledger.R;
 /**
  * Created by AMoreira on 4/15/16.
  */
-public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragmentListener{
+public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragmentListener,SendFeedbackFragment.SendFeedbackFragmentListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +37,21 @@ public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragm
     }
 
     @Override
-    public void sendFeedback() {
+    public void sendFeedbackFragment() {
+        setUpLowerMenu(getLowerMenu(),false);
+        getFragmentManager().beginTransaction().replace(R.id.container,SendFeedbackFragment.newInstance(),null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void viewTutorialFragment() {
 
     }
 
     @Override
-    public void viewTutorial() {
-
+    public void sendFeedback(String person, String feedback) {
+        //Make network call
+        //On Success
+        Toast.makeText(this,getString(R.string.thank_you_for_feedback),Toast.LENGTH_SHORT).show();
+        getFragmentManager().popBackStack();
     }
 }
