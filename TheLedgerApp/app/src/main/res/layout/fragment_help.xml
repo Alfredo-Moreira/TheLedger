@@ -33,7 +33,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/one_padding"
-            android:background="@color/menu_selected_state"
+            android:background="@color/button_disabled"
             android:layout_margin="@dimen/five_padding"/>
 
         <FrameLayout

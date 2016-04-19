@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_root">
 
 
+    <EditText
+        android:id="@+id/person_text_input"
+        android:layout_marginTop="@dimen/twenty_five_padding"
+        android:layout_marginStart="@dimen/ten_padding"
+        android:layout_marginEnd="@dimen/ten_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-</LinearLayout>
+
+      <android.support.v7.widget.AppCompatCheckBox
+          android:layout_below="@+id/person_text_input"
+        android:id="@+id/anonymous_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/anonymous"
+        android:textSize="@dimen/text_sixteen"
+        android:layout_margin="@dimen/ten_padding"/>
+
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/feedback_text"
+        android:layout_below="@id/anonymous_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten_padding"
+        android:maxLength="500"/>
+
+    <Button
+        android:id="@+id/send_feedback_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_padding"
+        android:text="@string/send_feedback"
+        android:textSize="@dimen/text_twenty_four"
+        android:textColor="@color/white"
+        android:background="@drawable/button_selector"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

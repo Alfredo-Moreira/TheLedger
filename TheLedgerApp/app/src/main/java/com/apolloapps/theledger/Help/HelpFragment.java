@@ -81,10 +81,10 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.send_feed_back:
-                mListener.sendFeedback();
+                mListener.sendFeedbackFragment();
                 break;
             case R.id.tutorial:
-                mListener.viewTutorial();
+                mListener.viewTutorialFragment();
                 break;
             default:
                 break;
@@ -94,11 +94,13 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
 
     private void setUp() {
         setSelectedMenuState(R.id.lower_menu_help);
+        mSendFeedback.setOnClickListener(this);
+        mViewTutorial.setOnClickListener(this);
     }
 
     public interface HelpFragmentListener {
-        void sendFeedback();
-        void viewTutorial();
+        void sendFeedbackFragment();
+        void viewTutorialFragment();
 
     }
 }

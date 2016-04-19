@@ -37,6 +37,8 @@
 
     //Help
     <string name="tutorial">Tutorial</string>
+    <string name="anonymous">Anonymous</string>
+    <string name="thank_you_for_feedback">Thank you for your feedback!</string>
 
 
 

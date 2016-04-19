@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/one_padding"
             android:layout_margin="@dimen/five_padding"
-            android:background="@color/menu_selected_state" />
+            android:background="@color/button_disabled" />
 
         <FrameLayout
             android:id="@+id/about_option"
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/one_padding"
             android:layout_margin="@dimen/five_padding"
-            android:background="@color/menu_selected_state" />
+            android:background="@color/button_disabled" />
 
         <FrameLayout
             android:id="@+id/donate"

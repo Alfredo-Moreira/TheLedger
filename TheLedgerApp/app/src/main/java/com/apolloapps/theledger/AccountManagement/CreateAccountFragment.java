@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.apolloapps.theledger.BaseFragment;
@@ -32,6 +33,8 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     EditText mPhoneNumberInput;
     @Bind(R.id.email_address_text_input)
     EditText mEmailInput;
+    @Bind(R.id.create_account_button)
+    Button mCreateAccount;
 
     public CreateAccountFragmentListener mListener;
     private PersonalAccountModel mAccount;
@@ -55,7 +58,6 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAccount = new PersonalAccountModel();
-        mValidForm = true;
     }
 
     @Nullable
@@ -64,6 +66,7 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
         super.onCreateView(inflater, container, savedInstanceState);
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_create_account, container, false);
         ButterKnife.bind(this, view);
+        setUp();
         return view;
     }
 
@@ -101,16 +104,18 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     }
 
     private boolean validateForm() {
-        if (!validateInput(getInput(mFirstNameInput))) {
+        mValidForm = true;
+
+        if (isInvalidInput(getInput(mFirstNameInput))) {
             mValidForm = false;
         }
-        if (!validateInput(getInput(mLastNameInput))) {
+        if (isInvalidInput(getInput(mLastNameInput))) {
             mValidForm = false;
         }
-        if (!validateInput(getInput(mUsernameInput))) {
+        if (isInvalidInput(getInput(mUsernameInput))) {
             mValidForm = false;
         }
-        if (!validateInput(getInput(mPasswordInput))) {
+        if (isInvalidInput(getInput(mPasswordInput))) {
             mValidForm = false;
         }
         if (mValidForm) {
@@ -121,6 +126,10 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
         }
         return false;
 
+    }
+
+    private void setUp() {
+        mCreateAccount.setOnClickListener(this);
     }
 
     public interface CreateAccountFragmentListener {
