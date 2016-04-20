@@ -22,7 +22,7 @@
         android:layout_toEndOf="@+id/feature_image_icon"
         android:layout_marginStart="@dimen/fifteen_padding"
         android:layout_centerVertical="true"
-        android:textSize="@dimen/text_twenty_four"
+        android:textSize="@dimen/text_headline_twenty_four"
         android:textColor="@color/black"
         fontPath="@string/regular_font"
         android:text="Feature"/>

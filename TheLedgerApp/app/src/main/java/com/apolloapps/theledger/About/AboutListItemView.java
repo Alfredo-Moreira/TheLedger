@@ -4,9 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.apolloapps.theledger.DataManager.Models.ReferenceModel;
@@ -31,22 +29,22 @@ public class AboutListItemView extends RelativeLayout {
     private OnClickListener mListener;
 
     public AboutListItemView(Context context) {
-        this(context,null,0);
+        this(context, null, 0);
     }
 
     public AboutListItemView(Context context, AttributeSet attrs) {
-        this(context,attrs,0);
+        this(context, attrs, 0);
     }
 
     public AboutListItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        View view = LayoutInflater.from(context).inflate(R.layout.view_about_item,null);
-        ButterKnife.bind(this,view);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_about_item, null);
+        ButterKnife.bind(this, view);
         addView(view);
 
     }
 
-    public void setContents(ReferenceModel object, OnClickListener listener){
+    public void setContents(ReferenceModel object, OnClickListener listener) {
         mReferenceTitle.setText(object.getReferenceTitle());
         mReferenceLink.setText(object.getReferenceLink());
         mReferenceDescription.setText(object.getReferenceDescription());
@@ -54,5 +52,7 @@ public class AboutListItemView extends RelativeLayout {
     }
 
     @OnClick(R.id.reference_link_text)
-    void onClick(){mListener.onClick(this);}
+    void onClick() {
+        mListener.onClick(this);
+    }
 }

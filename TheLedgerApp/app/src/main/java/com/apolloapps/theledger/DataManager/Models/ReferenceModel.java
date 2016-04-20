@@ -8,20 +8,18 @@ public class ReferenceModel {
     private String mReferenceLink;
     private String mReferenceDescription;
 
-    public ReferenceModel(String title,String link,String description) {
+    public ReferenceModel(String title, String link, String description) {
         setReferenceTitle(title);
         setReferenceLink(link);
         setReferenceDescription(description);
     }
 
-
+    public String getReferenceDescription() {
+        return mReferenceDescription;
+    }
 
     private void setReferenceDescription(String mReferenceDescription) {
         this.mReferenceDescription = mReferenceDescription;
-    }
-
-    public String getReferenceDescription() {
-        return mReferenceDescription;
     }
 
     public String getReferenceLink() {

@@ -19,13 +19,14 @@
             android:layout_marginTop="@dimen/twenty_five_padding">
 
             <TextView
+                fontPath="@string/regular_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/set_passcode"
                 android:layout_marginStart="@dimen/fifteen_padding"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_twenty_four" />
+                android:textSize="@dimen/text_subheading_sixteen" />
 
             <android.support.v7.widget.SwitchCompat
                 android:layout_width="wrap_content"
@@ -48,13 +49,14 @@
             android:clickable="true">
 
             <TextView
+                fontPath="@string/regular_font"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about"
                 android:layout_marginStart="@dimen/fifteen_padding"
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_twenty_four" />
+                android:textSize="@dimen/text_subheading_sixteen" />
 
         </FrameLayout>
 
@@ -72,14 +74,14 @@
             android:clickable="true">
 
             <TextView
-                fontPath="@string/medium_font"
+                fontPath="@string/regular_font"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/fifteen_padding"
                 android:text="@string/donate"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_twenty_four" />
+                android:textSize="@dimen/text_subheading_sixteen" />
 
 
         </FrameLayout>

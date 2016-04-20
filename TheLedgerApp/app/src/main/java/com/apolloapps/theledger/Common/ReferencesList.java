@@ -15,7 +15,7 @@ public class ReferencesList {
     private List<ReferenceModel> mReferencesList;
     private int mReferenceCount;
 
-    public ReferencesList(Context context){
+    public ReferencesList(Context context) {
         mReferencesList = new ArrayList<>();
         mReferenceCount = context.getResources().getInteger(R.integer.references_count);
         addAllReferences(context);
@@ -33,12 +33,15 @@ public class ReferencesList {
                 context.getString(R.string.calligraphy_link),
                 context.getString(R.string.calligraphy_description)));
     }
+
     public ReferenceModel getReferenceObject(int position) {
         return mReferencesList.get(position);
     }
+
     public int getReferenceCount() {
         return mReferenceCount;
     }
+
     public boolean isEmpty() {
         return mReferencesList.isEmpty();
     }

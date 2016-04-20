@@ -1,15 +1,12 @@
 package com.apolloapps.theledger.Help;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
@@ -23,12 +20,11 @@ import butterknife.ButterKnife;
 public class HelpFragment extends BaseFragment implements View.OnClickListener {
 
 
+    public HelpFragmentListener mListener;
     @Bind(R.id.send_feed_back)
     FrameLayout mSendFeedback;
     @Bind(R.id.tutorial)
     FrameLayout mViewTutorial;
-
-    public HelpFragmentListener mListener;
 
     public static HelpFragment newInstance() {
         return new HelpFragment();
@@ -55,8 +51,8 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        ViewGroup view  = (ViewGroup) inflater.inflate(R.layout.fragment_help,container,false);
-        ButterKnife.bind(this,view);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_help, container, false);
+        ButterKnife.bind(this, view);
         setUp();
         return view;
     }
@@ -100,6 +96,7 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
 
     public interface HelpFragmentListener {
         void sendFeedbackFragment();
+
         void viewTutorialFragment();
 
     }

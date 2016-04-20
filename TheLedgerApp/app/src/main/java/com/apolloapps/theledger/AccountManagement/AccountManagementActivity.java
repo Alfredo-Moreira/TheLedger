@@ -14,6 +14,7 @@ import com.apolloapps.theledger.R;
 public class AccountManagementActivity extends BaseActivity implements CreateAccountFragment.CreateAccountFragmentListener {
 
     private Menu mMenu;
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -38,7 +39,6 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
         if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.CREATE_ACCOUNT) {
             getFragmentManager().beginTransaction().replace(R.id.container, CreateAccountFragment.newInstance()).addToBackStack(null).commit();
         } else if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.EDIT_ACCOUNT) {
-            getFragmentManager().beginTransaction().replace(R.id.container, EditAccountFragment.newInstance()).addToBackStack(null).commit();
             super.onCreateOptionsMenu(mMenu);
         } else {
             throw new RuntimeException(getString(R.string.account_management_error));

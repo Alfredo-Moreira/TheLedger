@@ -19,14 +19,14 @@
             android:clickable="true">
 
             <TextView
-                fontPath="@string/medium_font"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/fifteen_padding"
                 android:text="@string/send_feedback"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_twenty_four" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_subheading_sixteen" />
 
 
         </FrameLayout>
@@ -50,7 +50,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/fifteen_padding"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_twenty_four"/>
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_subheading_sixteen" />
         </FrameLayout>
     </LinearLayout>
 

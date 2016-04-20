@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/twenty_five_padding"
         android:layout_marginTop="@dimen/ten_padding"
         android:textColor="@color/input_text_color"
-        android:textSize="@dimen/text_sixteen"/>
+        android:textSize="@dimen/text_subheading_sixteen" />
 
     <TextView
         android:layout_below="@+id/reference_title_text"
@@ -31,7 +31,7 @@
         android:background="@drawable/list_view_selector"
         android:clickable="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/text_sixteen" />
+        android:textSize="@dimen/text_regular_fourteen" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,14 +46,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/reference_disclaimer"
-            android:padding="@dimen/ten_padding"/>
+            android:padding="@dimen/ten_padding"
+            android:textSize="@dimen/text_twelve_caption" />
 
         <TextView
             android:layout_below="@+id/reference_disclaimer"
             android:id="@+id/reference_description_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/ten_padding" />
+            android:padding="@dimen/ten_padding"
+            android:textSize="@dimen/text_twelve_caption" />
 
     </RelativeLayout>
 

@@ -5,17 +5,16 @@ import android.os.Bundle;
 
 import com.apolloapps.theledger.AccountManagement.AccountManagementActivity;
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Common.AppConstants;
 
 
 /**
  * Created by AMoreira on 4/5/16.
  */
 public class LoginActivity extends BaseActivity implements LoginFragment.LoginFragmentListener {
-
 
 
     @Override

@@ -37,7 +37,7 @@
             android:layout_marginStart="@dimen/ten_padding"
             android:layout_marginTop="@dimen/ten_padding"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/text_thirteen" />
+            android:textSize="@dimen/text_twelve_caption" />
 
         <EditText
             android:id="@+id/username_text_input"
@@ -47,7 +47,7 @@
             android:layout_marginStart="@dimen/ten_padding"
             android:inputType="text"
             android:textColor="@color/input_text_color"
-            android:textSize="@dimen/text_sixteen" />
+            android:textSize="@dimen/text_regular_fourteen" />
 
         <TextView
             fontPath="@string/regular_font"
@@ -57,7 +57,7 @@
             android:layout_marginEnd="@dimen/ten_padding"
             android:layout_marginStart="@dimen/ten_padding"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/text_thirteen" />
+            android:textSize="@dimen/text_twelve_caption" />
 
         <EditText
             android:id="@+id/password_text_input"
@@ -67,7 +67,7 @@
             android:layout_marginStart="@dimen/ten_padding"
             android:inputType="textPassword"
             android:textColor="@color/input_text_color"
-            android:textSize="@dimen/text_sixteen" />
+            android:textSize="@dimen/text_regular_fourteen" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:text="@string/remember_me"
-                android:textSize="@dimen/text_sixteen" />
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <android.support.v7.widget.SwitchCompat
                 android:id="@+id/remember_me_switch"
@@ -98,13 +98,13 @@
             android:layout_height="@dimen/button_height"
             android:layout_marginTop="@dimen/fifteen_padding"
             android:background="@drawable/button_selector"
-            android:elevation="@dimen/five_padding"
             android:minHeight="@dimen/button_height"
             android:text="@string/sign_in"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:layout_marginEnd="@dimen/ten_padding"
             android:layout_marginStart="@dimen/ten_padding"
-            android:textSize="@dimen/text_sixteen" />
+            android:textSize="@dimen/text_buttons_fourteen" />
 
         <TextView
             android:id="@+id/forgot_password_text_button"
@@ -115,7 +115,9 @@
             android:layout_marginTop="@dimen/ten_padding"
             android:layout_marginBottom="@dimen/ten_padding"
             android:clickable="true"
-            android:text="@string/forgot_username_password" />
+            fontPath="@string/regular_font"
+            android:text="@string/forgot_username_password"
+            android:textSize="@dimen/text_regular_fourteen" />
 
         <View
             android:layout_width="match_parent"
@@ -133,14 +135,15 @@
 
             <TextView
                 android:id="@+id/create_account_text"
-                fontPath="@string/medium_font"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="@string/create_account"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/medium_font"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <ImageView
                 android:layout_width="wrap_content"

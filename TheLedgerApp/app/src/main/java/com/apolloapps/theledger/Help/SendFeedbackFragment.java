@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
  */
 public class SendFeedbackFragment extends BaseFragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
+    public SendFeedbackFragmentListener mListener;
     @Bind(R.id.person_text_input)
     EditText mPersonName;
     @Bind(R.id.anonymous_checkbox)
@@ -34,10 +35,7 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
     @Bind(R.id.feedback_text)
     MultiAutoCompleteTextView mFeedbackText;
 
-
-    public SendFeedbackFragmentListener mListener;
-
-    public static SendFeedbackFragment newInstance(){
+    public static SendFeedbackFragment newInstance() {
         return new SendFeedbackFragment();
     }
 
@@ -45,8 +43,8 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        if(activity instanceof SendFeedbackFragmentListener) {
-            mListener =  (SendFeedbackFragmentListener) activity;
+        if (activity instanceof SendFeedbackFragmentListener) {
+            mListener = (SendFeedbackFragmentListener) activity;
         } else {
             throw new RuntimeException(getString(R.string.listener_not_implemented));
         }
@@ -62,8 +60,8 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        ViewGroup view = (ViewGroup)inflater.inflate(R.layout.fragment_send_feedback,container,false);
-        ButterKnife.bind(this,view);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_send_feedback, container, false);
+        ButterKnife.bind(this, view);
         setUp();
         return view;
     }
@@ -96,26 +94,26 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
         mFeedbackText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-               mSendFeedBackButton.setEnabled(count>0);
+                mSendFeedBackButton.setEnabled(count > 0);
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-               mSendFeedBackButton.setEnabled(count>0);
+                mSendFeedBackButton.setEnabled(count > 0);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-               mSendFeedBackButton.setEnabled(s.toString().length() > 0);
+                mSendFeedBackButton.setEnabled(s.toString().length() > 0);
             }
         });
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.send_feedback_button:
-                mListener.sendFeedback(getPerson(),mFeedbackText.getText().toString());
+                mListener.sendFeedback(getPerson(), mFeedbackText.getText().toString());
                 break;
             default:
                 break;
@@ -127,20 +125,15 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
         setAnonymous(isChecked);
     }
 
-    public interface SendFeedbackFragmentListener{
-        void sendFeedback(String person, String feedback);
-    }
-
-    private String getPerson(){
-        if(isInvalidInput(getInput(mPersonName))) {
+    private String getPerson() {
+        if (isInvalidInput(getInput(mPersonName))) {
             return getStringResource(R.string.anonymous);
         }
         return getInput(mPersonName);
     }
 
-
     private void setAnonymous(boolean isAnonymous) {
-        if(isAnonymous) {
+        if (isAnonymous) {
             mPersonName.getText().clear();
             mPersonName.setText(getStringResource(R.string.anonymous));
             mPersonName.setFocusable(false);
@@ -148,5 +141,10 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
             mPersonName.setFocusable(true);
             mPersonName.getText().clear();
         }
+    }
+
+
+    public interface SendFeedbackFragmentListener {
+        void sendFeedback(String person, String feedback);
     }
 }

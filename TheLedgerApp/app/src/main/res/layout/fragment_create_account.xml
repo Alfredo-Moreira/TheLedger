@@ -23,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/first_name"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_thirteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_twelve_caption" />
 
             <EditText
                 android:id="@+id/first_name_text_input"
@@ -31,14 +32,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:textColor="@color/input_text_color"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/last_name"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_thirteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_twelve_caption" />
 
             <EditText
                 android:id="@+id/last_name_text_input"
@@ -46,14 +49,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:textColor="@color/input_text_color"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/username"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_thirteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_twelve_caption" />
 
             <EditText
                 android:id="@+id/username_text_input"
@@ -61,14 +66,16 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:textColor="@color/input_text_color"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/password"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_thirteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_twelve_caption" />
 
             <EditText
                 android:id="@+id/password_text_input"
@@ -76,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:textColor="@color/input_text_color"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -90,7 +98,8 @@
                     android:gravity="center_vertical"
                     android:text="@string/show_password"
                     android:textColor="@color/text_color"
-                    android:textSize="@dimen/text_sixteen" />
+                    fontPath="@string/medium_font"
+                    android:textSize="@dimen/text_regular_fourteen" />
 
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/show_password_switch"
@@ -106,7 +115,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/phone_number"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_thirteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_twelve_caption" />
 
             <EditText
                 android:id="@+id/phone_number_text_input"
@@ -114,14 +124,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:textColor="@color/input_text_color"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_regular_fourteen" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/text_thirteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_twelve_caption" />
 
             <EditText
                 android:id="@+id/email_address_text_input"
@@ -129,7 +141,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/input_text_color"
-                android:textSize="@dimen/text_sixteen" />
+                fontPath="@string/regular_font"
+                android:textSize="@dimen/text_regular_fourteen" />
 
         </LinearLayout>
 
@@ -144,6 +157,8 @@
         android:background="@drawable/button_selector"
         android:text="@string/create_account"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_sixteen" />
+        fontPath="@string/medium_font"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_regular_fourteen" />
 
 </RelativeLayout>

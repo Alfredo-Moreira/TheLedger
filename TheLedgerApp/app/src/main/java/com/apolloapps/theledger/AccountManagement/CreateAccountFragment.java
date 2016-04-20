@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
  */
 public class CreateAccountFragment extends BaseFragment implements View.OnClickListener {
 
+    public CreateAccountFragmentListener mListener;
     @Bind(R.id.first_name_text_input)
     EditText mFirstNameInput;
     @Bind(R.id.last_name_text_input)
@@ -35,8 +36,6 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     EditText mEmailInput;
     @Bind(R.id.create_account_button)
     Button mCreateAccount;
-
-    public CreateAccountFragmentListener mListener;
     private PersonalAccountModel mAccount;
     private boolean mValidForm;
 

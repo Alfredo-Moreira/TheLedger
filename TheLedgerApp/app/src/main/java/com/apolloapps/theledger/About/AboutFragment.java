@@ -28,7 +28,7 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     private AboutAdapter mAdapter;
     private ReferencesList mReferencesList;
 
-    public static AboutFragment newInstance(){
+    public static AboutFragment newInstance() {
         return new AboutFragment();
     }
 
@@ -36,7 +36,7 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        if (activity instanceof AboutFragmentListener){
+        if (activity instanceof AboutFragmentListener) {
             mListener = (AboutFragmentListener) activity;
         } else {
             throw new RuntimeException(getString(R.string.listener_not_implemented));
@@ -52,8 +52,8 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_about,container,false);
-        ButterKnife.bind(this,view);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_about, container, false);
+        ButterKnife.bind(this, view);
         setUp();
         return view;
     }
@@ -81,7 +81,8 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
                 break;
         }
     }
-    private void setUp(){
+
+    private void setUp() {
         mReferencesList = new ReferencesList(getActivity());
         mAdapter = new AboutAdapter(mReferencesList, mListener);
         mAboutList.setLayoutManager(new LinearLayoutManager(getActivity()));

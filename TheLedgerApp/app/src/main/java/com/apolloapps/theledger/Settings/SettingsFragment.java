@@ -19,12 +19,11 @@ import butterknife.ButterKnife;
  */
 public class SettingsFragment extends BaseFragment implements View.OnClickListener {
 
+    public SettingsFragmentListener mListener;
     @Bind(R.id.about_option)
     FrameLayout mAboutPage;
     @Bind(R.id.donate)
     FrameLayout mDonatePage;
-
-    public SettingsFragmentListener mListener;
 
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
@@ -86,7 +85,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.about_option:
                 mListener.startAbout();
                 break;

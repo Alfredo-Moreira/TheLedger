@@ -26,8 +26,6 @@ import butterknife.ButterKnife;
  */
 public class DashboardFragment extends BaseFragment {
 
-    @Bind(R.id.add_button)
-    ImageView mAddButton;
     @Bind(R.id.dashboard_list_view)
     RecyclerView mDashboardList;
 
@@ -88,25 +86,12 @@ public class DashboardFragment extends BaseFragment {
         super.onResume();
     }
 
-    private void setUpAddButton() {
-        mAddButton.setOutlineProvider(new ViewOutlineProvider() {
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void getOutline(View view, Outline outline) {
-                int diameter = getResources().getDimensionPixelOffset(R.dimen.fifty_padding);
-                outline.setOval(0, 0, diameter, diameter);
-            }
-        });
-        mAddButton.setClipToOutline(true);
-    }
-
     private void setUp(Context context) {
         mAdapter = new DashboardAdapter(context, mListener);
         mLayoutManager = new LinearLayoutManager(context);
         mDashboardList.setAdapter(mAdapter);
         mDashboardList.setLayoutManager(mLayoutManager);
         mDashboardList.setHasFixedSize(true);
-        setUpAddButton();
         setSelectedMenuState(R.id.lower_menu_home);
     }
 

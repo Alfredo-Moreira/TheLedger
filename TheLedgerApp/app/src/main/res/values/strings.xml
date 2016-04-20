@@ -76,5 +76,5 @@
 
     //Copyright
     <string name="reference_disclaimer">The following software was used in the production of this product. The above software contains the following licence and notice below:</string>
-    <string name="reference_thank_you">The following libraries are third party software that were used to produce the Ledger. We thank the open source community for their contribution.</string>
+    <string name="reference_thank_you">The following libraries are third party software that were used to produce The Ledger. We thank the open source community for their contribution.</string>
 </resources>

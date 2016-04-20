@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:text="@string/libraries_used"
             fontPath="@string/medium_font"
-            android:textSize="@dimen/text_thirty" />
+            android:textSize="@dimen/text_display_big_forty_five" />
         <TextView
             android:paddingTop="@dimen/ten_padding"
             android:paddingBottom="@dimen/ten_padding"
@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             fontPath="@string/regular_font"
-            android:text="@string/reference_thank_you" />
+            android:text="@string/reference_thank_you"
+            android:textSize="@dimen/text_subheading_sixteen" />
     </LinearLayout>
 
 
@@ -33,7 +34,6 @@
         android:id="@+id/about_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/secondary_menus_container"
         android:padding="@dimen/ten_padding"
         android:paddingTop="@dimen/twenty_five_padding"
         android:scrollbars="vertical"
