@@ -19,7 +19,7 @@
             android:clickable="true">
 
             <TextView
-                fontPath="@string/medium_font"
+                fontPath="@string/regular_font"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

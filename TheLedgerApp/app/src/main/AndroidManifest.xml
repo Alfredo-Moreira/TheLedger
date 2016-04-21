@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apolloapps.theledger"
-    android:versionCode="1000005"
+    android:versionCode="1000006"
     android:versionName="1.0.0">
 
     <uses-sdk
