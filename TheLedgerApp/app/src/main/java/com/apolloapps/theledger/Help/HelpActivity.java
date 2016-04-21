@@ -10,7 +10,8 @@ import com.apolloapps.theledger.R;
 /**
  * Created by AMoreira on 4/15/16.
  */
-public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragmentListener,SendFeedbackFragment.SendFeedbackFragmentListener{
+public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragmentListener,
+        SendFeedbackFragment.SendFeedbackFragmentListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

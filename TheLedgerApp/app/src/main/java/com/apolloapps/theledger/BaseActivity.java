@@ -17,6 +17,8 @@ import com.apolloapps.theledger.Login.LoginActivity;
 import com.apolloapps.theledger.Settings.SettingsActivity;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
 
@@ -206,4 +208,8 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
         startActivity(new Intent(this, SettingsActivity.class));
     }
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(base));
+    }
 }

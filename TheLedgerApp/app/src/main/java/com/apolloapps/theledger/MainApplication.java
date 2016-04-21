@@ -25,10 +25,6 @@ public class MainApplication extends MultiDexApplication {
         setUp();
     }
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(base));
-    }
 
     public MainApplication getMainApplication() {
         return mInstance;

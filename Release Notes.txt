@@ -22,4 +22,9 @@
  
  - Send Feedback
 
+1.0.0 (10000006) 04/21/2016
+ 
+ - Bug Fixes
+ - Initial Features set up
+
 
