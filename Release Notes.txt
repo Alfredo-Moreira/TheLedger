@@ -27,4 +27,8 @@
  - Bug Fixes
  - Initial Features set up
 
+1.0.0 (10000007) 04/22/2016
+ 
+ - New Library addiction
+
 

@@ -31,14 +31,13 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(), getString(R.string.create_account_action_bar_title), true, true);
+        setUpToolBar(getToolBar(), true, true);
         setUpLowerMenu(getLowerMenu(), false);
         mBundle = getIntent().getExtras();
         //select fragment
         if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.CREATE_ACCOUNT) {
             getFragmentManager().beginTransaction().replace(R.id.container, CreateAccountFragment.newInstance()).addToBackStack(null).commit();
         } else if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.EDIT_ACCOUNT) {
-            getFragmentManager().beginTransaction().replace(R.id.container, EditAccountFragment.newInstance()).addToBackStack(null).commit();
             super.onCreateOptionsMenu(mMenu);
         } else {
             throw new RuntimeException(getString(R.string.account_management_error));

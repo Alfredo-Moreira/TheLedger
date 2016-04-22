@@ -17,6 +17,6 @@ public class DonateFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((BaseActivity) getActivity()).setToolBarTitle(getString(R.string.donate_action_bar_title));
+        setToolBarTitle(getString(R.string.donate));
     }
 }

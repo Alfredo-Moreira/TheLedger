@@ -23,7 +23,7 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(), getString(R.string.about), true, true);
+        setUpToolBar(getToolBar(), true, true);
         setUpLowerMenu(getLowerMenu(), true);
         getFragmentManager().beginTransaction().replace(R.id.container,AboutFragment.newInstance(),null).addToBackStack(null).commit();
     }

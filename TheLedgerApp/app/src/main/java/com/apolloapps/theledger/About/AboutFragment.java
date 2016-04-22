@@ -72,6 +72,7 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
+        setToolBarTitle(getString(R.string.about));
     }
 
     @Override

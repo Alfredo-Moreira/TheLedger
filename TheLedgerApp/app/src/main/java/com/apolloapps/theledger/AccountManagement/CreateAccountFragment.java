@@ -88,6 +88,7 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onResume() {
         super.onResume();
+        setToolBarTitle(getString(R.string.create_account));
     }
 
     @Override

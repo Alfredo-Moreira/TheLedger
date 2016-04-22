@@ -17,7 +17,7 @@ public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(),getString(R.string.help),true,true);
+        setUpToolBar(getToolBar(),true,true);
         setUpLowerMenu(getLowerMenu(),true);
         getFragmentManager().beginTransaction().replace(R.id.container,HelpFragment.newInstance(),null).addToBackStack(null).commit();
     }

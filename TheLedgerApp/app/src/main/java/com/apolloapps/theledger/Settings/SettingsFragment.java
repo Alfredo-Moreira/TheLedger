@@ -85,6 +85,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onResume() {
         super.onResume();
+        setToolBarTitle(getString(R.string.settings));
     }
 
     @Override
