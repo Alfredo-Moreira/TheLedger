@@ -32,6 +32,9 @@ public class ReferencesList {
         mReferencesList.add(new ReferenceModel(context.getString(R.string.calligraphy_title),
                 context.getString(R.string.calligraphy_link),
                 context.getString(R.string.calligraphy_description)));
+        mReferencesList.add(new ReferenceModel(context.getString(R.string.floating_title),
+                context.getString(R.string.floating_link),
+                context.getString(R.string.floating_description)));
     }
     public ReferenceModel getReferenceObject(int position) {
         return mReferencesList.get(position);

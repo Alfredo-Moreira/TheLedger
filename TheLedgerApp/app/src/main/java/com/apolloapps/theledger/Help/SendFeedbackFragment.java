@@ -14,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 
+import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
 
@@ -86,6 +87,7 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void onResume() {
         super.onResume();
+        setToolBarTitle(getString(R.string.send_feedback));
     }
 
     private void setUp() {

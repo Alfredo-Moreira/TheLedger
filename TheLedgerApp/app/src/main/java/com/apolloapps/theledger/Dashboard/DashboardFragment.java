@@ -9,14 +9,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
+import com.tiancaicc.springfloatingactionmenu.SpringFloatingActionMenu;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -94,10 +97,43 @@ public class DashboardFragment extends BaseFragment {
         mDashboardList.setLayoutManager(mLayoutManager);
         mDashboardList.setHasFixedSize(true);
         setSelectedMenuState(R.id.lower_menu_home);
+        //Waiting for library owner to makes the change
+        //setUpFloatingAddButton(getActivity(),mDashboardList,addButtonAccountListener(),
+          //      addButtonBillsListener(),addButtonCheckListListener());
     }
 
     public interface DashBoardFragmentListener {
         void startFeature(String classPath);
     }
+
+    private View.OnClickListener addButtonAccountListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Navigate to Account
+                Toast.makeText(getActivity(),getStringResource(R.string.account_feature),Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+
+    private View.OnClickListener addButtonBillsListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Navigate to Account
+                Toast.makeText(getActivity(),getStringResource(R.string.bills_feature),Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+    private View.OnClickListener addButtonCheckListListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Navigate to Account
+                Toast.makeText(getActivity(),getStringResource(R.string.check_list_feature),Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+
 
 }

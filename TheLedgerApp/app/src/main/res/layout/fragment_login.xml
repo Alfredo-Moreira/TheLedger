@@ -69,7 +69,7 @@
             android:inputType="textPassword"
             fontPath="@string/regular_font"
             android:textColor="@color/text_color"
-            android:textSize="@dimen/text_body" />
+            android:textSize="@dimen/text_body"/>
 
         <FrameLayout
             android:layout_width="match_parent"

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
 
@@ -75,6 +76,7 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+        setToolBarTitle(getString(R.string.help));
     }
 
     @Override

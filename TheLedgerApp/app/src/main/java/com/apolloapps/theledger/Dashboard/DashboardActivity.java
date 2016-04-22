@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Login.LoginActivity;
 import com.apolloapps.theledger.R;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
@@ -18,18 +19,25 @@ import static android.content.DialogInterface.BUTTON_POSITIVE;
 public class DashboardActivity extends BaseActivity implements DashboardFragment.DashBoardFragmentListener,
         DialogInterface.OnClickListener, DialogInterface.OnCancelListener {
 
+    private DashboardFragment mDashboardFragment;
+
     @Override
     public void onBackPressed() {
-        AlertDialogCreator.showDefaultDialog(this, getString(R.string.sign_out), getString(R.string.sign_out_message), this, this, null);
+        if(mDashboardFragment.isFloatMenuOpen()) {
+            mDashboardFragment.closeFloatButton();
+        } else {
+            AlertDialogCreator.showDefaultDialog(this, getString(R.string.sign_out), getString(R.string.sign_out_message), this, this, null);
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(), null, false, false);
+        setUpToolBar(getToolBar(), false, false);
         setUpLowerMenu(getLowerMenu(), true);
-        getFragmentManager().beginTransaction().replace(R.id.container, DashboardFragment.newInstance(), null).commit();
+        mDashboardFragment = new DashboardFragment().newInstance();
+        getFragmentManager().beginTransaction().replace(R.id.container, mDashboardFragment, null).commit();
     }
 
     @Override

@@ -50,10 +50,9 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
         return super.onOptionsItemSelected(item);
     }
 
-    public void setUpToolBar(Toolbar toolbar, String title, boolean setVisible, boolean setBackArrow) {
+    public void setUpToolBar(Toolbar toolbar, boolean setVisible, boolean setBackArrow) {
         if (setVisible) {
             setSupportActionBar(toolbar);
-            setToolBarTitle(title);
             setBackArrowToolbar(toolbar, setBackArrow);
             setToolbarVisibility(toolbar, setVisible);
         } else {
@@ -70,7 +69,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    BaseActivity.this.onBackPressed();
+                 onBackPressed();
                 }
             });
         }
@@ -130,8 +129,8 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
+        if (getFragmentManager().getBackStackEntryCount() > 1) {
+            getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
         }
@@ -212,4 +211,5 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(base));
     }
+
 }
