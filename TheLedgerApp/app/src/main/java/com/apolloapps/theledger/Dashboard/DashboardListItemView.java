@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.apolloapps.theledger.Dashboard.Features.FeatureBaseClass;
+import com.apolloapps.theledger.Dashboard.FeaturesList.FeatureBaseClass;
 import com.apolloapps.theledger.R;
 
 import butterknife.Bind;

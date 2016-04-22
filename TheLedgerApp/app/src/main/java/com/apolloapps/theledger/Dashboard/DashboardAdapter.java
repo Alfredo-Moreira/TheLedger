@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apolloapps.theledger.Dashboard.Features.FeatureBaseClass;
+import com.apolloapps.theledger.Dashboard.FeaturesList.FeatureBaseClass;
 import com.apolloapps.theledger.R;
 
 import java.util.ArrayList;

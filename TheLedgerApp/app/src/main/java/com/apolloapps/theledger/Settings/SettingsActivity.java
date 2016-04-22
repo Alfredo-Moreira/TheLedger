@@ -61,4 +61,9 @@ public class SettingsActivity extends BaseActivity implements SettingsFragment.S
         getFragmentManager().beginTransaction().replace(R.id.container, DonateFragment.newInstance(), null).addToBackStack(null).commit();
     }
 
+    @Override
+    public void changePassword() {
+        
+    }
+
 }

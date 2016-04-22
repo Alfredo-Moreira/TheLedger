@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/dashboard_list_view"
-        android:layout_below="@+id/header"
-        android:layout_above="@+id/secondary_menus_container" />
+        android:layout_below="@+id/header" />
 
 </RelativeLayout>
