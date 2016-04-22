@@ -11,7 +11,10 @@
         android:layout_marginStart="@dimen/ten_padding"
         android:layout_marginEnd="@dimen/ten_padding"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        fontPath="@string/regular_font"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_body" />
 
 
       <android.support.v7.widget.AppCompatCheckBox
@@ -20,8 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/anonymous"
-        android:textSize="@dimen/text_sixteen"
-        android:layout_margin="@dimen/ten_padding"/>
+          fontPath="@string/regular_font"
+          android:layout_margin="@dimen/ten_padding"
+          android:textColor="@color/text_color"
+          android:textSize="@dimen/text_subheading" />
 
 
     <MultiAutoCompleteTextView
@@ -30,16 +35,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/ten_padding"
-        android:maxLength="500"/>
+        fontPath="@string/regular_font"
+        android:maxLength="500"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_body"
+        android:scrollbars="vertical"
+        android:maxLines="3"/>
 
     <Button
         android:id="@+id/send_feedback_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_padding"
         android:text="@string/send_feedback"
-        android:textSize="@dimen/text_twenty_four"
+        fontPath="@string/medium_font"
         android:textColor="@color/white"
         android:background="@drawable/button_selector"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_body" />
 
 </RelativeLayout>

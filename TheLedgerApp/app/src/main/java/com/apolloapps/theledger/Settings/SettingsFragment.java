@@ -23,6 +23,8 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
     FrameLayout mAboutPage;
     @Bind(R.id.donate)
     FrameLayout mDonatePage;
+    @Bind(R.id.change_password_option)
+    FrameLayout mChangePasswordPage;
 
     public SettingsFragmentListener mListener;
 
@@ -59,6 +61,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
     public void setUp() {
         mAboutPage.setOnClickListener(this);
         mDonatePage.setOnClickListener(this);
+        mChangePasswordPage.setOnClickListener(this);
         setSelectedMenuState(R.id.lower_menu_setting);
     }
 
@@ -93,7 +96,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
             case R.id.donate:
                 mListener.startDonate();
                 break;
-            case R.id.send_feed_back:
+            case R.id.change_password_option:
 
             default:
                 break;
@@ -104,5 +107,7 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
         void startAbout();
 
         void startDonate();
+
+        void changePassword();
     }
 }

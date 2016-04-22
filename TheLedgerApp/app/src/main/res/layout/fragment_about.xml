@@ -12,11 +12,13 @@
         android:layout_marginStart="@dimen/twenty_five_padding"
         android:layout_marginEnd="@dimen/twenty_five_padding">
         <TextView
+            android:layout_marginTop="@dimen/twenty_five_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/libraries_used"
             fontPath="@string/medium_font"
-            android:textSize="@dimen/text_thirty" />
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_title" />
         <TextView
             android:paddingTop="@dimen/ten_padding"
             android:paddingBottom="@dimen/ten_padding"
@@ -24,6 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             fontPath="@string/regular_font"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_subheading"
             android:text="@string/reference_thank_you" />
     </LinearLayout>
 
@@ -33,7 +37,6 @@
         android:id="@+id/about_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/secondary_menus_container"
         android:padding="@dimen/ten_padding"
         android:paddingTop="@dimen/twenty_five_padding"
         android:scrollbars="vertical"

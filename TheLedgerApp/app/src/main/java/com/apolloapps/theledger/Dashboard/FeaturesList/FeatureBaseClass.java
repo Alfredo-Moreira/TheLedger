@@ -1,4 +1,4 @@
-package com.apolloapps.theledger.Dashboard.Features;
+package com.apolloapps.theledger.Dashboard.FeaturesList;
 
 import android.content.Context;
 

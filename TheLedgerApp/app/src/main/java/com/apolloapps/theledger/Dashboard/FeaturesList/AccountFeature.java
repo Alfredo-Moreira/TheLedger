@@ -1,18 +1,21 @@
-package com.apolloapps.theledger.Dashboard.Features;
+package com.apolloapps.theledger.Dashboard.FeaturesList;
 
 import android.content.Context;
 
 import com.apolloapps.theledger.R;
 
 /**
- * Created by AMoreira on 4/9/16.
+ * Created by AMoreira on 4/8/16.
  */
-public class CheckListFeature extends FeatureBaseClass {
+public class AccountFeature extends FeatureBaseClass {
+
+
     @Override
     public void init(Context context) {
-        mClass = context.getString(R.string.check_list_class_path);
-        mFeatureDrawableId = R.drawable.chrck_list_drawable;
-        mFeatureName = context.getString(R.string.check_list_feature);
+        mClass = context.getResources().getString(R.string.account_class_path);
+        mFeatureName = context.getResources().getString(R.string.account_feature);
+        mFeatureDrawableId = R.drawable.account_drawable;
+
     }
 
     @Override

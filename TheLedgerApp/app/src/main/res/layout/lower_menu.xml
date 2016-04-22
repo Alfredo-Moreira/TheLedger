@@ -35,7 +35,7 @@
             android:layout_marginBottom="@dimen/five_padding"
             android:gravity="center"
             android:text="@string/home"
-            android:textSize="@dimen/text_thirteen" />
+            android:textSize="@dimen/text_caption" />
 
 
     </RelativeLayout>
@@ -68,7 +68,7 @@
             android:gravity="center"
             android:text="@string/profile"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_thirteen" />
+            android:textSize="@dimen/text_caption" />
 
 
     </RelativeLayout>
@@ -101,7 +101,7 @@
             android:gravity="center"
             android:text="@string/help"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_thirteen" />
+            android:textSize="@dimen/text_caption" />
 
 
     </RelativeLayout>
@@ -134,7 +134,7 @@
             android:gravity="center"
             android:text="@string/settings"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_thirteen" />
+            android:textSize="@dimen/text_caption" />
 
 
     </RelativeLayout>

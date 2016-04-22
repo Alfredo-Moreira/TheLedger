@@ -34,6 +34,7 @@
 
     //Settings
     <string name="set_passcode">Set Passcode</string>
+    <string name="change_password">Change Password</string>
 
     //Help
     <string name="tutorial">Tutorial</string>

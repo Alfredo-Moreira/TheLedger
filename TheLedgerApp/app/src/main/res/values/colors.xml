@@ -11,11 +11,14 @@
     <color name="menu_unpressed_state">#4F4F4F</color>
     <color name="menu_selected_state">#3B3B3B</color>
     <color name="menu_pressed_state">#DCDCDC</color>
-    <color name="text_color">#3F3F3F</color>
     <color name="additional_information_color">#E5E5E5</color>
     <color name="input_text_color">#333333</color>
     <color name="text_button_unpressed">#212121</color>
     <color name="text_button_pressed">#424242</color>
     <color name="red_unpressed">#6E1212</color>
     <color name="red_pressed">#B68888</color>
+
+
+    <color name="text_caption">#757575</color>
+    <color name="text_color">#212121</color>
 </resources>
