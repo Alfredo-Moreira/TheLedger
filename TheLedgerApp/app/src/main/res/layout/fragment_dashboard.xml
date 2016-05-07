@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/fragment_root" android:background="@color/white">
 
@@ -14,5 +15,61 @@
         android:layout_height="match_parent"
         android:id="@+id/dashboard_list_view"
         android:layout_below="@+id/header" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/floating_menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/ten_padding"
+        android:layout_marginEnd="@dimen/ten_padding"
+        fab:menu_colorNormal="@color/colorPrimary"
+        fab:menu_colorPressed="@color/button_pressed"
+        fab:menu_icon="@drawable/ic_create_white_48dp"
+        fab:menu_fab_size="normal"
+        fab:menu_labels_colorPressed="@color/white"
+        fab:menu_labels_textColor="@color/text_color"
+        fab:menu_labels_textSize="@dimen/text_caption"
+        fab:menu_labels_colorNormal="@color/white"
+        fab:menu_labels_padding="@dimen/five_padding"
+        fab:menu_labels_showShadow="false"
+        fab:menu_labels_singleLine="true"
+        fab:menu_labels_maxLines="1"
+        fontPath="@string/regular_font">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_menu_account_item"
+            android:src="@drawable/account_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_label="@string/account_feature"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_menu_bill_item"
+            android:src="@drawable/bills_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_label="@string/bills_feature"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_menu_checklist_item"
+            android:src="@drawable/chrck_list_drawable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_label="@string/check_list_feature"
+            />
+
+        </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>

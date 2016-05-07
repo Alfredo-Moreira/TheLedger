@@ -12,4 +12,12 @@ public class AppConstants {
     public static final String ACTION = "Action";
     public static final String GOOGLE_APP = "com.google.android.googlequicksearchbox";
 
+    public static final int FEATURE_TYPE_ACCOUNT = 1;
+    public static final int FEATURE_TYPE_BILLS = 2;
+    public static final int FEATURE_TYPE_CHECK_LIST = 3;
+
+    public static final int SOCIAL_ACCOUNT_TYPE = 0;
+    public static final int FINANCIAL_ACCOUNT_TYPE = 1;
+    public static final int ENTERTAINMENT_ACCOUNT_TYPE =2;
+
 }

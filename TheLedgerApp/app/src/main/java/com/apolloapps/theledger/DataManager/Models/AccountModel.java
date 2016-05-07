@@ -1,5 +1,6 @@
 package com.apolloapps.theledger.DataManager.Models;
 
+import com.apolloapps.theledger.Common.AppConstants;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -10,8 +11,11 @@ public class AccountModel {
     @SerializedName("AccountID")
     private int mAccountId;
 
-    @SerializedName("AccountName")
-    private String mAccountName;
+    @SerializedName("AccountTitle")
+    private String mAccountTitle;
+
+    @SerializedName("AccountUsername")
+    private String mAccountUsername;
 
     @SerializedName("AccountPassword")
     private String mAccountPassword;
@@ -26,7 +30,7 @@ public class AccountModel {
         return mAccountComments;
     }
 
-    public void setmccountComments(String mAccountComments) {
+    public void setAccountComments(String mAccountComments) {
         this.mAccountComments = mAccountComments;
     }
 
@@ -38,12 +42,20 @@ public class AccountModel {
         this.mAccountId = mAccountId;
     }
 
-    public String getAccountName() {
-        return mAccountName;
+    public String getAccountTitle() {
+        return mAccountTitle;
     }
 
-    public void setAccountName(String mAccountName) {
-        this.mAccountName = mAccountName;
+    public void setAccountTitle(String mAccountTitle) {
+        this.mAccountTitle = mAccountTitle;
+    }
+
+    public String getAccountUsername() {
+        return mAccountUsername;
+    }
+
+    public void setmAccountUsername(String mAccountUsername) {
+        this.mAccountUsername = mAccountUsername;
     }
 
     public String getAccountPassword() {
@@ -60,5 +72,18 @@ public class AccountModel {
 
     public void setAccountType(int mAccountType) {
         this.mAccountType = mAccountType;
+    }
+
+    public String getAccountTypeString() {
+        switch (getAccountType()) {
+            case AppConstants.FINANCIAL_ACCOUNT_TYPE:
+                return "Financial";
+            case AppConstants.SOCIAL_ACCOUNT_TYPE:
+                return "Social";
+            case AppConstants.ENTERTAINMENT_ACCOUNT_TYPE:
+                return "Entertainment";
+            default:
+                return "No Type";
+        }
     }
 }

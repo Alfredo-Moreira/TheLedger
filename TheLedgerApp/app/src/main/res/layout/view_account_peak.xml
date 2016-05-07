@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/view_peak_root"
+    android:padding="@dimen/ten_padding"
+    android:background="@drawable/sneak_peak_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account Title"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:id="@+id/account_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account Username"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:id="@+id/account_username_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account Password"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:id="@+id/account_password_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account Type"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:id="@+id/account_type_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account Description"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font"/>
+
+    <TextView
+        android:id="@+id/account_description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one_padding"
+        android:background="@color/pressed_list_view"/>
+    <TextView
+        android:background="@drawable/list_view_selector"
+        android:id="@+id/dismiss_sneak_peak"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_padding"
+        android:text="Dismiss"
+        android:gravity="center"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_body"
+        android:textAllCaps="true"
+        fontPath="@string/medium_font"/>
+</LinearLayout>
