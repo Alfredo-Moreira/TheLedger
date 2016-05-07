@@ -10,7 +10,7 @@
 
     //Features variables
     <string name="account_feature">Accounts</string>
-    <string name="account_class_path">com.apolloapps.theledger.Dashboard.FeaturesList.AccountFeature</string>
+    <string name="account_class_path">com.apolloapps.theledger.Features.Accounts.AccountsActivity</string>
     <drawable name="account_drawable">@drawable/ic_lock_outline_black_24dp</drawable>
     <string name="bills_feature">Bills</string>
     <string name="bills_class_path">com.apolloapps.theledger.Dashboard.FeaturesList.BillsFeature</string>

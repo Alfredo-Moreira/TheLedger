@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/list_view_selector"
+    android:id="@+id/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/ten_padding"
+        android:layout_marginBottom="@dimen/five_padding"
+        android:layout_marginTop="@dimen/five_padding"
+        android:id="@+id/account_title"
+        android:textSize="@dimen/text_subheading"
+        android:textColor="@color/text_color"
+        android:text="Facebook"
+        fontPath="@string/medium_font"/>
+
+    <TextView
+        android:id="@+id/account_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_decription"
+        android:layout_marginEnd="@dimen/twenty_five_padding"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        android:layout_below="@+id/account_title"
+        android:layout_marginStart="@dimen/ten_padding"
+        fontPath="@string/regular_font"/>
+    <TextView
+        android:layout_below="@+id/account_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/twenty_five_padding"
+        android:hint="@string/long_press"
+        android:layout_marginBottom="@dimen/ten_padding"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font" />
+
+    <ImageView
+        android:id="@+id/overflow_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_more_vert_white_24dp"
+        android:tint="@color/black"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/ten_padding"
+        android:clickable="true"/>
+
+
+
+</RelativeLayout>

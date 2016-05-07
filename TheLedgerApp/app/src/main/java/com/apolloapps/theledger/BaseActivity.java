@@ -95,9 +95,10 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void setUpLowerMenu(LinearLayout layout, boolean visible) {
-        setUpOnClickListener();
+
         if (visible) {
             layout.setVisibility(View.VISIBLE);
+            setUpOnClickListener();
         } else {
             layout.setVisibility(View.GONE);
         }
@@ -139,6 +140,9 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(mBundle != null) {
+            mBundle.clear();
+        }
     }
 
     public Context getActivityContext() {

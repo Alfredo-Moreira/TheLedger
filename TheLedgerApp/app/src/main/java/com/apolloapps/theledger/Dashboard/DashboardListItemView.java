@@ -1,6 +1,8 @@
 package com.apolloapps.theledger.Dashboard;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +50,7 @@ public class DashboardListItemView extends RelativeLayout {
         addView(view);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setContents(FeatureBaseClass feature, OnClickListener clickListener) {
         mFeature = feature;
         mFeatureIcon.setImageDrawable(getResources().getDrawable(feature.getFeatureDrawableId(), null));
