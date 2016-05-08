@@ -35,6 +35,8 @@ public class MainApplication extends MultiDexApplication {
         mInstance = mainApplication;
     }
 
+
+
     private void setUp() {
         mSessionStorage = new SessionStorage(this);
         setMainApplication(MainApplication.this);

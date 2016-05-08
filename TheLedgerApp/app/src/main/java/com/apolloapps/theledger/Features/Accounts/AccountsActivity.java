@@ -8,6 +8,7 @@ import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
 import com.apolloapps.theledger.Features.OverFlowMenu;
+import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.R;
 
 /**
@@ -21,6 +22,7 @@ public class AccountsActivity extends BaseActivity implements AccountsListFragme
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Toast.makeText(this,"User login id is "+ MainApplication.getMainApplication().mSessionStorage.getUserId(),Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(),true,true);
         setUpLowerMenu(getLowerMenu(),false);
