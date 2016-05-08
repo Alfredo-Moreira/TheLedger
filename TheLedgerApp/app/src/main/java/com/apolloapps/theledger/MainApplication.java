@@ -17,6 +17,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainApplication extends MultiDexApplication {
 
     private static MainApplication mInstance;
+    public SessionStorage mSessionStorage;
 
     @Override
     public void onCreate() {
@@ -26,7 +27,7 @@ public class MainApplication extends MultiDexApplication {
     }
 
 
-    public MainApplication getMainApplication() {
+    public static MainApplication getMainApplication() {
         return mInstance;
     }
 
@@ -35,6 +36,7 @@ public class MainApplication extends MultiDexApplication {
     }
 
     private void setUp() {
+        mSessionStorage = new SessionStorage(this);
         setMainApplication(MainApplication.this);
         Preferences.INSTANCE.createPreferences(getApplicationContext());
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()

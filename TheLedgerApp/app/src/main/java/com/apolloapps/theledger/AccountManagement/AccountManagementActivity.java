@@ -1,12 +1,23 @@
 package com.apolloapps.theledger.AccountManagement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MotionEvent;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Common.AppConstants;
+import com.apolloapps.theledger.Dashboard.DashboardActivity;
+import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
+import com.apolloapps.theledger.DataManager.Responses.UserCreateAccountResponse;
+import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
+import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
+import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
+import com.apolloapps.theledger.MainApplication;
+import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
+import com.apolloapps.theledger.SessionStorage;
 
 /**
  * Created by AMoreira on 4/11/16.
@@ -14,6 +25,7 @@ import com.apolloapps.theledger.R;
 public class AccountManagementActivity extends BaseActivity implements CreateAccountFragment.CreateAccountFragmentListener {
 
     private Menu mMenu;
+    private CreateAccountFragment mCreateAccountFragment;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -31,17 +43,23 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
-        setUpToolBar(getToolBar(), true, true);
-        setUpLowerMenu(getLowerMenu(), false);
-        mBundle = getIntent().getExtras();
+        setUp();
         //select fragment
         if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.CREATE_ACCOUNT) {
-            getFragmentManager().beginTransaction().replace(R.id.container, CreateAccountFragment.newInstance()).addToBackStack(null).commit();
+            getFragmentManager().beginTransaction().replace(R.id.container, mCreateAccountFragment).addToBackStack(null).commit();
         } else if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.EDIT_ACCOUNT) {
             super.onCreateOptionsMenu(mMenu);
         } else {
             throw new RuntimeException(getString(R.string.account_management_error));
         }
+    }
+
+    private void setUp(){
+        mCreateAccountFragment = CreateAccountFragment.newInstance();
+        setUpToolBar(getToolBar(), true, true);
+        setUpLowerMenu(getLowerMenu(), false);
+        mDataManager = new DataManager(this, new UrlConstructor(), Preferences.INSTANCE);
+        mBundle = getIntent().getExtras();
     }
 
     @Override
@@ -72,7 +90,28 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
 
     @Override
     public void createAccount(PersonalAccountModel account) {
-        //retrieve info from account and do network request
+        mDataManager.doCreateUserAccount(account, new ServiceCallback<UserCreateAccountResponse>() {
 
+            @Override
+            public void onSuccess(UserCreateAccountResponse response) {
+                mCreateAccountFragment.onSuccessCreateAccount(response);
+            }
+
+            @Override
+            public void onError(NetworkError error) {
+                mCreateAccountFragment.onErrorCreateAccount(error);
+            }
+
+            @Override
+            public void onPreExecute() {
+                mCreateAccountFragment.onPreExecute();
+            }
+        });
+
+    }
+
+    @Override
+    public void login() {
+        startActivity(new Intent(this, DashboardActivity.class));
     }
 }

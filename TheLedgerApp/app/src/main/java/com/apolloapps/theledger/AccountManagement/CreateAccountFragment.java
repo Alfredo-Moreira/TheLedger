@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.NetworkError;
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
+import com.apolloapps.theledger.DataManager.Responses.UserCreateAccountResponse;
+import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.R;
 
 import butterknife.Bind;
@@ -98,6 +102,7 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
                 if (validateForm()) {
                     mListener.createAccount(mAccount);
                 } else {
+                    Toast.makeText(getActivity(),"Bad Form",Toast.LENGTH_LONG).show();
                     //handle bad form
                 }
                 break;
@@ -128,6 +133,15 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
         return false;
 
     }
+    public void onSuccessCreateAccount(UserCreateAccountResponse response){
+        Toast.makeText(getActivity(),"SUCCESS and id is "+ response.getId(),Toast.LENGTH_LONG).show();
+        MainApplication.getMainApplication().mSessionStorage.setUserId(response.getId());
+        mListener.login();
+    }
+    public void onErrorCreateAccount(com.apolloapps.theledger.DataManager.Utilities.NetworkError error){
+        Toast.makeText(getActivity(),"NOOOOO",Toast.LENGTH_LONG).show();
+    }
+    public void onPreExecute(){}
 
     private void setUp() {
         mCreateAccount.setOnClickListener(this);
@@ -135,5 +149,6 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
 
     public interface CreateAccountFragmentListener {
         void createAccount(PersonalAccountModel account);
+        void login();
     }
 }

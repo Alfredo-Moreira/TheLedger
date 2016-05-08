@@ -1,16 +1,26 @@
 package com.apolloapps.theledger.DataManager.Models;
 
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by AMoreira on 4/12/16.
  */
 public class PersonalAccountModel {
 
+
+    @SerializedName("_id")
+    private int mAccountId;
+    @SerializedName("firstName")
     private String mFirstName;
+    @SerializedName("lastName")
     private String mLastName;
+    @SerializedName("userName")
     private String mUsername;
     private String mPassword;
+    @SerializedName("phoneNumber")
     private String mPhoneNumber;
+    @SerializedName("emailAddress")
     private String mEmailAddress;
 
 
@@ -25,6 +35,15 @@ public class PersonalAccountModel {
         setPassword(password);
         setPhoneNumber(phoneNumber);
         setEmailAddress(email);
+    }
+
+
+    public int getAccountId() {
+        return mAccountId;
+    }
+
+    public void setAccountId(int mAccountId) {
+        this.mAccountId = mAccountId;
     }
 
     public String getEmailAddress() {

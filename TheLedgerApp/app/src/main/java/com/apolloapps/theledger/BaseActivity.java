@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
+import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.Help.HelpActivity;
 import com.apolloapps.theledger.Login.LoginActivity;
 import com.apolloapps.theledger.Settings.SettingsActivity;
@@ -29,6 +30,8 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
 
     protected Bundle mBundle;
     protected int mSelectedMenu;
+    protected DataManager mDataManager;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
