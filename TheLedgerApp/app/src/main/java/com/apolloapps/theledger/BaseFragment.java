@@ -114,4 +114,8 @@ public class BaseFragment extends Fragment {
         ((BaseActivity)getActivity()).setToolBarTitle(title);
     }
 
+    public void clearSession(){
+        MainApplication.getMainApplication().mSessionStorage.clearSession();
+    }
+
 }

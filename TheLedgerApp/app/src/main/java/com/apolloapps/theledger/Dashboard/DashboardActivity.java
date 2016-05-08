@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Login.LoginActivity;
+import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.R;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
@@ -67,7 +68,7 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
                 dialog.dismiss();
                 break;
             case BUTTON_POSITIVE:
-                //clear session variables TODO
+                clearSession();
                 backToLogin();
                 break;
         }

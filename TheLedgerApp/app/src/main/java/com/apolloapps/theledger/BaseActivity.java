@@ -219,4 +219,9 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
         super.attachBaseContext(CalligraphyContextWrapper.wrap(base));
     }
 
+    public void clearSession(){
+        MainApplication.getMainApplication().mSessionStorage.clearSession();
+    }
+
+
 }
