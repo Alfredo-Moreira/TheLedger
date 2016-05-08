@@ -1,25 +1,20 @@
 package com.apolloapps.theledger.Dashboard;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Outline;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
-import com.tiancaicc.springfloatingactionmenu.SpringFloatingActionMenu;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,6 +26,18 @@ public class DashboardFragment extends BaseFragment {
 
     @Bind(R.id.dashboard_list_view)
     RecyclerView mDashboardList;
+
+    @Bind(R.id.floating_menu_button)
+    FloatingActionMenu mFloatingActionMenu;
+
+    @Bind(R.id.floating_menu_account_item)
+    FloatingActionButton mFloatingAccountButton;
+
+    @Bind(R.id.floating_menu_bill_item)
+    FloatingActionButton mFlotatingBillButton;
+
+    @Bind(R.id.floating_menu_checklist_item)
+    FloatingActionButton mFloatingCheckListButton;
 
 
     private DashBoardFragmentListener mListener;
@@ -97,13 +104,26 @@ public class DashboardFragment extends BaseFragment {
         mDashboardList.setLayoutManager(mLayoutManager);
         mDashboardList.setHasFixedSize(true);
         setSelectedMenuState(R.id.lower_menu_home);
-        //Waiting for library owner to makes the change
-        //setUpFloatingAddButton(getActivity(),mDashboardList,addButtonAccountListener(),
-          //      addButtonBillsListener(),addButtonCheckListListener());
+        setClickListeners();
+    }
+
+    private void setClickListeners() {
+        mFloatingAccountButton.setOnClickListener(addButtonAccountListener());
+        mFlotatingBillButton.setOnClickListener(addButtonBillsListener());
+        mFloatingCheckListButton.setOnClickListener(addButtonCheckListListener());
     }
 
     public interface DashBoardFragmentListener {
+        void startFeatureCreate(String classPath,String action, int value);
         void startFeature(String classPath);
+    }
+
+    public boolean isFloatingMenuOpen() {
+        return mFloatingActionMenu.isOpened();
+    }
+
+    public void closeFloatingMenu(boolean animation) {
+        mFloatingActionMenu.close(animation);
     }
 
     private View.OnClickListener addButtonAccountListener() {
@@ -111,7 +131,7 @@ public class DashboardFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 //Navigate to Account
-                Toast.makeText(getActivity(),getStringResource(R.string.account_feature),Toast.LENGTH_SHORT).show();
+                mListener.startFeatureCreate(getStringResource(R.string.account_class_path),"Create Account",1);
             }
         };
     }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/button_pressed"/>
+    <padding
+        android:bottom="@dimen/five_padding"
+        android:left="@dimen/five_padding"
+        android:right="@dimen/five_padding"
+        android:top="@dimen/five_padding"/>
+</shape>

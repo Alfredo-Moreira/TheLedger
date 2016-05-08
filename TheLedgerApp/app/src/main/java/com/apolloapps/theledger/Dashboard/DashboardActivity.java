@@ -23,8 +23,8 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
 
     @Override
     public void onBackPressed() {
-        if(mDashboardFragment.isFloatMenuOpen()) {
-            mDashboardFragment.closeFloatButton();
+        if(mDashboardFragment.isFloatingMenuOpen()) {
+            mDashboardFragment.closeFloatingMenu(true);
         } else {
             AlertDialogCreator.showDefaultDialog(this, getString(R.string.sign_out), getString(R.string.sign_out_message), this, this, null);
         }
@@ -74,13 +74,24 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     }
 
     @Override
+    public void startFeatureCreate(String classPath, String action, int value) {
+
+       try {
+          mBundle = new Bundle();
+           mBundle.putInt(action,value);
+         startActivity(new Intent(this, Class.forName(classPath)).putExtras(mBundle));
+        } catch (ClassNotFoundException e) {
+        AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
+       }
+    }
+
+    @Override
     public void startFeature(String classPath) {
-        //Disabled to prevent Crashes
-        //try {
-        //  startActivity(new Intent(this, Class.forName(classPath)));
-        // } catch (ClassNotFoundException e) {
-        // AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
-        //}
+        try {
+            startActivity(new Intent(this, Class.forName(classPath)));
+        } catch (ClassNotFoundException e) {
+            AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
+        }
     }
 
     @Override

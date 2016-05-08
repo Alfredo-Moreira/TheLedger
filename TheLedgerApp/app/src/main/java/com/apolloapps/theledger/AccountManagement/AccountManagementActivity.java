@@ -52,6 +52,7 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
         } else {
             throw new RuntimeException(getString(R.string.account_management_error));
         }
+        mBundle.clear();
     }
 
     private void setUp(){

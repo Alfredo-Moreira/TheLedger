@@ -24,7 +24,7 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(), true, true);
-        setUpLowerMenu(getLowerMenu(), true);
+        setUpLowerMenu(getLowerMenu(), false);
         getFragmentManager().beginTransaction().replace(R.id.container,AboutFragment.newInstance(),null).addToBackStack(null).commit();
     }
 
@@ -64,9 +64,6 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
     @Override
     public void followLink(String link) {
         mViewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        mViewLinkIntent.setPackage(AppConstants.GOOGLE_APP);
-        PackageManager manager = getPackageManager();
-        List<ApplicationInfo> pa = manager.getInstalledApplications(PackageManager.GET_META_DATA);
         if (mViewLinkIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mViewLinkIntent);
         } else {
