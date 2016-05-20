@@ -1,7 +1,6 @@
 package com.apolloapps.theledger.Features.Accounts;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,10 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Common.AppConstants;
+import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
+import com.apolloapps.theledger.DataManager.Responses.AccountGetListResponse;
+import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
+import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
+import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
+import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
 import java.util.ArrayList;
@@ -36,6 +42,9 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
     ImageView mCreateAccountButton;
     @Bind(R.id.fragment_root)
     RelativeLayout mFragmentRoot;
+    @Bind(R.id.retry_button)
+    RelativeLayout mRetryButton;
+
 
     private AccountsAdapter mAdapter;
     private List<AccountModel> mAccountsList;
@@ -72,7 +81,7 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
     public void onResume() {
         super.onResume();
         setToolBarTitle(getString(R.string.accounts_action_bar_title));
-        mAdapter.notifyDataSetChanged();
+        getAccountsList();
     }
 
     @Nullable
@@ -81,37 +90,61 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
         super.onCreateView(inflater, container, savedInstanceState);
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_account, container, false);
         ButterKnife.bind(this, view);
-        setUp(getActivity());
+        setRootView(mFragmentRoot);
         return view;
     }
 
 
-    private void setUp(Context context) {
+    private void setUpList(AccountGetListResponse response) {
         mAccountsList = new ArrayList<>();
-        AccountModel model = new AccountModel();
-        model.setAccountId(1);
-        model.setAccountTitle("Twitter");
-        model.setAccountType(AppConstants.SOCIAL_ACCOUNT_TYPE);
-        model.setmAccountUsername("Username abe");
-        model.setAccountPassword("password abss");
-        model.setAccountComments("hello world");
-        mAccountsList.add(model);
-        mAccountsList.add(model);
-        mAdapter = new AccountsAdapter(getActivity(),mAccountsList,mListener);
-        mAccountsRecyclerList.setAdapter(mAdapter);
-        mAccountsRecyclerList.setLayoutManager(new LinearLayoutManager(context));
-        mAccountsRecyclerList.setHasFixedSize(true);
+        mAccountsList = response.getData();
         mCreateAccountButton.setOnClickListener(this);
+        if (mAccountsList.isEmpty()) {
+            showSecondaryScreen(AppConstants.NO_DATA_SERVER_ERROR_SCREEN, AppConstants.NO_DATA);
+        } else {
+            showMainScreen();
+            mAdapter = new AccountsAdapter(getActivity(), mAccountsList, mListener);
+            mAccountsRecyclerList.setAdapter(mAdapter);
+            mAccountsRecyclerList.setLayoutManager(new LinearLayoutManager(getActivity()));
+            mAccountsRecyclerList.setHasFixedSize(true);
+        }
+    }
+
+    private void getAccountsList() {
+        mDataManager.doGetAccountList(getUserId(), new ServiceCallback<AccountGetListResponse>() {
+            @Override
+            public void onSuccess(AccountGetListResponse response) {
+                dismissProgressBar();
+                showCreateButton();
+                setUpList(response);
+            }
+
+            @Override
+            public void onError(NetworkError error) {
+                dismissProgressBar();
+                hideCreateButton();
+                showCorrectErrorScreen(error.getStatusCode());
+            }
+
+            @Override
+            public void onPreExecute() {
+                hideAllScreens();
+                showProgressBar();
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.create_account_float_button:
-                mListener.createAccount();
+                mListener.createAccountFragment();
                 break;
             case R.id.dismiss_sneak_peak:
                 mListener.hidePeakAccount();
+                break;
+            case R.id.retry_button:
+                getAccountsList();
                 break;
             default:
                 break;
@@ -120,10 +153,12 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
     }
 
     public interface AccountsListFragmentListener {
-        void viewAccountDetails(AccountModel accountModel);
+        void viewAccountDetails(int accountId);
+        void editAccountDetails(AccountModel model);
+        void deleteAccount(int accountId);
         void peakAccount(AccountModel accountModel);
         void hidePeakAccount();
-        void createAccount();
+        void createAccountFragment();
 
     }
 
@@ -161,6 +196,15 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
         accountType.setText(accountModel.getAccountTypeString());
         accountDescription.setText((accountModel.getAccountComments().isEmpty())? "No Comments" : accountModel.getAccountComments());
         dismissSneak.setOnClickListener(this);
+    }
+
+    private void hideCreateButton(){
+        mCreateAccountButton.setVisibility(View.GONE);
+        mRetryButton.setOnClickListener(this);
+    }
+
+    private void showCreateButton(){
+        mCreateAccountButton.setVisibility(View.VISIBLE);
     }
 
 }

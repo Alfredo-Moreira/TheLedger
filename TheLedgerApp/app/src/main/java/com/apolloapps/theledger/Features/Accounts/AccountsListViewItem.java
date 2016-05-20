@@ -1,12 +1,9 @@
 package com.apolloapps.theledger.Features.Accounts;
 
 import android.content.Context;
-import android.support.v4.media.MediaMetadataCompat;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,7 +15,6 @@ import com.apolloapps.theledger.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
@@ -38,6 +34,7 @@ public class AccountsListViewItem extends RelativeLayout {
 
     private OnClickListener mListener;
     private OnLongClickListener mLongListener;
+    private Context mContext;
 
     public AccountsListViewItem(Context context) {
         this(context,null,0);
@@ -50,6 +47,7 @@ public class AccountsListViewItem extends RelativeLayout {
     public AccountsListViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.view_account_item,null);
+        mContext = context;
         ButterKnife.bind(this,view);
         addView(view);
     }
@@ -61,7 +59,7 @@ public class AccountsListViewItem extends RelativeLayout {
         if(account.getAccountComments()!=null) {
             mAccountDescription.setText(account.getAccountComments());
         } else {
-            mAccountDescription.setText("No Description");
+            mAccountDescription.setText(mContext.getString(R.string.no_decription));
         }
         mOverFlowMenu.setOnClickListener(new OverFlowMenu(context,account.getAccountId(), AppConstants.FEATURE_TYPE_ACCOUNT));
         mListener = listener;

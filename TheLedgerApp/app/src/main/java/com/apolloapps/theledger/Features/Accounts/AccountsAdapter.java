@@ -39,7 +39,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsViewHolder> {
             @Override
             public void onClick(View v) {
                 //View
-                mListener.viewAccountDetails(mAccountList.get(position));
+                mListener.viewAccountDetails(mAccountList.get(position).getAccountId());
                 Toast.makeText(mContext,"Click",Toast.LENGTH_SHORT).show();
             }
         }, new View.OnLongClickListener() {

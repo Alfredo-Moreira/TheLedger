@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/server_error_view"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/server_error_image"
+            android:layout_width="@dimen/one_hundred_padding"
+            android:layout_height="@dimen/one_padding"
+            android:src="@drawable/ic_error_outline_black_48dp"
+            android:tint="@color/colorPrimary"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/server_error"
+            android:layout_below="@id/server_error_image"
+            android:gravity="center"
+            android:padding="@dimen/ten_padding"
+            android:textSize="@dimen/text_headline"
+            android:textColor="@color/text_color"
+            fontPath="@string/medium_font"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/no_data_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/no_data_image"
+            android:layout_width="@dimen/one_hundred_padding"
+            android:layout_height="@dimen/one_hundred_padding"
+            android:src="@drawable/account_drawable"
+            android:tint="@color/colorPrimary"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data"
+            android:layout_below="@id/no_data_image"
+            android:gravity="center"
+            android:padding="@dimen/ten_padding"
+            android:textSize="@dimen/text_headline"
+            android:textColor="@color/text_color"
+            fontPath="@string/medium_font"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

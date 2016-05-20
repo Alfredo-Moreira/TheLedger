@@ -27,7 +27,7 @@ public class UrlConstructor {
         mStringBuffer.append(mBaseURL);
         for (Map.Entry<String, String> entry : params.entrySet()) {
             if (entry.getValue() != null) {
-                mStringBuffer.append(entry.getKey() + "/" + entry.getValue());
+                mStringBuffer.append(entry.getKey() + "/" + entry.getValue()+"/");
             } else {
                 mStringBuffer.append(entry.getKey() + "/");
             }

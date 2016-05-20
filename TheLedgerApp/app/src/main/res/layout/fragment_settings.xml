@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/secondary_root"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/no_network_screen"
+            layout="@layout/view_no_network" />
+
+        <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -111,6 +133,7 @@
         </FrameLayout>
 
     </LinearLayout>
+    </FrameLayout>
 
 
-</RelativeLayout>
+</FrameLayout>

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/fragment_root" android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <include android:id="@+id/header"
         layout="@layout/view_login_header"
@@ -71,5 +76,6 @@
             />
 
         </com.github.clans.fab.FloatingActionMenu>
+    </RelativeLayout>
 
-</RelativeLayout>
+</FrameLayout>

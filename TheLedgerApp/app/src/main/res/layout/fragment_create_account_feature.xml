@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/fragment_root">
 
+    <FrameLayout
+        android:id="@+id/secondary_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-    <ScrollView
+        <include
+            android:id="@+id/no_network_screen"
+            layout="@layout/view_no_network" />
+
+        <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/root">
+
+        <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -26,7 +46,7 @@
     fontPath="@string/regular_font"/>
 
     <EditText
-        android:id="@+id/account_title_text_input"
+        android:id="@+id/account_feature_title_text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_body"
@@ -42,7 +62,7 @@
         fontPath="@string/regular_font"/>
 
         <EditText
-            android:id="@+id/account_username_text_input"
+            android:id="@+id/account_feature_username_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_body"
@@ -58,7 +78,7 @@
             fontPath="@string/regular_font"/>
 
         <EditText
-            android:id="@+id/account_username_text_input"
+            android:id="@+id/account_feature_password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_body"
@@ -74,6 +94,7 @@
             fontPath="@string/regular_font"/>
 
         <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/account_feature_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="textStart">
@@ -89,7 +110,7 @@
             fontPath="@string/regular_font"/>
 
         <android.support.v7.widget.AppCompatMultiAutoCompleteTextView
-            android:id="@+id/account_username_text_input"
+            android:id="@+id/account_feature_description_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_body"
@@ -103,7 +124,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/create_account_button"
+        android:id="@+id/create_account_feature_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_padding"
         android:layout_alignParentBottom="true"
@@ -113,3 +134,4 @@
         fontPath="@string/medium_font"
         android:background="@drawable/button_selector"/>
 </RelativeLayout>
+</FrameLayout>

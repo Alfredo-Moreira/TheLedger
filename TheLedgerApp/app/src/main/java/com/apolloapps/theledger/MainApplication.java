@@ -1,6 +1,5 @@
 package com.apolloapps.theledger;
 
-import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.apolloapps.theledger.Preferences.Preferences;
@@ -9,7 +8,6 @@ import com.crashlytics.android.ndk.CrashlyticsNdk;
 
 import io.fabric.sdk.android.Fabric;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by AMoreira on 4/4/16.
@@ -17,7 +15,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainApplication extends MultiDexApplication {
 
     private static MainApplication mInstance;
-    public SessionStorage mSessionStorage;
+    private SessionStorage mSessionStorage;
 
     @Override
     public void onCreate() {
@@ -36,9 +34,15 @@ public class MainApplication extends MultiDexApplication {
     }
 
 
+    public int getUserId() {
+        return mSessionStorage.getUserId();
+    }
+
+    public void setUserId(int id) {
+        mSessionStorage.setUserId(id);
+    }
 
     private void setUp() {
-        mSessionStorage = new SessionStorage(this);
         setMainApplication(MainApplication.this);
         Preferences.INSTANCE.createPreferences(getApplicationContext());
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
@@ -46,6 +50,14 @@ public class MainApplication extends MultiDexApplication {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+    }
+
+    public void clearSession(){
+        mSessionStorage = null;
+    }
+
+    public void createSession(){
+        mSessionStorage = new SessionStorage();
     }
 
 }   

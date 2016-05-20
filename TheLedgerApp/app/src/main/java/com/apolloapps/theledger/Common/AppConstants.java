@@ -7,9 +7,9 @@ public class AppConstants {
 
     public static final int THREE_SECONDS = 3000;
     public static final int DEFAULT_INT_RETURN = -9999;
+    public static final String ACTION = "Action";
     public static final int CREATE_ACCOUNT = 1;
     public static final int EDIT_ACCOUNT = 2;
-    public static final String ACTION = "Action";
     public static final String GOOGLE_APP = "com.google.android.googlequicksearchbox";
 
     public static final int FEATURE_TYPE_ACCOUNT = 1;
@@ -19,5 +19,10 @@ public class AppConstants {
     public static final int SOCIAL_ACCOUNT_TYPE = 0;
     public static final int FINANCIAL_ACCOUNT_TYPE = 1;
     public static final int ENTERTAINMENT_ACCOUNT_TYPE =2;
+
+    public static final int NO_NETWORK_SCREEN = 0;
+    public static final int NO_DATA_SERVER_ERROR_SCREEN = 1;
+    public static final int NO_DATA = 0;
+    public static final int SERVER_ERROR = 1;
 
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,8 +14,10 @@ import android.widget.LinearLayout;
 
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.DataManager.DataManager;
+import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
 import com.apolloapps.theledger.Help.HelpActivity;
 import com.apolloapps.theledger.Login.LoginActivity;
+import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.Settings.SettingsActivity;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
@@ -32,6 +35,12 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     protected int mSelectedMenu;
     protected DataManager mDataManager;
 
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mDataManager = new DataManager(this, new UrlConstructor(), Preferences.INSTANCE);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,7 +168,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
                 dialog.dismiss();
                 break;
             case BUTTON_POSITIVE:
-                //clear session variables TODO
+
                 backToLogin();
                 break;
         }
@@ -220,7 +229,19 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void clearSession(){
-        MainApplication.getMainApplication().mSessionStorage.clearSession();
+        MainApplication.getMainApplication().clearSession();
+    }
+
+    public void createSession(){
+        MainApplication.getMainApplication().createSession();
+    }
+
+    public int getUserId() {
+        return MainApplication.getMainApplication().getUserId();
+    }
+
+    public void setUserId(int id) {
+        MainApplication.getMainApplication().setUserId(id);
     }
 
 

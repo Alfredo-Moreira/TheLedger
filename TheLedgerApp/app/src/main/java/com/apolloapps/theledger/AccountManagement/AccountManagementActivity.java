@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Common.AppConstants;
+import com.apolloapps.theledger.Common.NetworkConstants;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
@@ -34,7 +35,6 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //do nothing
         mMenu = menu;
         return true;
     }
@@ -90,29 +90,8 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
 
 
     @Override
-    public void createAccount(PersonalAccountModel account) {
-        mDataManager.doCreateUserAccount(account, new ServiceCallback<UserCreateAccountResponse>() {
-
-            @Override
-            public void onSuccess(UserCreateAccountResponse response) {
-                mCreateAccountFragment.onSuccessCreateAccount(response);
-            }
-
-            @Override
-            public void onError(NetworkError error) {
-                mCreateAccountFragment.onErrorCreateAccount(error);
-            }
-
-            @Override
-            public void onPreExecute() {
-                mCreateAccountFragment.onPreExecute();
-            }
-        });
-
-    }
-
-    @Override
     public void login() {
+        createSession();
         startActivity(new Intent(this, DashboardActivity.class));
     }
 }

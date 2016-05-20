@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_root"
     android:background="@color/white">
 
-    <include
+    <FrameLayout
+        android:id="@+id/secondary_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+       <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
         android:id="@+id/login_header"
         layout="@layout/view_login_header"
         android:layout_width="match_parent"
@@ -163,6 +180,6 @@
     </ScrollView>
 
 
-
-
 </RelativeLayout>
+
+</FrameLayout>

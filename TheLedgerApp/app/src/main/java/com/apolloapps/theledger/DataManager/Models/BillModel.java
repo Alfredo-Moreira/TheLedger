@@ -16,9 +16,6 @@ public class BillModel {
     @SerializedName("BillDueDate")
     private String mBillDueDate;
 
-    @SerializedName("BillPaid")
-    private boolean mBillPaid;
-
     @SerializedName("BillComments")
     private String mBillComments;
 
@@ -44,14 +41,6 @@ public class BillModel {
 
     public void setBillId(int mBillId) {
         this.mBillId = mBillId;
-    }
-
-    public boolean isBillPaid() {
-        return mBillPaid;
-    }
-
-    public void setBillPaid(boolean mBillPaid) {
-        this.mBillPaid = mBillPaid;
     }
 
     public String getBillName() {

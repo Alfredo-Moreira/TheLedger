@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="@dimen/one_hundred_padding"
+        android:layout_height="@dimen/one_hundred_padding"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_wifi_black_48dp"
+        android:tint="@color/colorPrimary"
+        android:layout_above="@+id/no_network_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_network_text"
+        android:text="@string/no_network_text"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/twenty_five_padding"
+        android:layout_marginStart="@dimen/twenty_five_padding"
+        android:textSize="@dimen/text_subheading"
+        android:textColor="@color/text_color"
+        android:gravity="center"
+        fontPath="@string/regular_font"/>
+
+    <RelativeLayout
+        android:id="@+id/retry_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_padding"
+        android:layout_below="@+id/no_network_text"
+        android:layout_margin="@dimen/ten_padding"
+        android:background="@drawable/button_selector"
+        android:clickable="true">
+
+        <ImageView
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cached_black_24dp"
+            android:layout_toLeftOf="@+id/retry_text"
+            android:layout_centerVertical="true"
+            android:tint="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/retry_text"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap to retry"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:paddingLeft="@dimen/ten_padding"
+            android:textSize="@dimen/text_body"
+            android:textAllCaps="true"
+            fontPath="@string/medium_font"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

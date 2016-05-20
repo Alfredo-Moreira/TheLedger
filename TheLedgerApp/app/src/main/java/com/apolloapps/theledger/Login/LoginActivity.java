@@ -1,14 +1,24 @@
 package com.apolloapps.theledger.Login;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.AccountManagement.AccountManagementActivity;
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.Common.AppConstants;
+import com.apolloapps.theledger.Common.NetworkConstants;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
+import com.apolloapps.theledger.DataManager.DataManager;
+import com.apolloapps.theledger.DataManager.Responses.LoginResponse;
+import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
+import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
+import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.Common.AppConstants;
+import com.apolloapps.theledger.Utils.AlertDialogCreator;
+import com.apolloapps.theledger.Utils.ProgressDialogCreator;
 
 
 /**
@@ -16,6 +26,7 @@ import com.apolloapps.theledger.Common.AppConstants;
  */
 public class LoginActivity extends BaseActivity implements LoginFragment.LoginFragmentListener {
 
+    protected ProgressDialog mDialog;
 
 
     @Override
@@ -52,10 +63,37 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
     }
 
     @Override
-    public void signIn(String username, String password, boolean rememberMe) {
-        //To be replaced with Actual Login flow
+    public void signIn(String username, String password, final boolean rememberMe) {
+
         savePreferences(username, rememberMe);
-        startActivity(new Intent(this, DashboardActivity.class));
+        mDataManager.doLogin(username, password, new ServiceCallback<LoginResponse>() {
+            @Override
+            public void onSuccess(LoginResponse response) {
+                ProgressDialogCreator.dismissDialog(mDialog);
+                createSession();
+                setUserId(response.getUserId());
+                startDashboard();
+            }
+
+            @Override
+            public void onError(NetworkError error) {
+                ProgressDialogCreator.dismissDialog(mDialog);
+                if(error.getStatusCode() == NetworkConstants.STATUS_401){
+                    showWrongCredentials();
+                } else if(error.getStatusCode() == NetworkConstants.STATUS_0) {
+                    showNoNetworkError();
+                } else {
+                    showServerError();
+                }
+
+            }
+
+            @Override
+            public void onPreExecute() {
+                mDialog = ProgressDialogCreator.showProgressDialog(getActivityContext());
+            }
+        });
+
     }
 
     @Override
@@ -80,6 +118,40 @@ public class LoginActivity extends BaseActivity implements LoginFragment.LoginFr
         } else {
             Preferences.INSTANCE.saveUsername(null);
         }
+    }
+
+    private void startDashboard() {
+        startActivity(new Intent(this, DashboardActivity.class));
+    }
+
+    private void showWrongCredentials(){
+        AlertDialogCreator.showDefaultDialog(getActivityContext(), getString(R.string.error),
+                getActivityContext().getString(R.string.invalid_username_password),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }, null, null);
+    }
+    private void showServerError(){
+        AlertDialogCreator.showDefaultDialog(getActivityContext(), getString(R.string.error),
+                getActivityContext().getString(R.string.server_error),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }, null, null);
+    }
+    private void showNoNetworkError() {
+        AlertDialogCreator.showDefaultDialog(getActivityContext(), getString(R.string.error),
+                getString(R.string.no_network_text), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                },null,null);
     }
 
 

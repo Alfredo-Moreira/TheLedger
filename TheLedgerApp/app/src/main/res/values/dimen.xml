@@ -9,6 +9,7 @@
     <dimen name="twenty_five_padding">25dp</dimen>
     <dimen name="thirty_five_padding">35dp</dimen>
     <dimen name="fifty_padding">50dp</dimen>
+    <dimen name="one_hundred_padding">100dp</dimen>
 
     //Text Size
     <dimen name="text_display_2">45sp</dimen>

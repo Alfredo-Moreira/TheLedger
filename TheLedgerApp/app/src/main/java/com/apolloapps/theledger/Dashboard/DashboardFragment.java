@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseFragment;
+import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -131,7 +132,7 @@ public class DashboardFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 //Navigate to Account
-                mListener.startFeatureCreate(getStringResource(R.string.account_class_path),"Create Account",1);
+                mListener.startFeatureCreate(getStringResource(R.string.account_class_path), AppConstants.ACTION,AppConstants.CREATE_ACCOUNT);
             }
         };
     }

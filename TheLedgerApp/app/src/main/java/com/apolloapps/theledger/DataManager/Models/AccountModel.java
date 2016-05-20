@@ -8,22 +8,25 @@ import com.google.gson.annotations.SerializedName;
  */
 public class AccountModel {
 
-    @SerializedName("AccountID")
+    @SerializedName("accountUserId")
+    private int mUserId;
+
+    @SerializedName("_id")
     private int mAccountId;
 
-    @SerializedName("AccountTitle")
+    @SerializedName("accountTitle")
     private String mAccountTitle;
 
-    @SerializedName("AccountUsername")
+    @SerializedName("accountUsername")
     private String mAccountUsername;
 
-    @SerializedName("AccountPassword")
+    @SerializedName("accountPassword")
     private String mAccountPassword;
 
-    @SerializedName("AccountType")
+    @SerializedName("accountType")
     private int mAccountType;
 
-    @SerializedName("AccountComments")
+    @SerializedName("accountComments")
     private String mAccountComments;
 
     public String getAccountComments() {
@@ -32,6 +35,14 @@ public class AccountModel {
 
     public void setAccountComments(String mAccountComments) {
         this.mAccountComments = mAccountComments;
+    }
+
+    public int getUserId() {
+        return mUserId;
+    }
+
+    public void setUserId(int mUserId) {
+        this.mUserId = mUserId;
     }
 
     public int getAccountId() {

@@ -1,6 +1,7 @@
 package com.apolloapps.theledger;
 
-import android.content.Context;
+
+import com.apolloapps.theledger.Preferences.Preferences;
 
 /**
  * Created by AMoreira on 5/8/16.
@@ -8,11 +9,9 @@ import android.content.Context;
 public class SessionStorage {
 
     private int mUserId;
-    private Context mContext;
 
 
-    public SessionStorage(Context context) {
-        mContext = context;
+    public SessionStorage() {
     }
 
     public int getUserId() {
@@ -26,6 +25,6 @@ public class SessionStorage {
 
     public void clearSession() {
         mUserId = -1;
-        mContext = null;
+        Preferences.INSTANCE.saveRememberMeState(false);
     }
 }

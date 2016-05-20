@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_root">
 
+    <FrameLayout
+        android:id="@+id/secondary_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-    <EditText
+        <include
+            android:id="@+id/no_network_screen"
+            layout="@layout/view_no_network" />
+
+        <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
         android:id="@+id/person_text_input"
         android:layout_marginTop="@dimen/twenty_five_padding"
         android:layout_marginStart="@dimen/ten_padding"
@@ -53,5 +74,5 @@
         android:layout_alignParentBottom="true"
         android:textAllCaps="true"
         android:textSize="@dimen/text_body" />
-
 </RelativeLayout>
+</FrameLayout>

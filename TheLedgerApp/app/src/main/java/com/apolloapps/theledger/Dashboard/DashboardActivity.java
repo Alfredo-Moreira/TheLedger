@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
-import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Login.LoginActivity;
-import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.R;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
 
@@ -37,7 +35,7 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(), false, false);
         setUpLowerMenu(getLowerMenu(), true);
-        mDashboardFragment = new DashboardFragment().newInstance();
+        mDashboardFragment = DashboardFragment.newInstance();
         getFragmentManager().beginTransaction().replace(R.id.container, mDashboardFragment, null).commit();
     }
 
@@ -89,7 +87,8 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     @Override
     public void startFeature(String classPath) {
         try {
-            startActivity(new Intent(this, Class.forName(classPath)));
+            mBundle = new Bundle();
+            startActivity(new Intent(this, Class.forName(classPath)).putExtras(mBundle));
         } catch (ClassNotFoundException e) {
             AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
         }
