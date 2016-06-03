@@ -65,7 +65,7 @@ public class AccountModel {
         return mAccountUsername;
     }
 
-    public void setmAccountUsername(String mAccountUsername) {
+    public void setAccountUsername(String mAccountUsername) {
         this.mAccountUsername = mAccountUsername;
     }
 
@@ -87,6 +87,8 @@ public class AccountModel {
 
     public String getAccountTypeString() {
         switch (getAccountType()) {
+            case AppConstants.OTHER_ACCOUNT_TYPE:
+                return "Other";
             case AppConstants.FINANCIAL_ACCOUNT_TYPE:
                 return "Financial";
             case AppConstants.SOCIAL_ACCOUNT_TYPE:
@@ -97,4 +99,21 @@ public class AccountModel {
                 return "No Type";
         }
     }
+
+    public int getAccountTypeInt(String accountType) {
+        switch (accountType) {
+            case "Other":
+                return AppConstants.OTHER_ACCOUNT_TYPE;
+            case "Financial":
+                return AppConstants.FINANCIAL_ACCOUNT_TYPE;
+            case "Social":
+                return AppConstants.SOCIAL_ACCOUNT_TYPE;
+            case "Entertainment":
+                return AppConstants.ENTERTAINMENT_ACCOUNT_TYPE;
+            default:
+                return 0;
+        }
+    }
+
+
 }

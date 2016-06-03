@@ -1,23 +1,17 @@
 package com.apolloapps.theledger.About;
 
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
-import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.R;
-
-import java.util.List;
 
 /**
  * Created by AMoreira on 4/13/16.
  */
 public class AboutActivity extends BaseActivity implements AboutFragment.AboutFragmentListener {
 
-    private Intent mViewLinkIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +57,12 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
 
     @Override
     public void followLink(String link) {
-        mViewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        if (mViewLinkIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mViewLinkIntent);
+        Intent viewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        if (viewLinkIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(viewLinkIntent);
         } else {
-            mViewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-            startActivity(mViewLinkIntent);
+            viewLinkIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+            startActivity(viewLinkIntent);
         }
     }
 }

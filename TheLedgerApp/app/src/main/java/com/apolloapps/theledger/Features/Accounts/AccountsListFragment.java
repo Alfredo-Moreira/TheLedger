@@ -11,17 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Common.AppConstants;
-import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetListResponse;
 import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
 import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
-import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
-import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
 
 import java.util.ArrayList;
@@ -48,7 +44,7 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
 
     private AccountsAdapter mAdapter;
     private List<AccountModel> mAccountsList;
-    private RelativeLayout mPeakView;
+    private View mPeakView;
 
 
     public static AccountsListFragment newInstance() {
@@ -110,7 +106,7 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
         }
     }
 
-    private void getAccountsList() {
+    public void getAccountsList() {
         mDataManager.doGetAccountList(getUserId(), new ServiceCallback<AccountGetListResponse>() {
             @Override
             public void onSuccess(AccountGetListResponse response) {
@@ -152,32 +148,31 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-    public interface AccountsListFragmentListener {
-        void viewAccountDetails(int accountId);
-        void editAccountDetails(AccountModel model);
-        void deleteAccount(int accountId);
-        void peakAccount(AccountModel accountModel);
-        void hidePeakAccount();
-        void createAccountFragment();
-
-    }
-
     protected void peakAccountDetails(AccountModel accountModel) {
         if (mFragmentRoot != null) {
-            View peak = mFragmentRoot.inflate(getActivity(),R.layout.view_account_peak,null);
+            mPeakView = View.inflate(getActivity(), R.layout.view_account_peak, null);
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(800,800);
             params.addRule(RelativeLayout.CENTER_IN_PARENT);
-            setUpPeak(accountModel,peak);
-            mFragmentRoot.addView(peak,params);
+            setUpPeak(accountModel, mPeakView);
+            mFragmentRoot.addView(mPeakView, params);
+            hideAllScreens();
+            darkScreenColor();
+            hideCreateButton();
         }
     }
 
     protected void hidePeakAccountDetails(){
 
         if (mFragmentRoot != null) {
-            View peak = mFragmentRoot.findViewById(R.id.view_peak_root);
-            peak.setVisibility(View.GONE);
+            whiteScreenColor();
+            showMainScreen();
+            showCreateButton();
+            mPeakView.setVisibility(View.GONE);
         }
+    }
+
+    private void darkScreenColor() {
+        mFragmentRoot.setBackgroundColor(getResources().getColor(R.color.pressed_list_view));
     }
 
     private void setUpPeak(AccountModel accountModel, View view) {
@@ -194,7 +189,7 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
         accountUsername.setText(accountModel.getAccountUsername());
         accountPassword.setText(accountModel.getAccountPassword());
         accountType.setText(accountModel.getAccountTypeString());
-        accountDescription.setText((accountModel.getAccountComments().isEmpty())? "No Comments" : accountModel.getAccountComments());
+        accountDescription.setText((accountModel.getAccountComments()));
         dismissSneak.setOnClickListener(this);
     }
 
@@ -207,4 +202,22 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
         mCreateAccountButton.setVisibility(View.VISIBLE);
     }
 
+    private void whiteScreenColor() {
+        mFragmentRoot.setBackgroundColor(getResources().getColor(R.color.white));
+    }
+
+    public interface AccountsListFragmentListener {
+        void viewAccountDetails(int accountId);
+
+        void editAccountDetails(int accountId);
+
+        void deleteAccount(int accountId);
+
+        void peakAccount(AccountModel accountModel);
+
+        void hidePeakAccount();
+
+        void createAccountFragment();
+
+    }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,10 +8,16 @@
     android:padding="@dimen/ten_padding"
     android:background="@drawable/sneak_peak_background">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Title"
+            android:text="@string/account_title"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -27,7 +33,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Username"
+        android:text="@string/account_username"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -43,7 +49,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Password"
+        android:text="@string/account_password"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -59,7 +65,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Type"
+        android:text="@string/account_type"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -75,7 +81,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Description"
+        android:text="@string/account_description"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -87,20 +93,23 @@
         android:textSize="@dimen/text_body"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
+    </LinearLayout>
 
     <View
+        android:layout_above="@+id/dismiss_sneak_peak"
         android:layout_width="match_parent"
         android:layout_height="@dimen/one_padding"
         android:background="@color/pressed_list_view"/>
     <TextView
+        android:layout_alignParentBottom="true"
         android:background="@drawable/list_view_selector"
         android:id="@+id/dismiss_sneak_peak"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_padding"
-        android:text="Dismiss"
+        android:text="@string/dismiss"
         android:gravity="center"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_body"
         android:textAllCaps="true"
         fontPath="@string/medium_font"/>
-</LinearLayout>
+</RelativeLayout>

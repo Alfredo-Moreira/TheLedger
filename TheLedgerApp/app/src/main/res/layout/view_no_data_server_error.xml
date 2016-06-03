@@ -11,10 +11,11 @@
         <ImageView
             android:id="@+id/server_error_image"
             android:layout_width="@dimen/one_hundred_padding"
-            android:layout_height="@dimen/one_padding"
+            android:layout_height="@dimen/one_hundred_padding"
             android:src="@drawable/ic_error_outline_black_48dp"
             android:tint="@color/colorPrimary"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/server_error_image" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +41,8 @@
             android:layout_height="@dimen/one_hundred_padding"
             android:src="@drawable/account_drawable"
             android:tint="@color/colorPrimary"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/no_data_image" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

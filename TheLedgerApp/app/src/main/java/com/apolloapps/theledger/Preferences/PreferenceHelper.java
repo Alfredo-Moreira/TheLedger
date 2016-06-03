@@ -15,19 +15,19 @@ public class PreferenceHelper {
     private SharedPreferences mPreferences;
 
     public PreferenceHelper(Context context, String preferences) {
-        mPreferences = context.getSharedPreferences(preferences, context.MODE_PRIVATE);
+        mPreferences = context.getSharedPreferences(preferences, Context.MODE_PRIVATE);
     }
 
     protected void setBoolean(String key, boolean value) {
-        mPreferences.edit().putBoolean(key, value).commit();
+        mPreferences.edit().putBoolean(key, value).apply();
     }
 
     protected void setString(String key, String value) {
-        mPreferences.edit().putString(key, value).commit();
+        mPreferences.edit().putString(key, value).apply();
     }
 
     protected void setInt(String key, int value) {
-        mPreferences.edit().putInt(key, value).commit();
+        mPreferences.edit().putInt(key, value).apply();
     }
 
     protected boolean getBoolean(String key) {

@@ -31,4 +31,10 @@
  
  - New Library addiction
 
+1.0.0 (10000008) 06/03/2016
+
+- Account feature set up
+- Network layer set up
+- Accessibility work
+
 

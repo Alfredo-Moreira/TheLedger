@@ -23,11 +23,6 @@
         android:layout_height="match_parent"
         android:id="@+id/root">
 
-        <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:layout_above="@+id/create_account_button">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -40,28 +35,32 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Account Title"
+    android:text="@string/account_title"
     android:textColor="@color/text_caption"
     android:textSize="@dimen/text_caption"
     fontPath="@string/regular_font"/>
 
     <EditText
+        android:inputType="text"
         android:id="@+id/account_feature_title_text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_body"
+        android:labelFor="@string/account_title"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Username"
+        android:text="@string/account_username"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
 
         <EditText
+            android:inputType="text"
+            android:labelFor="@string/account_username"
             android:id="@+id/account_feature_username_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,12 +71,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Account Password"
+            android:text="@string/account_password"
             android:textColor="@color/text_caption"
             android:textSize="@dimen/text_caption"
             fontPath="@string/regular_font"/>
 
         <EditText
+            android:labelFor="@string/account_password"
             android:id="@+id/account_feature_password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,28 +88,25 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Account Type"
+            android:text="@string/account_type"
             android:textColor="@color/text_caption"
             android:textSize="@dimen/text_caption"
             fontPath="@string/regular_font"/>
 
-        <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/account_feature_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart">
-
-        </android.support.v7.widget.AppCompatSpinner>
+        <include
+            android:id="@+id/account_feature_type_view"
+            layout="@layout/view_account_type" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Account Description"
+            android:text="@string/account_description"
             android:textColor="@color/text_caption"
             android:textSize="@dimen/text_caption"
             fontPath="@string/regular_font"/>
 
         <android.support.v7.widget.AppCompatMultiAutoCompleteTextView
+            android:labelFor="@string/account_description"
             android:id="@+id/account_feature_description_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,14 +118,12 @@
 
 
     </LinearLayout>
-    </ScrollView>
 
     <Button
         android:id="@+id/create_account_feature_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_padding"
         android:layout_alignParentBottom="true"
-        android:text="@string/create_account"
         android:textColor="@color/white"
         android:textSize="@dimen/text_body"
         fontPath="@string/medium_font"

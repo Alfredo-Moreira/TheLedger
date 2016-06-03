@@ -10,14 +10,18 @@ import com.apolloapps.theledger.Common.NetworkConstants;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
 import com.apolloapps.theledger.DataManager.Requests.AccountCreateRequest;
+import com.apolloapps.theledger.DataManager.Requests.AccountDeleteRequest;
 import com.apolloapps.theledger.DataManager.Requests.AccountGetDetailsRequest;
 import com.apolloapps.theledger.DataManager.Requests.AccountGetListRequest;
+import com.apolloapps.theledger.DataManager.Requests.AccountUpdateRequest;
 import com.apolloapps.theledger.DataManager.Requests.LoginRequest;
 import com.apolloapps.theledger.DataManager.Requests.UserCreateAccountRequest;
 import com.apolloapps.theledger.DataManager.Requests.UserGetDetailsRequest;
 import com.apolloapps.theledger.DataManager.Responses.AccountCreateResponse;
+import com.apolloapps.theledger.DataManager.Responses.AccountDeleteResponse;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetDetailsResponse;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetListResponse;
+import com.apolloapps.theledger.DataManager.Responses.AccountUpdateResponse;
 import com.apolloapps.theledger.DataManager.Responses.LoginResponse;
 import com.apolloapps.theledger.DataManager.Responses.UserCreateAccountResponse;
 import com.apolloapps.theledger.DataManager.Responses.UserGetDetailsResponse;
@@ -242,7 +246,7 @@ public class DataManager {
     }
 
     /*
-     * Get Account Details endpoint: /Account/userId/accountId
+     * Get Account Details endpoint: /Account/{userId}/{accountId}
      */
 
     public void doGetAccountDetails(int userId, int accountId, final ServiceCallback<AccountGetDetailsResponse> listener) {
@@ -269,7 +273,71 @@ public class DataManager {
         mRequestQueue.add(request);
     }
 
+    /*
+     * Delete Account endpoint /Account/DeleteAccount/{id}
+     */
 
+    public void doDeleteAccount(int accountId, final ServiceCallback<AccountDeleteResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.DELETE_ACCOUNT, String.valueOf(accountId));
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        AccountDeleteRequest request = new AccountDeleteRequest(mUrl, new Response.Listener<AccountDeleteResponse>() {
+            @Override
+            public void onResponse(AccountDeleteResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+
+    }
+
+    /*
+     * Update Account endpoint: Account/UpdateAccount/{id}
+     */
+    public void doUpdateAccount(int accountId, AccountModel account, final ServiceCallback<AccountUpdateResponse> listener) {
+        listener.onPreExecute();
+
+        mJSON = new JSONObject();
+        try {
+            mJSON.put(NetworkConstants.PARAM_ACCOUNT_TITLE, account.getAccountTitle());
+            mJSON.put(NetworkConstants.PARAM_ACCOUNT_USERNAME, account.getAccountUsername());
+            mJSON.put(NetworkConstants.PARAM_ACCOUNT_PASSWORD, account.getAccountPassword());
+            mJSON.put(NetworkConstants.PARAM_ACCOUNT_TYPE, account.getAccountType());
+            mJSON.put(NetworkConstants.PARAM_ACCOUNT_COMMENTS, account.getAccountComments());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.UPDATE_ACCOUNT, String.valueOf(accountId));
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        AccountUpdateRequest request = new AccountUpdateRequest(mUrl, mJSON, new Response.Listener<AccountUpdateResponse>() {
+            @Override
+            public void onResponse(AccountUpdateResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+
+    }
 
     private RequestQueue buildRequestQueue(Context context){
 

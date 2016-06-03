@@ -12,8 +12,7 @@ public class ProgressDialogCreator {
 
     public static ProgressDialog showProgressDialog(Context context) {
 
-        final ProgressDialog dialog = ProgressDialog.show(context,context.getString(R.string.please_wait),context.getString(R.string.processing),true);
-        return dialog;
+        return ProgressDialog.show(context, context.getString(R.string.please_wait), context.getString(R.string.processing), true);
     }
 
     public static void dismissDialog(ProgressDialog dialog) {

@@ -1,15 +1,13 @@
 package com.apolloapps.theledger.Features.Accounts;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.apolloapps.theledger.BaseFragment;
@@ -25,7 +23,7 @@ import butterknife.ButterKnife;
 /**
  * Created by AMoreira on 4/25/16.
  */
-public class AccountsDetailsFragment extends BaseFragment {
+public class AccountsDetailsFragment extends BaseFragment implements View.OnClickListener {
 
     @Bind(R.id.fragment_root)
     FrameLayout mFragmentRoot;
@@ -39,6 +37,10 @@ public class AccountsDetailsFragment extends BaseFragment {
     TextView mAccountType;
     @Bind(R.id.account_description_text)
     TextView mAccountDescription;
+    @Bind(R.id.view_details_edit_button)
+    AppCompatButton mEditButton;
+    @Bind(R.id.view_details_delete_button)
+    AppCompatButton mDeleteButton;
 
 
     public AccountDetailsFragmentListener mListener;
@@ -93,10 +95,16 @@ public class AccountsDetailsFragment extends BaseFragment {
         ViewGroup view = (ViewGroup)inflater.inflate(R.layout.fragment_account_details,container,false);
         ButterKnife.bind(this,view);
         setRootView(mFragmentRoot);
+        setUp();
         return view;
     }
 
-   private void getAccountDetails(){
+    private void setUp() {
+        mEditButton.setOnClickListener(this);
+        mDeleteButton.setOnClickListener(this);
+    }
+
+    private void getAccountDetails() {
        mDataManager.doGetAccountDetails(getUserId(), mAccountId, new ServiceCallback<AccountGetDetailsResponse>() {
            @Override
            public void onSuccess(AccountGetDetailsResponse response) {
@@ -129,7 +137,23 @@ public class AccountsDetailsFragment extends BaseFragment {
         mAccountDescription.setText(account.getAccountComments());
     }
 
-    public interface AccountDetailsFragmentListener {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.view_details_edit_button:
+                mListener.editAccount(mAccountId);
+                break;
+            case R.id.view_details_delete_button:
+                mListener.deleteAccount(mAccountId);
+                break;
+            default:
+                break;
+        }
+    }
 
+    public interface AccountDetailsFragmentListener {
+        void editAccount(int accountId);
+
+        void deleteAccount(int accountId);
     }
 }

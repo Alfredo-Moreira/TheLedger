@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RadioGroup
+        android:id="@+id/account_type_radio_group"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="@dimen/ten_padding">
+
+        <android.support.v7.widget.AppCompatRadioButton
+        android:id="@+id/radio_social"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/social"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        android:layout_weight="1"
+        fontPath="@string/regular_font"/>
+    <android.support.v7.widget.AppCompatRadioButton
+        android:id="@+id/radio_entertainment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entertainment"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        android:layout_weight="1"
+        fontPath="@string/regular_font"/>
+    <android.support.v7.widget.AppCompatRadioButton
+        android:id="@+id/radio_financial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/financial"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        android:layout_weight="1"
+        fontPath="@string/regular_font"/>
+    <android.support.v7.widget.AppCompatRadioButton
+        android:id="@+id/radio_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/other"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        android:layout_weight="1"
+        fontPath="@string/regular_font"/>
+    </RadioGroup>
+
+

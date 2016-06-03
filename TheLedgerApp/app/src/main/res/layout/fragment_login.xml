@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_root"
-    android:background="@color/white">
+    android:id="@+id/fragment_root">
 
     <FrameLayout
         android:id="@+id/secondary_root"
@@ -57,6 +56,7 @@
             android:textSize="@dimen/text_caption" />
 
         <EditText
+            android:labelFor="@string/username"
             android:id="@+id/username_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,6 +78,7 @@
             android:textSize="@dimen/text_caption" />
 
         <EditText
+            android:labelFor="@string/password"
             android:id="@+id/password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -172,6 +173,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/ten_padding"
                 android:layout_toEndOf="@+id/create_account_text"
+                android:contentDescription="@string/create_account"
                 android:src="@drawable/ic_account_circle_white_24dp" />
         </RelativeLayout>
     </LinearLayout>

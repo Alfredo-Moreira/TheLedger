@@ -29,9 +29,10 @@
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Title"
+            android:padding="@dimen/ten_padding"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
+            android:text="@string/account_title"
         fontPath="@string/regular_font"/>
 
     <TextView
@@ -39,13 +40,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_body"
+        android:paddingStart="@dimen/ten_padding"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Username"
+        android:padding="@dimen/ten_padding"
+        android:text="@string/account_username"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -54,6 +57,7 @@
         android:id="@+id/account_username_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/ten_padding"
         android:textSize="@dimen/text_body"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
@@ -61,7 +65,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Password"
+        android:padding="@dimen/ten_padding"
+        android:text="@string/account_password"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -70,6 +75,7 @@
         android:id="@+id/account_password_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/ten_padding"
         android:textSize="@dimen/text_body"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
@@ -77,7 +83,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Type"
+        android:padding="@dimen/ten_padding"
+        android:text="@string/account_type"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -86,6 +93,7 @@
         android:id="@+id/account_type_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/ten_padding"
         android:textSize="@dimen/text_body"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
@@ -93,7 +101,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Description"
+        android:padding="@dimen/ten_padding"
+        android:text="@string/account_description"
         android:textColor="@color/text_caption"
         android:textSize="@dimen/text_caption"
         fontPath="@string/regular_font"/>
@@ -102,8 +111,41 @@
         android:id="@+id/account_description_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/ten_padding"
         android:textSize="@dimen/text_body"
         android:textColor="@color/text_color"
         fontPath="@string/regular_font"/>
 </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/view_details_edit_button"
+            fontPath="@string/medium_font"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="@string/edit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_body" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/view_details_delete_button"
+            fontPath="@string/medium_font"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_body" />
+
+    </LinearLayout>
 </FrameLayout>

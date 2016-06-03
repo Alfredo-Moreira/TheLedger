@@ -65,6 +65,7 @@
 
     //Create Account
     <string name="create_account_action_bar_title">Create Account</string>
+    <string name="edit_account_action_bar_title">Edit Account</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="show_password">Show Password</string>
@@ -73,10 +74,16 @@
     <string name="social">Social</string>
     <string name="financial">Financial</string>
     <string name="entertainment">Entertainment</string>
+    <string name="dismiss">Dismiss</string>
 
     //Edit Account
+    <string name="other">Other</string>
     <string name="save_changes">Save Changes</string>
-
+    <string name="account_title">Account Title</string>
+    <string name="account_username">Account Username</string>
+    <string name="account_password">Account Password</string>
+    <string name="account_type">Account Type</string>
+    <string name="account_description">Account Description</string>
 
     //Errors
     <string name="error">Error</string>
@@ -93,15 +100,26 @@
     <string name="no_data">No Data</string>
     <string name="no_network_text">The network seems to be unavailable. Please check your settings and try again.</string>
     <string name="server_error">Oops, something went wrong! :(</string>
+    <string name="tap_to_retry">Tap to retry</string>
 
     //Dialog
     <string name="please_wait">Please Wait!</string>
-    <string name="processing">Processing...</string>
+    <string name="processing">Processing\&#8230;</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_error">Error</string>
     <string name="sign_out">Sign Out</string>
     <string name="sign_out_message">Are you sure you want to sign out?</string>
+
+    //Accesibility
+    <string name="image_no_wifi">Wifi image</string>
+    <string name="feature_icon">Feature Icon</string>
+    <string name="server_error_image">Server Error image</string>
+    <string name="no_data_image">No Data Image</string>
+    <string name="create_new_icon">Create New Icon</string>
+    <string name="refresh_icon">Refresh Icon</string>
+    <string name="overflow_menu">Overflow Menu</string>
+    <string name="your_name">Your Name</string>
 
     //Copyright
     <string name="reference_disclaimer">The following software was used in the production of this product. The above software contains the following licence and notice below:</string>

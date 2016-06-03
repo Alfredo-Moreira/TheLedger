@@ -25,6 +25,8 @@ public class NetworkConstants {
     public static final String GET_USER_ACCOUNT_DETAILS = "/UserAccount";
     public static final String GET_ACCOUNT_LIST = "/Account";
     public static final String CREATE_ACCOUNT = "/Account/CreateAccount";
+    public static final String DELETE_ACCOUNT = "/Account/DeleteAccount";
+    public static final String UPDATE_ACCOUNT = "/Account/UpdateAccount";
 
     //JSON keys
     //Global

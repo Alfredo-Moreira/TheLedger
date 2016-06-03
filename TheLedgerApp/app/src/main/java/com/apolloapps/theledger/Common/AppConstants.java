@@ -16,13 +16,16 @@ public class AppConstants {
     public static final int FEATURE_TYPE_BILLS = 2;
     public static final int FEATURE_TYPE_CHECK_LIST = 3;
 
-    public static final int SOCIAL_ACCOUNT_TYPE = 0;
-    public static final int FINANCIAL_ACCOUNT_TYPE = 1;
-    public static final int ENTERTAINMENT_ACCOUNT_TYPE =2;
+    public static final int OTHER_ACCOUNT_TYPE = 0;
+    public static final int SOCIAL_ACCOUNT_TYPE = 1;
+    public static final int FINANCIAL_ACCOUNT_TYPE = 2;
+    public static final int ENTERTAINMENT_ACCOUNT_TYPE = 3;
 
     public static final int NO_NETWORK_SCREEN = 0;
     public static final int NO_DATA_SERVER_ERROR_SCREEN = 1;
     public static final int NO_DATA = 0;
     public static final int SERVER_ERROR = 1;
+
+    public static final int NO_ACCOUNT = -1;
 
 }

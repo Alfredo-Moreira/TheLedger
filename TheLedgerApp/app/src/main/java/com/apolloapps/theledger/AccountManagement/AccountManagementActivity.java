@@ -3,22 +3,14 @@ package com.apolloapps.theledger.AccountManagement;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MotionEvent;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Common.AppConstants;
-import com.apolloapps.theledger.Common.NetworkConstants;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.DataManager.DataManager;
-import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
-import com.apolloapps.theledger.DataManager.Responses.UserCreateAccountResponse;
-import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
-import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
 import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
-import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.Preferences.Preferences;
 import com.apolloapps.theledger.R;
-import com.apolloapps.theledger.SessionStorage;
 
 /**
  * Created by AMoreira on 4/11/16.
@@ -90,8 +82,9 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
 
 
     @Override
-    public void login() {
+    public void login(int userId) {
         createSession();
+        setUserId(userId);
         startActivity(new Intent(this, DashboardActivity.class));
     }
 }

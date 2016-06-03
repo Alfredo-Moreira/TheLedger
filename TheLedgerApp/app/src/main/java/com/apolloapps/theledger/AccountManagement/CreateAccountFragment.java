@@ -8,16 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.android.volley.NetworkError;
 import com.apolloapps.theledger.BaseFragment;
-import com.apolloapps.theledger.DataManager.Models.AccountModel;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
 import com.apolloapps.theledger.DataManager.Responses.UserCreateAccountResponse;
 import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
-import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.R;
 
 import butterknife.Bind;
@@ -43,11 +40,10 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     @Bind(R.id.create_account_button)
     Button mCreateAccount;
     @Bind(R.id.fragment_root)
-    RelativeLayout mFragmentRoot;
+    FrameLayout mFragmentRoot;
 
     public CreateAccountFragmentListener mListener;
     private PersonalAccountModel mAccount;
-    private boolean mValidForm;
 
     public static CreateAccountFragment newInstance() {
         return new CreateAccountFragment();
@@ -116,21 +112,21 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
     }
 
     private boolean validateForm() {
-        mValidForm = true;
+        boolean validForm = true;
 
         if (isInvalidInput(getInput(mFirstNameInput))) {
-            mValidForm = false;
+            validForm = false;
         }
         if (isInvalidInput(getInput(mLastNameInput))) {
-            mValidForm = false;
+            validForm = false;
         }
         if (isInvalidInput(getInput(mUsernameInput))) {
-            mValidForm = false;
+            validForm = false;
         }
         if (isInvalidInput(getInput(mPasswordInput))) {
-            mValidForm = false;
+            validForm = false;
         }
-        if (mValidForm) {
+        if (validForm) {
             mAccount.setPersonalAccount(getInput(mFirstNameInput), getInput(mLastNameInput),
                     getInput(mUsernameInput), getInput(mPasswordInput), getInput(mPhoneNumberInput),
                     getInput(mEmailInput));
@@ -144,18 +140,13 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
         mCreateAccount.setOnClickListener(this);
     }
 
-    public interface CreateAccountFragmentListener {
-        void login();
-    }
-
     private void createAccount(PersonalAccountModel account) {
         mDataManager.doCreateUserAccount(account, new ServiceCallback<UserCreateAccountResponse>() {
 
             @Override
             public void onSuccess(UserCreateAccountResponse response) {
                 dismissProgressBar();
-                setUserId(response.getId());
-                mListener.login();
+                mListener.login(response.getId());
             }
 
             @Override
@@ -167,9 +158,13 @@ public class CreateAccountFragment extends BaseFragment implements View.OnClickL
 
             @Override
             public void onPreExecute() {
+                showProgressBar();
                 hideAllScreens();
-               showProgressBar();
             }
         });
+    }
+
+    public interface CreateAccountFragmentListener {
+        void login(int userId);
     }
 }

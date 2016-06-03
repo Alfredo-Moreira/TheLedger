@@ -27,6 +27,8 @@
 
 
         <EditText
+            android:inputType="textPersonName"
+            android:labelFor="@string/your_name"
         android:id="@+id/person_text_input"
         android:layout_marginTop="@dimen/twenty_five_padding"
         android:layout_marginStart="@dimen/ten_padding"

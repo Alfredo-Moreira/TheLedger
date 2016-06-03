@@ -35,7 +35,7 @@ public class DashboardFragment extends BaseFragment {
     FloatingActionButton mFloatingAccountButton;
 
     @Bind(R.id.floating_menu_bill_item)
-    FloatingActionButton mFlotatingBillButton;
+    FloatingActionButton mFloatingBillButton;
 
     @Bind(R.id.floating_menu_checklist_item)
     FloatingActionButton mFloatingCheckListButton;
@@ -110,7 +110,7 @@ public class DashboardFragment extends BaseFragment {
 
     private void setClickListeners() {
         mFloatingAccountButton.setOnClickListener(addButtonAccountListener());
-        mFlotatingBillButton.setOnClickListener(addButtonBillsListener());
+        mFloatingBillButton.setOnClickListener(addButtonBillsListener());
         mFloatingCheckListButton.setOnClickListener(addButtonCheckListListener());
     }
 

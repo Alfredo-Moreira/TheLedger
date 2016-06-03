@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apolloapps.theledger"
-    android:versionCode="1000007"
+    android:versionCode="1000008"
     android:versionName="1.0.0">
 
     <uses-sdk
@@ -52,7 +52,11 @@
 
         <activity android:name=".Features.Accounts.AccountsActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize|adjustPan"/>
+        <activity android:name=".Features.CheckList.CheckListActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".BaseActivity"/>
 
         <meta-data
             android:name="io.fabric.ApiKey"

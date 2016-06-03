@@ -2,31 +2,27 @@ package com.apolloapps.theledger.Features.Accounts;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
-import com.apolloapps.theledger.DataManager.Responses.AccountGetDetailsResponse;
+import com.apolloapps.theledger.DataManager.Responses.AccountDeleteResponse;
 import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
 import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
 import com.apolloapps.theledger.Features.OverFlowMenu;
-import com.apolloapps.theledger.MainApplication;
 import com.apolloapps.theledger.R;
 
 /**
  * Created by AMoreira on 4/21/16.
  */
 public class AccountsActivity extends BaseActivity implements AccountsListFragment.AccountsListFragmentListener,OverFlowMenu.OverFlowMenuListener,
-        AccountsDetailsFragment.AccountDetailsFragmentListener,AccountsCreateFragment.AccountsCreateFragmentListener {
+        AccountsDetailsFragment.AccountDetailsFragmentListener, AccountsCreateEditFragment.AccountsCreateFragmentListener {
 
     private AccountsListFragment mAccountListFragment;
-    private AccountModel mAccountModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(this,"User login id is "+ getUserId(),Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(),true,true);
         setUpLowerMenu(getLowerMenu(),false);
@@ -34,9 +30,9 @@ public class AccountsActivity extends BaseActivity implements AccountsListFragme
         mBundle = getIntent().getExtras();
         if (mBundle != null) {
             if (mBundle.getInt(AppConstants.ACTION) == AppConstants.CREATE_ACCOUNT) {
-                getFragmentManager().beginTransaction().replace(R.id.container, AccountsCreateFragment.newInstance(null), null).addToBackStack(null).commit();
+                createAccountFragment();
             } else {
-                getFragmentManager().beginTransaction().replace(R.id.container, mAccountListFragment, null).addToBackStack(null).commit();
+                viewAccountList();
             }
         } else {
             throw new RuntimeException(this.getString(R.string.no_bundle_attached));
@@ -59,42 +55,20 @@ public class AccountsActivity extends BaseActivity implements AccountsListFragme
     public void editFeature(int featureType, int accountId) {
         switch (featureType) {
             case AppConstants.FEATURE_TYPE_ACCOUNT:
-                editAccountDetails(getAccountModel(accountId));
+                editAccountDetails(accountId);
                 break;
             default:
                 break;
         }
     }
 
-    private AccountModel getAccountModel(int id) {
 
-        mDataManager.doGetAccountDetails(getUserId(), id, new ServiceCallback<AccountGetDetailsResponse>() {
-            @Override
-            public void onSuccess(AccountGetDetailsResponse response) {
-                mAccountListFragment.dismissProgressBar();
-                mAccountModel = new AccountModel();
-            }
-
-            @Override
-            public void onError(NetworkError error) {
-                mAccountListFragment.dismissProgressBar();
-              mAccountListFragment.showCorrectErrorScreen(error.getStatusCode());
-            }
-
-            @Override
-            public void onPreExecute() {
-                mAccountListFragment.hideAllScreens();
-                mAccountListFragment.showProgressBar();
-            }
-        });
-        return mAccountModel;
-    }
 
     @Override
     public void deleteFeature(int featureType, int accountID) {
         switch (featureType) {
             case AppConstants.FEATURE_TYPE_ACCOUNT:
-                deleteAccount(accountID);
+                deleteOverflowAccount(accountID);
                 break;
             default:
                 break;
@@ -106,14 +80,69 @@ public class AccountsActivity extends BaseActivity implements AccountsListFragme
         getFragmentManager().beginTransaction().replace(R.id.container,AccountsDetailsFragment.newInstance(accountId),null).addToBackStack(null).commit();
     }
 
+    private void viewAccountList() {
+        getFragmentManager().beginTransaction().replace(R.id.container, mAccountListFragment, null).addToBackStack(null).commit();
+    }
+
     @Override
-    public void editAccountDetails(AccountModel model) {
-        getFragmentManager().beginTransaction().replace(R.id.container,AccountsCreateFragment.newInstance(model),null).addToBackStack(null).commit();
+    public void editAccountDetails(int accountId) {
+        getFragmentManager().beginTransaction().replace(R.id.container, AccountsCreateEditFragment.newInstance(accountId), null).addToBackStack(null).commit();
     }
 
     @Override
     public void deleteAccount(int accountId) {
+        final AccountsDetailsFragment fragment = (AccountsDetailsFragment) getFragmentManager().findFragmentById(R.id.container);
+        mDataManager.doDeleteAccount(accountId, new ServiceCallback<AccountDeleteResponse>() {
+            @Override
+            public void onSuccess(AccountDeleteResponse response) {
+                fragment.dismissProgressBar();
+                fragment.showMainScreen();
+                onBackPressed();
+            }
 
+            @Override
+            public void onError(NetworkError error) {
+                fragment.dismissProgressBar();
+                fragment.showCorrectErrorScreen(error.getStatusCode());
+
+            }
+
+            @Override
+            public void onPreExecute() {
+                fragment.hideAllScreens();
+                fragment.showProgressBar();
+            }
+        });
+    }
+
+    @Override
+    public void editAccount(int accountId) {
+        editAccountDetails(accountId);
+    }
+
+    public void deleteOverflowAccount(int accountId) {
+        final AccountsListFragment fragment = (AccountsListFragment) getFragmentManager().findFragmentById(R.id.container);
+        mDataManager.doDeleteAccount(accountId, new ServiceCallback<AccountDeleteResponse>() {
+            @Override
+            public void onSuccess(AccountDeleteResponse response) {
+                fragment.dismissProgressBar();
+                fragment.showMainScreen();
+                fragment.getAccountsList();
+            }
+
+            @Override
+            public void onError(NetworkError error) {
+                fragment.dismissProgressBar();
+                fragment.showCorrectErrorScreen(error.getStatusCode());
+
+            }
+
+            @Override
+            public void onPreExecute() {
+                fragment.hideAllScreens();
+                fragment.showProgressBar();
+            }
+        });
     }
 
     @Override
@@ -124,12 +153,13 @@ public class AccountsActivity extends BaseActivity implements AccountsListFragme
     @Override
     public void hidePeakAccount() {
         mAccountListFragment.hidePeakAccountDetails();
+
     }
 
 
     @Override
     public void createAccountFragment() {
-        getFragmentManager().beginTransaction().replace(R.id.container,AccountsCreateFragment.newInstance(null),null).addToBackStack(null).commit();
+        getFragmentManager().beginTransaction().replace(R.id.container, AccountsCreateEditFragment.newInstance(AppConstants.NO_ACCOUNT), null).addToBackStack(null).commit();
     }
 
     @Override

@@ -88,10 +88,7 @@ public class BaseFragment extends Fragment {
     }
 
     public boolean isInvalidInput(String input) {
-        if (input.isEmpty()) {
-            return true;
-        }
-        return false;
+        return input.isEmpty();
     }
 
 

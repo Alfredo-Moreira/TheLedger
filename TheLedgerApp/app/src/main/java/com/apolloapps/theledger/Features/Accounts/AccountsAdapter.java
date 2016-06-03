@@ -2,10 +2,8 @@ package com.apolloapps.theledger.Features.Accounts;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
 
@@ -40,7 +38,6 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsViewHolder> {
             public void onClick(View v) {
                 //View
                 mListener.viewAccountDetails(mAccountList.get(position).getAccountId());
-                Toast.makeText(mContext,"Click",Toast.LENGTH_SHORT).show();
             }
         }, new View.OnLongClickListener() {
             @Override

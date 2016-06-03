@@ -63,13 +63,9 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void setUpToolBar(Toolbar toolbar, boolean setVisible, boolean setBackArrow) {
-        if (setVisible) {
             setSupportActionBar(toolbar);
             setBackArrowToolbar(toolbar, setBackArrow);
             setToolbarVisibility(toolbar, setVisible);
-        } else {
-            setToolbarVisibility(toolbar, setVisible);
-        }
     }
 
 
@@ -117,8 +113,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public LinearLayout getLowerMenu() {
-        LinearLayout lowerMenu = (LinearLayout) findViewById(R.id.secondary_menus_container);
-        return lowerMenu;
+        return (LinearLayout) findViewById(R.id.secondary_menus_container);
     }
 
     private void setUpOnClickListener() {
@@ -133,10 +128,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     private boolean isMenuSelected(int id) {
-        if (mSelectedMenu == id) {
-            return true;
-        }
-        return false;
+        return (mSelectedMenu == id);
     }
 
 

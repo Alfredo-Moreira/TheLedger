@@ -42,6 +42,6 @@
         android:layout_marginEnd="@dimen/fifteen_padding"
         android:background="@drawable/add_button_selector"
         android:clickable="true"
-        android:elevation="@dimen/five_padding"
+        android:contentDescription="@string/create_new_icon"
         android:src="@drawable/ic_create_white_48dp" />
 </RelativeLayout>
