@@ -1,18 +1,16 @@
 package com.apolloapps.theledger.Features;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 
-import com.apolloapps.theledger.DataManager.Models.AccountModel;
 import com.apolloapps.theledger.R;
 
 /**
  * Created by AMoreira on 4/25/16.
  */
-public class OverFlowMenu implements View.OnClickListener{
+public class OverFlowMenu implements View.OnClickListener {
 
     private Context mContext;
     private int mFeatureID;

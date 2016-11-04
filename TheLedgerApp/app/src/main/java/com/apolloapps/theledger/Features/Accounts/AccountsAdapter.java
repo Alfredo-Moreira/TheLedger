@@ -33,7 +33,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsViewHolder> {
 
     @Override
     public void onBindViewHolder(AccountsViewHolder holder, final int position) {
-        holder.mAccountsListViewItem.setContents(mContext, mAccountList.get(position), new View.OnClickListener() {
+        holder.mAccountsListViewItem.setContents(mAccountList.get(position), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //View
@@ -51,9 +51,7 @@ public class AccountsAdapter extends RecyclerView.Adapter<AccountsViewHolder> {
 
     @Override
     public int getItemCount() {
-        if(!mAccountList.isEmpty()) {
-            return mAccountList.size();
-        }
-        return 0;
+        return mAccountList.size();
+
     }
 }

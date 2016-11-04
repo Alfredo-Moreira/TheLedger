@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.apolloapps.theledger.BaseActivity;
+import com.apolloapps.theledger.Common.AppConstants;
+import com.apolloapps.theledger.Features.Accounts.AccountsActivity;
+import com.apolloapps.theledger.Features.Bills.BillsActivity;
+import com.apolloapps.theledger.Features.CheckList.CheckListActivity;
 import com.apolloapps.theledger.Login.LoginActivity;
 import com.apolloapps.theledger.R;
 import com.apolloapps.theledger.Utils.AlertDialogCreator;
@@ -35,8 +39,7 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(), false, false);
         setUpLowerMenu(getLowerMenu(), true);
-        mDashboardFragment = DashboardFragment.newInstance();
-        getFragmentManager().beginTransaction().replace(R.id.container, mDashboardFragment, null).commit();
+        startDashboard();
     }
 
     @Override
@@ -73,22 +76,32 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
     }
 
     @Override
-    public void startFeatureCreate(String classPath, String action, int value) {
-
-       try {
-          mBundle = new Bundle();
-           mBundle.putInt(action,value);
-         startActivity(new Intent(this, Class.forName(classPath)).putExtras(mBundle));
-        } catch (ClassNotFoundException e) {
-        AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
-       }
+    public void startFeatureCreate(int feature) {
+        switch (feature) {
+            case AppConstants.FEATURE_TYPE_ACCOUNT:
+                mBundle = new Bundle();
+                mBundle.putInt(AppConstants.ACTION, AppConstants.CREATE_ACCOUNT);
+                startActivity(new Intent(this, AccountsActivity.class).putExtras(mBundle));
+                break;
+            case AppConstants.FEATURE_TYPE_BILLS:
+                mBundle = new Bundle();
+                mBundle.putInt(AppConstants.ACTION, AppConstants.CREATE_ACCOUNT);
+                startActivity(new Intent(this, BillsActivity.class).putExtras(mBundle));
+                break;
+            case AppConstants.FEATURE_TYPE_CHECK_LIST:
+                mBundle = new Bundle();
+                mBundle.putInt(AppConstants.ACTION, AppConstants.CREATE_ACCOUNT);
+                startActivity(new Intent(this, CheckListActivity.class).putExtras(mBundle));
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
     public void startFeature(String classPath) {
         try {
-            mBundle = new Bundle();
-            startActivity(new Intent(this, Class.forName(classPath)).putExtras(mBundle));
+            startActivity(new Intent(this, Class.forName(classPath)));
         } catch (ClassNotFoundException e) {
             AlertDialogCreator.showDefaultDialog(this, getString(R.string.dialog_error), getString(R.string.feature_not_available),null,null,this);
         }
@@ -101,5 +114,10 @@ public class DashboardActivity extends BaseActivity implements DashboardFragment
 
     private void backToLogin() {
         startActivity(new Intent(this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+    }
+
+    private void startDashboard() {
+        mDashboardFragment = DashboardFragment.newInstance();
+        getFragmentManager().beginTransaction().replace(R.id.container, mDashboardFragment, null).commit();
     }
 }

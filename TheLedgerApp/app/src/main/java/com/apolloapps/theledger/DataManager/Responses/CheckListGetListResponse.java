@@ -1,12 +1,14 @@
 package com.apolloapps.theledger.DataManager.Responses;
 
+import com.apolloapps.theledger.DataManager.Models.CheckListModel;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by AMoreira on 5/30/16.
- */
-public class AccountUpdateResponse {
+import java.util.List;
 
+/**
+ * Created by AMoreira on 9/30/16.
+ */
+public class CheckListGetListResponse {
     @SerializedName("Status")
     private int mStatus;
 
@@ -15,6 +17,17 @@ public class AccountUpdateResponse {
 
     @SerializedName("Message")
     private String mMessage;
+
+    @SerializedName("Data")
+    private List<CheckListModel> mData;
+
+    public List<CheckListModel> getData() {
+        return mData;
+    }
+
+    public void setData(List<CheckListModel> mData) {
+        this.mData = mData;
+    }
 
     public int getCode() {
         return mCode;

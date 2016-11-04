@@ -67,6 +67,7 @@
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_body" />
 
+
         <TextView
             fontPath="@string/regular_font"
             android:layout_width="match_parent"
@@ -177,7 +178,6 @@
                 android:src="@drawable/ic_account_circle_white_24dp" />
         </RelativeLayout>
     </LinearLayout>
-
 
     </ScrollView>
 

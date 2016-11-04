@@ -1,6 +1,9 @@
 package com.apolloapps.theledger.Features.Accounts;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,10 +61,23 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof AccountsListFragmentListener) {
+            mListener = (AccountsListFragmentListener) context;
+        } else {
+            throw new RuntimeException(getString(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
-        if (activity instanceof AccountsActivity) {
+        if (activity instanceof AccountsListFragmentListener) {
             mListener = (AccountsListFragmentListener) activity;
         } else {
             throw new RuntimeException(getString(R.string.listener_not_implemented));
@@ -118,13 +134,13 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
             @Override
             public void onError(NetworkError error) {
                 dismissProgressBar();
-                hideCreateButton();
                 showCorrectErrorScreen(error.getStatusCode());
             }
 
             @Override
             public void onPreExecute() {
                 hideAllScreens();
+                hideCreateButton();
                 showProgressBar();
             }
         });
@@ -137,7 +153,7 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
                 mListener.createAccountFragment();
                 break;
             case R.id.dismiss_sneak_peak:
-                mListener.hidePeakAccount();
+                hidePeakAccountDetails();
                 break;
             case R.id.retry_button:
                 getAccountsList();
@@ -214,8 +230,6 @@ public class AccountsListFragment extends BaseFragment implements View.OnClickLi
         void deleteAccount(int accountId);
 
         void peakAccount(AccountModel accountModel);
-
-        void hidePeakAccount();
 
         void createAccountFragment();
 

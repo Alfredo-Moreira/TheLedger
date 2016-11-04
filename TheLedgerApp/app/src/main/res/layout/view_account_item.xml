@@ -26,6 +26,7 @@
         android:textSize="@dimen/text_body"
         android:textColor="@color/text_color"
         android:layout_below="@+id/account_title"
+        android:maxLines="1"
         android:layout_marginStart="@dimen/ten_padding"
         fontPath="@string/regular_font"/>
     <TextView

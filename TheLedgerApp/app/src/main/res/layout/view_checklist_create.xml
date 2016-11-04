@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/view_create_check_root"
+    android:padding="@dimen/ten_padding"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        fontPath="@string/regular_font"/>
+    <EditText
+        android:id="@+id/checklist_text_input"
+        android:layout_marginTop="@dimen/ten_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/input_text_color"
+        android:textSize="@dimen/text_body"
+        fontPath="@string/regular_font"
+        />
+
+    <View
+        android:layout_above="@+id/create_dismiss_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one_padding"
+        android:background="@color/pressed_list_view"/>
+
+    <LinearLayout
+        android:id="@+id/create_dismiss_buttons"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/create_checklist_item_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:text="@string/create"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_body"
+            android:textAllCaps="true"
+            android:background="@drawable/list_view_selector"
+            />
+        <TextView
+            android:id="@+id/dismiss_checklist_item_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_padding"
+            android:text="@string/dismiss"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_body"
+            android:textAllCaps="true"
+            android:background="@drawable/list_view_selector"/>
+    </LinearLayout>
+
+    </RelativeLayout>

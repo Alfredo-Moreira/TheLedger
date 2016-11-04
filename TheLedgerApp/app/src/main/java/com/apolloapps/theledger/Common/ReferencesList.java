@@ -35,6 +35,10 @@ public class ReferencesList {
         mReferencesList.add(new ReferenceModel(context.getString(R.string.floating_title),
                 context.getString(R.string.floating_link),
                 context.getString(R.string.floating_description)));
+        mReferencesList.add(new ReferenceModel(context.getString(R.string.validator_title),
+                context.getString(R.string.validator_link), context.getString(R.string.validator_description)));
+        mReferencesList.add(new ReferenceModel(context.getString(R.string.date_time_title),
+                context.getString(R.string.date_time_link), context.getString(R.string.date_time_description)));
     }
     public ReferenceModel getReferenceObject(int position) {
         return mReferencesList.get(position);

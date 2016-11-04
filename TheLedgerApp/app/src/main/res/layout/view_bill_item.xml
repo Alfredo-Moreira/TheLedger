@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/list_view_selector"
+    android:id="@+id/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/ten_padding"
+        android:layout_marginTop="@dimen/five_padding"
+        android:id="@+id/bill_title"
+        android:textSize="@dimen/text_subheading"
+        android:textColor="@color/text_color"
+        fontPath="@string/medium_font"/>
+
+    <RelativeLayout
+        android:id="@+id/bill_due_date_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bill_title"
+        android:layout_marginStart="@dimen/fifteen_padding">
+
+        <TextView
+            android:id="@+id/bill_due_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/bill_due_on"
+            android:textSize="@dimen/text_caption"
+            android:textColor="@color/text_color"
+            fontPath="@string/regular_font"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/bill_due_text"
+            android:layout_marginStart="@dimen/ten_padding"
+            android:id="@+id/bill_due_date"
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/text_color"
+            fontPath="@string/regular_font"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/bill_description"
+        android:layout_below="@+id/bill_due_date_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bill_comments"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/fifteen_padding"
+        android:textSize="@dimen/text_body"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+
+    <ImageView
+        android:id="@+id/overflow_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_more_vert_white_24dp"
+        android:tint="@color/black"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/ten_padding"
+        android:clickable="true"
+        android:contentDescription="@string/overflow_menu" />
+
+</RelativeLayout>

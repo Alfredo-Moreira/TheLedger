@@ -1,10 +1,15 @@
 package com.apolloapps.theledger.Login;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,15 +46,29 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
 
     private LoginFragmentListener mListener;
     private boolean mRemembered;
+    private boolean mIsUsernameFilled;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof LoginFragmentListener) {
+            mListener = (LoginFragmentListener) context;
+        } else {
+            throw new RuntimeException(getStringResource(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         if (activity instanceof LoginFragmentListener) {
             mListener = (LoginFragmentListener) activity;
         } else {
@@ -92,6 +111,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
+        mIsUsernameFilled = mUsername.length() > 0;
     }
 
     @Override
@@ -132,10 +152,47 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener,
         }
         mRememberMe.setOnCheckedChangeListener(this);
         mSignInButton.setOnClickListener(this);
+        mSignInButton.setEnabled(false);
         mCreateAccount.setOnClickListener(this);
         mForgotCredentials.setOnClickListener(this);
         mForgotCredentials.setPaintFlags(mForgotCredentials.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        //setting up the text watcher
+        mUsername.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                mIsUsernameFilled = (count > 0);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mIsUsernameFilled = (count > 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mIsUsernameFilled = (s.length() > 0);
+            }
+        });
+
+        mPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                mSignInButton.setEnabled(mIsUsernameFilled && count > 0);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mSignInButton.setEnabled(mIsUsernameFilled && count > 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mSignInButton.setEnabled(mIsUsernameFilled && s.length() > 0);
+            }
+        });
     }
+
 
     public interface LoginFragmentListener {
         void signIn(String username, String password, boolean rememberMe);

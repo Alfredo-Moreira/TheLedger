@@ -23,7 +23,8 @@ public class SettingsActivity extends BaseActivity implements SettingsFragment.S
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(), true, true);
         setUpLowerMenu(getLowerMenu(), true);
-        getFragmentManager().beginTransaction().replace(R.id.container, SettingsFragment.newInstance()).addToBackStack(null).commit();
+        startSettingsFragment();
+
     }
 
     @Override
@@ -63,7 +64,11 @@ public class SettingsActivity extends BaseActivity implements SettingsFragment.S
 
     @Override
     public void changePassword() {
-        
+
+    }
+
+    private void startSettingsFragment() {
+        getFragmentManager().beginTransaction().replace(R.id.container, SettingsFragment.newInstance()).commit();
     }
 
 }

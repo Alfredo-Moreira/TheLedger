@@ -1,7 +1,10 @@
 package com.apolloapps.theledger;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.Common.NetworkConstants;
 import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
 import com.apolloapps.theledger.Preferences.Preferences;
+import com.apolloapps.theledger.Utils.Validator;
 
 /**
  * Created by AMoreira on 4/4/16.
@@ -26,16 +32,26 @@ public class BaseFragment extends Fragment {
     protected View mRootView;
     protected ProgressBar mProgressBar;
     protected DataManager mDataManager;
+    protected Validator mValidator;
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
     public void onAttach(Context context) {
         super.onAttach(context);
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDataManager = new DataManager(getActivity(), new UrlConstructor(), Preferences.INSTANCE);
+        mValidator = new Validator();
     }
 
     @Nullable
@@ -169,8 +185,8 @@ public class BaseFragment extends Fragment {
                         serverError.setVisibility(View.GONE);
                         break;
                     case AppConstants.SERVER_ERROR:
-                        noData.setVisibility(View.VISIBLE);
-                        serverError.setVisibility(View.GONE);
+                        noData.setVisibility(View.GONE);
+                        serverError.setVisibility(View.VISIBLE);
                         break;
                     default:
                         break;
@@ -203,5 +219,20 @@ public class BaseFragment extends Fragment {
         MainApplication.getMainApplication().setUserId(id);
     }
 
+    public boolean isSessionNull() {
+        return MainApplication.getMainApplication().isSessionStorageNull();
+    }
+
+    public String getTextViewText(TextView textView) {
+        return textView.getText().toString();
+    }
+
+    public void showToastShort(String text) {
+        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showToastLong(String text) {
+        Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
+    }
 
 }

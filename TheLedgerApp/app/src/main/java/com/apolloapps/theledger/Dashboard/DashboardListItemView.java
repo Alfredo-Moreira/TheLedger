@@ -53,7 +53,7 @@ public class DashboardListItemView extends RelativeLayout {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void setContents(FeatureBaseClass feature, OnClickListener clickListener) {
         mFeature = feature;
-        mFeatureIcon.setImageDrawable(getResources().getDrawable(feature.getFeatureDrawableId(), null));
+        mFeatureIcon.setImageDrawable(getResources().getDrawable(feature.getFeatureDrawableId()));
         mFeatureName.setText(feature.getFeatureName());
         mListener = clickListener;
     }

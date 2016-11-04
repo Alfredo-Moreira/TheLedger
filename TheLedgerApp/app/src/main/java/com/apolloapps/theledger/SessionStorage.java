@@ -1,6 +1,7 @@
 package com.apolloapps.theledger;
 
 
+import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.Preferences.Preferences;
 
 /**
@@ -8,7 +9,7 @@ import com.apolloapps.theledger.Preferences.Preferences;
  */
 public class SessionStorage {
 
-    private int mUserId;
+    private int mUserId = AppConstants.NO_ACCOUNT;
 
 
     public SessionStorage() {
@@ -24,7 +25,7 @@ public class SessionStorage {
 
 
     public void clearSession() {
-        mUserId = -1;
+        mUserId = AppConstants.NO_ACCOUNT;
         Preferences.INSTANCE.saveRememberMeState(false);
     }
 }

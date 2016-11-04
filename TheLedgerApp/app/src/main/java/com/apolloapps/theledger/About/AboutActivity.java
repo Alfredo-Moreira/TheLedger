@@ -19,9 +19,14 @@ public class AboutActivity extends BaseActivity implements AboutFragment.AboutFr
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(), true, true);
         setUpLowerMenu(getLowerMenu(), false);
-        getFragmentManager().beginTransaction().replace(R.id.container,AboutFragment.newInstance(),null).addToBackStack(null).commit();
+        startAboutFragment();
+
     }
 
+
+    private void startAboutFragment() {
+        getFragmentManager().beginTransaction().replace(R.id.container, AboutFragment.newInstance(), null).commit();
+    }
 
     @Override
     public void onBackPressed() {

@@ -47,6 +47,7 @@
             android:src="@drawable/account_drawable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tint="@color/white"
             fab:fab_size="mini"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorAccent"
@@ -58,22 +59,13 @@
             android:src="@drawable/bills_drawable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tint="@color/white"
             fab:fab_size="mini"
             fab:fab_colorNormal="@color/colorAccent"
             fab:fab_colorPressed="@color/colorAccent"
             fab:fab_label="@string/bills_feature"
             />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/floating_menu_checklist_item"
-            android:src="@drawable/chrck_list_drawable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_size="mini"
-            fab:fab_colorNormal="@color/colorAccent"
-            fab:fab_colorPressed="@color/colorAccent"
-            fab:fab_label="@string/check_list_feature"
-            />
 
         </com.github.clans.fab.FloatingActionMenu>
     </RelativeLayout>

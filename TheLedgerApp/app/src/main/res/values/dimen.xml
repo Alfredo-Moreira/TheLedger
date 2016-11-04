@@ -2,6 +2,7 @@
 <resources>
     //Padding Dimensions
     <dimen name="one_padding">1dp</dimen>
+    <dimen name="two_padding">2dp</dimen>
     <dimen name="four_padding">4dp</dimen>
     <dimen name="five_padding">5dp</dimen>
     <dimen name="ten_padding">10dp</dimen>

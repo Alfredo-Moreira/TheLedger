@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.apolloapps.theledger.BaseActivity;
-import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
@@ -15,14 +14,12 @@ import com.apolloapps.theledger.R;
 /**
  * Created by AMoreira on 4/11/16.
  */
-public class AccountManagementActivity extends BaseActivity implements CreateAccountFragment.CreateAccountFragmentListener {
+public class AccountManagementActivity extends BaseActivity implements CreateEditAccountFragment.CreateAccountFragmentListener,
+        ViewProfileFragment.ViewProfileFragmentListener {
 
     private Menu mMenu;
-    private CreateAccountFragment mCreateAccountFragment;
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
+    private CreateEditAccountFragment mCreateEditAccountFragment;
+
 
 
     @Override
@@ -36,23 +33,18 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
         setUp();
-        //select fragment
-        if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.CREATE_ACCOUNT) {
-            getFragmentManager().beginTransaction().replace(R.id.container, mCreateAccountFragment).addToBackStack(null).commit();
-        } else if (mBundle.getInt(AppConstants.ACTION, 0) == AppConstants.EDIT_ACCOUNT) {
-            super.onCreateOptionsMenu(mMenu);
+        if (getIntent().getExtras() == null) {
+            viewProfile();
         } else {
-            throw new RuntimeException(getString(R.string.account_management_error));
+            editProfile();
         }
-        mBundle.clear();
     }
 
     private void setUp(){
-        mCreateAccountFragment = CreateAccountFragment.newInstance();
+        mCreateEditAccountFragment = CreateEditAccountFragment.newInstance();
         setUpToolBar(getToolBar(), true, true);
         setUpLowerMenu(getLowerMenu(), false);
         mDataManager = new DataManager(this, new UrlConstructor(), Preferences.INSTANCE);
-        mBundle = getIntent().getExtras();
     }
 
     @Override
@@ -87,4 +79,21 @@ public class AccountManagementActivity extends BaseActivity implements CreateAcc
         setUserId(userId);
         startActivity(new Intent(this, DashboardActivity.class));
     }
+
+    private void viewProfile() {
+        setLowerMenu();
+        getFragmentManager().beginTransaction().replace(R.id.container, ViewProfileFragment.newInstance(), null).commit();
+    }
+
+    @Override
+    public void editProfile() {
+        setUpLowerMenu(getLowerMenu(), false);
+        getFragmentManager().beginTransaction().replace(R.id.container, CreateEditAccountFragment.newInstance(), null).addToBackStack(null).commit();
+    }
+
+    @Override
+    public void setLowerMenu() {
+        setUpLowerMenu(getLowerMenu(), true);
+    }
+
 }

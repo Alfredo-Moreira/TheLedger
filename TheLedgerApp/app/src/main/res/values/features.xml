@@ -13,9 +13,12 @@
     <string name="account_class_path">com.apolloapps.theledger.Features.Accounts.AccountsActivity</string>
     <drawable name="account_drawable">@drawable/ic_lock_outline_black_24dp</drawable>
     <string name="bills_feature">Bills</string>
-    <string name="bills_class_path">com.apolloapps.theledger.Dashboard.FeaturesList.BillsFeature</string>
+    <string name="bills_class_path">com.apolloapps.theledger.Features.Bills.BillsActivity</string>
     <drawable name="bills_drawable">@drawable/ic_credit_card_black_24dp</drawable>
     <string name="check_list_feature">Check List</string>
-    <string name="check_list_class_path">com.apolloapps.theledger.Dashboard.FeaturesList.CheckListFeature</string>
+    <string name="check_list_class_path">com.apolloapps.theledger.Features.CheckList.CheckListActivity</string>
     <drawable name="chrck_list_drawable">@drawable/ic_assignment_turned_in_black_24dp</drawable>
+    <string name="budget_feature">Budget</string>
+    <string name="budget_class_path">com.apolloapps.theledger.Features.Accounts.AccountsActivity</string>
+    <drawable name="budget_drawable">@drawable/ic_lock_outline_black_24dp</drawable>
 </resources>

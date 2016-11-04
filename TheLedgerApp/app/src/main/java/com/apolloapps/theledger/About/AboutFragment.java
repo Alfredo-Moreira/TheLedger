@@ -1,6 +1,9 @@
 package com.apolloapps.theledger.About;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +36,20 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof AboutFragmentListener) {
+            mListener = (AboutFragmentListener) context;
+        } else {
+            throw new RuntimeException(getString(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 

@@ -4,11 +4,8 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetListResponse;
-import com.apolloapps.theledger.DataManager.Responses.UserUpdatePasswordResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.json.JSONObject;
 
 /**
  * Created by AMoreira on 5/10/16.

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_root"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/secondary_root"
+            android:visibility="gone">
+
+        <include
+            android:id="@+id/no_network_screen"
+            layout="@layout/view_no_network" />
+
+        <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+        </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/root">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/twenty_five_padding"
+        android:layout_marginEnd="@dimen/ten_padding"
+        android:layout_marginTop="@dimen/twenty_five_padding"
+        android:layout_marginBottom="@dimen/fifty_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/first_name"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_caption"
+                android:textSize="@dimen/text_caption"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/five_padding"
+                android:labelFor="@string/first_name"
+                android:id="@+id/first_name_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_body" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/last_name"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_caption"
+                android:textSize="@dimen/text_caption" />
+
+            <TextView
+                android:layout_marginTop="@dimen/five_padding"
+                android:labelFor="@string/last_name"
+                android:id="@+id/last_name_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_body" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_caption"
+                android:textSize="@dimen/text_caption" />
+
+            <TextView
+                android:layout_marginTop="@dimen/five_padding"
+                android:labelFor="@string/phone_number"
+                android:id="@+id/phone_number_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_body" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_caption"
+                android:textSize="@dimen/text_caption" />
+
+            <TextView
+                android:layout_marginTop="@dimen/five_padding"
+                android:labelFor="@string/email"
+                android:id="@+id/email_address_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fontPath="@string/regular_font"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_body" />
+
+    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/create_edit_account_float_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="@dimen/fifteen_padding"
+            android:layout_marginEnd="@dimen/fifteen_padding"
+            android:background="@drawable/add_button_selector"
+            android:clickable="true"
+            android:contentDescription="@string/create_new_icon"
+            android:src="@drawable/ic_create_white_48dp" />
+    </RelativeLayout>
+</RelativeLayout>

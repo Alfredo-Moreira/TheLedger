@@ -1,12 +1,14 @@
 package com.apolloapps.theledger.DataManager.Responses;
 
+import com.apolloapps.theledger.DataManager.Models.BillModel;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by AMoreira on 5/10/16.
- */
-public class AccountCreateResponse {
+import java.util.List;
 
+/**
+ * Created by AMoreira on 6/30/16.
+ */
+public class BillGetListResponse {
     @SerializedName("Status")
     private int mStatus;
 
@@ -15,6 +17,17 @@ public class AccountCreateResponse {
 
     @SerializedName("Message")
     private String mMessage;
+
+    @SerializedName("Data")
+    private List<BillModel> mData;
+
+    public List<BillModel> getData() {
+        return mData;
+    }
+
+    public void setData(List<BillModel> mData) {
+        this.mData = mData;
+    }
 
     public int getCode() {
         return mCode;

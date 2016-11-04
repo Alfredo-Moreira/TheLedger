@@ -6,22 +6,36 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.Common.NetworkConstants;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
+import com.apolloapps.theledger.DataManager.Models.BillModel;
+import com.apolloapps.theledger.DataManager.Models.CheckListModel;
 import com.apolloapps.theledger.DataManager.Models.PersonalAccountModel;
 import com.apolloapps.theledger.DataManager.Requests.AccountCreateRequest;
 import com.apolloapps.theledger.DataManager.Requests.AccountDeleteRequest;
 import com.apolloapps.theledger.DataManager.Requests.AccountGetDetailsRequest;
 import com.apolloapps.theledger.DataManager.Requests.AccountGetListRequest;
 import com.apolloapps.theledger.DataManager.Requests.AccountUpdateRequest;
+import com.apolloapps.theledger.DataManager.Requests.BillDeleteRequest;
+import com.apolloapps.theledger.DataManager.Requests.BillDetailsRequest;
+import com.apolloapps.theledger.DataManager.Requests.BillGetListRequest;
+import com.apolloapps.theledger.DataManager.Requests.BillUpdateRequest;
+import com.apolloapps.theledger.DataManager.Requests.CheckListCheckUncheckItemRequest;
+import com.apolloapps.theledger.DataManager.Requests.CheckListCreateItemRequest;
+import com.apolloapps.theledger.DataManager.Requests.CheckListDeleteListRequest;
+import com.apolloapps.theledger.DataManager.Requests.CheckListGetListRequest;
+import com.apolloapps.theledger.DataManager.Requests.CreateBillRequest;
 import com.apolloapps.theledger.DataManager.Requests.LoginRequest;
 import com.apolloapps.theledger.DataManager.Requests.UserCreateAccountRequest;
 import com.apolloapps.theledger.DataManager.Requests.UserGetDetailsRequest;
-import com.apolloapps.theledger.DataManager.Responses.AccountCreateResponse;
-import com.apolloapps.theledger.DataManager.Responses.AccountDeleteResponse;
+import com.apolloapps.theledger.DataManager.Requests.UserUpdateAccountRequest;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetDetailsResponse;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetListResponse;
-import com.apolloapps.theledger.DataManager.Responses.AccountUpdateResponse;
+import com.apolloapps.theledger.DataManager.Responses.BaseResponse;
+import com.apolloapps.theledger.DataManager.Responses.BillDetailsResponse;
+import com.apolloapps.theledger.DataManager.Responses.BillGetListResponse;
+import com.apolloapps.theledger.DataManager.Responses.CheckListGetListResponse;
 import com.apolloapps.theledger.DataManager.Responses.LoginResponse;
 import com.apolloapps.theledger.DataManager.Responses.UserCreateAccountResponse;
 import com.apolloapps.theledger.DataManager.Responses.UserGetDetailsResponse;
@@ -57,6 +71,15 @@ public class DataManager {
         mUrlConstructor = urConstructor;
         mRequestQueue = buildRequestQueue(context);
     }
+
+    private RequestQueue buildRequestQueue(Context context){
+
+        CookieManager cookieManager = new CookieManager();
+        CookieHandler.setDefault(cookieManager);
+        return Volley.newRequestQueue(context);
+
+    }
+
 
     private NetworkError createNetworkError(VolleyError error) {
         if (error != null && error.getMessage() != null) {
@@ -156,11 +179,46 @@ public class DataManager {
 
         mParams = new LinkedHashMap<>();
         mParams.put(NetworkConstants.GET_USER_ACCOUNT_DETAILS, String.valueOf(id));
-        mUrl = mUrlConstructor.getFinalUrl(mUrlConstructor.getCompoundURL(mParams));
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
 
-        UserGetDetailsRequest request = new UserGetDetailsRequest(mUrl, null, new Response.Listener<UserGetDetailsResponse>() {
+        UserGetDetailsRequest request = new UserGetDetailsRequest(mUrl, new Response.Listener<UserGetDetailsResponse>() {
             @Override
             public void onResponse(UserGetDetailsResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    public void doUpdateUserAccount(int userId, PersonalAccountModel account, final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.UPDATE_ACCOUNT, String.valueOf(userId));
+
+        mJSON = new JSONObject();
+        try {
+            mJSON.put(NetworkConstants.PARAM_FIRST_NAME, account.getFirstName());
+            mJSON.put(NetworkConstants.PARAM_LAST_NAME, account.getLastName());
+            mJSON.put(NetworkConstants.PARAM_USERNAME, account.getUsername());
+            mJSON.put(NetworkConstants.PARAM_PASSWORD, account.getPassword());//Need SHA-1 Encryption done
+            mJSON.put(NetworkConstants.PARAM_PHONE_NUMBER, account.getPhoneNumber());
+            mJSON.put(NetworkConstants.PARAM_EMAIL, account.getEmailAddress());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        UserUpdateAccountRequest request = new UserUpdateAccountRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
                 listener.onSuccess(response);
             }
         }, new Response.ErrorListener() {
@@ -183,7 +241,7 @@ public class DataManager {
     }
 
     /*
-     * Get Account List  endpoint: /Account/
+     * Get Account List  endpoint: /Account/{user_id}
      */
     public void doGetAccountList(int userId, final ServiceCallback<AccountGetListResponse> listener) {
 
@@ -213,7 +271,7 @@ public class DataManager {
      * Create Account endpoint: /Account/CreateAccount
      */
 
-    public void doCreateAccount(int userId, AccountModel account, final ServiceCallback<AccountCreateResponse> listener) {
+    public void doCreateAccount(int userId, AccountModel account, final ServiceCallback<BaseResponse> listener) {
         listener.onPreExecute();
 
         mJSON = new JSONObject();
@@ -230,9 +288,9 @@ public class DataManager {
 
         mUrl = mUrlConstructor.getFinalUrl(NetworkConstants.CREATE_ACCOUNT);
 
-        AccountCreateRequest request = new AccountCreateRequest(mUrl, mJSON, new Response.Listener<AccountCreateResponse>() {
+        AccountCreateRequest request = new AccountCreateRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
             @Override
-            public void onResponse(AccountCreateResponse response) {
+            public void onResponse(BaseResponse response) {
                 listener.onSuccess(response);
             }
         }, new Response.ErrorListener() {
@@ -277,7 +335,7 @@ public class DataManager {
      * Delete Account endpoint /Account/DeleteAccount/{id}
      */
 
-    public void doDeleteAccount(int accountId, final ServiceCallback<AccountDeleteResponse> listener) {
+    public void doDeleteAccount(int accountId, final ServiceCallback<BaseResponse> listener) {
         listener.onPreExecute();
 
         mParams = new LinkedHashMap<>();
@@ -285,9 +343,9 @@ public class DataManager {
 
         mUrl = mUrlConstructor.getCompoundURL(mParams);
 
-        AccountDeleteRequest request = new AccountDeleteRequest(mUrl, new Response.Listener<AccountDeleteResponse>() {
+        AccountDeleteRequest request = new AccountDeleteRequest(mUrl, new Response.Listener<BaseResponse>() {
             @Override
-            public void onResponse(AccountDeleteResponse response) {
+            public void onResponse(BaseResponse response) {
                 listener.onSuccess(response);
             }
         }, new Response.ErrorListener() {
@@ -304,7 +362,7 @@ public class DataManager {
     /*
      * Update Account endpoint: Account/UpdateAccount/{id}
      */
-    public void doUpdateAccount(int accountId, AccountModel account, final ServiceCallback<AccountUpdateResponse> listener) {
+    public void doUpdateAccount(int accountId, AccountModel account, final ServiceCallback<BaseResponse> listener) {
         listener.onPreExecute();
 
         mJSON = new JSONObject();
@@ -323,9 +381,9 @@ public class DataManager {
 
         mUrl = mUrlConstructor.getCompoundURL(mParams);
 
-        AccountUpdateRequest request = new AccountUpdateRequest(mUrl, mJSON, new Response.Listener<AccountUpdateResponse>() {
+        AccountUpdateRequest request = new AccountUpdateRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
             @Override
-            public void onResponse(AccountUpdateResponse response) {
+            public void onResponse(BaseResponse response) {
                 listener.onSuccess(response);
             }
         }, new Response.ErrorListener() {
@@ -339,12 +397,294 @@ public class DataManager {
 
     }
 
-    private RequestQueue buildRequestQueue(Context context){
 
-        CookieManager cookieManager = new CookieManager();
-        CookieHandler.setDefault(cookieManager);
-        return Volley.newRequestQueue(context);
+    /*
+     * Get Bill List endpoint: Bill/{user_id}
+     */
+
+    public void doGetBillList(int userId, final ServiceCallback<BillGetListResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.GET_BILLS_LIST, String.valueOf(userId));
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        BillGetListRequest request = new BillGetListRequest(mUrl, new Response.Listener<BillGetListResponse>() {
+            @Override
+            public void onResponse(BillGetListResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /*
+     *  Post Create Bill endpoint: Bill/CreateBill
+     */
+    public void doCreateBill(int userId, BillModel model, final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+        mJSON = new JSONObject();
+        try {
+            mJSON.put(NetworkConstants.PARAM_USER_ID, String.valueOf(userId));
+            mJSON.put(NetworkConstants.PARAM_BILL_NAME, model.getBillName());
+            mJSON.put(NetworkConstants.PARAM_BILL_TYPE, model.getBillType());
+            mJSON.put(NetworkConstants.PARAM_BILL_DUE_DATE, model.getBillDueDate());
+            mJSON.put(NetworkConstants.PARAM_BILL_REMINDER_SET, model.getIsIsReminderSet());
+            mJSON.put(NetworkConstants.PARAM_BILL_REMINDER_DATE, model.getmBillReminderDate());
+            mJSON.put(NetworkConstants.PARAM_BILL_COMMENTS, model.getBillComments());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        mUrl = mUrlConstructor.getFinalUrl(NetworkConstants.CREATE_BILL);
+        CreateBillRequest request = new CreateBillRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /*
+     * Get Bill Details endpoint Bill/{user_id}/{id}
+     */
+
+    public void doGetBillDetails(int userId, int billId, final ServiceCallback<BillDetailsResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.GET_BILLS_LIST, String.valueOf(userId));
+        mParams.put(String.valueOf(billId), null);
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        BillDetailsRequest request = new BillDetailsRequest(mUrl, new Response.Listener<BillDetailsResponse>() {
+            @Override
+            public void onResponse(BillDetailsResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /**
+     * Update Bill endpoint Bill/UpdateBill/{id}
+     */
+
+    public void doUpdateBill(int id, BillModel model, final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.UPDATE_BILL, String.valueOf(id));
+
+        mJSON = new JSONObject();
+        try {
+            mJSON.put(NetworkConstants.PARAM_BILL_NAME, model.getBillName());
+            mJSON.put(NetworkConstants.PARAM_BILL_TYPE, model.getBillType());
+            mJSON.put(NetworkConstants.PARAM_BILL_DUE_DATE, model.getBillDueDate());
+            mJSON.put(NetworkConstants.PARAM_BILL_REMINDER_SET, model.getIsIsReminderSet());
+            mJSON.put(NetworkConstants.PARAM_BILL_REMINDER_DATE, model.getmBillReminderDate());
+            mJSON.put(NetworkConstants.PARAM_BILL_COMMENTS, model.getBillComments());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        BillUpdateRequest request = new BillUpdateRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /**
+     * Delete Bill endpoint Bill/DeleteBill/{id}
+     */
+
+    public void doDeleteBill(int billId, final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.DELETE_BILL, String.valueOf(billId));
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        BillDeleteRequest request = new BillDeleteRequest(mUrl, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /**
+     * Get Checklist endpoint CheckList/{user_id}/{todo_id vs completed_id}
+     */
+    public void doGetChecklistList(int user_id, int choice, final ServiceCallback<CheckListGetListResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.GET_CHECKLIST, String.valueOf(user_id));
+        if(choice == AppConstants.TODO_CHECKLIST) {
+            mParams.put("false",null);
+        }else {
+            mParams.put("true",null);
+        }
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        CheckListGetListRequest request = new CheckListGetListRequest(mUrl, new Response.Listener<CheckListGetListResponse>() {
+            @Override
+            public void onResponse(CheckListGetListResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+
+    /**
+     * Delete All checked Items endpoint CheckList/DeleteCheckListItem/{user_id}
+     */
+    public void doDeleteAllCheckListCheckedItems(int user_id, final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.DELETE_CHECKLIST,String.valueOf(user_id));
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        CheckListDeleteListRequest request = new CheckListDeleteListRequest(mUrl, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /**
+     * Create CheckList Item endpoint CheckList/CreateCheckListItem
+     */
+
+
+    public void doCreateCheckListItem(int userId, String title, final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+
+        mJSON = new JSONObject();
+
+        try {
+            mJSON.put(NetworkConstants.PARAM_USER_ID,String.valueOf(userId));
+            mJSON.put(NetworkConstants.PARAM_CHECKLIST_ITEM_TITLE, title);
+            mJSON.put(NetworkConstants.PARAM_CHECKLIST_CHECKED, false);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        mUrl = mUrlConstructor.getFinalUrl(NetworkConstants.CREATE_CHECKLIST_ITEM);
+
+        CheckListCreateItemRequest request = new CheckListCreateItemRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
+    }
+
+    /**
+     * Check/Uncheck Item in CheckList endpoint CheckList/CheckItem/{id}
+     */
+
+    public void doUpdateCheckListState(int checkListId,boolean checkedState,final ServiceCallback<BaseResponse> listener) {
+        listener.onPreExecute();
+
+        mParams = new LinkedHashMap<>();
+        mParams.put(NetworkConstants.UPDATE_CHECKED_STATE,String.valueOf(checkListId));
+
+        mJSON = new JSONObject();
+
+        try {
+            mJSON.put(NetworkConstants.PARAM_CHECKLIST_CHECKED,checkedState);
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        mUrl = mUrlConstructor.getCompoundURL(mParams);
+
+        CheckListCheckUncheckItemRequest request = new CheckListCheckUncheckItemRequest(mUrl, mJSON, new Response.Listener<BaseResponse>() {
+            @Override
+            public void onResponse(BaseResponse response) {
+               listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(createNetworkError(error));
+            }
+        });
+
+        mRequestQueue.add(request);
 
     }
+
 
 }

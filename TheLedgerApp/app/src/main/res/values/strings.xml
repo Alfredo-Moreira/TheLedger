@@ -43,6 +43,30 @@
     <string name="accounts_action_bar_title">Accounts</string>
     <string name="account_details_action_bar_title">Account Details</string>
     <string name="no_decription">No Description</string>
+    <string name="account_updated">Account Updated</string>
+
+    //Bills
+    <string name="bills_action_bar_title">Bills</string>
+    <string name="bills_details_action_bar_title">Bill Details</string>
+    <string name="bill_create">Create Bill</string>
+    <string name="bill_update">Update Bill</string>
+    <string name="bill_title">Bill Title</string>
+    <string name="bill_type">Bill Type</string>
+    <string name="bill_due_date">Bill Due Date</string>
+    <string name="bill_reminder_set">Reminder Set</string>
+    <string name="bill_comments">Comments</string>
+    <string name="no_comments">No Comments</string>
+    <string name="bill_updated">Bill Updated</string>
+    <string name="bill_no_reminder_set">No reminder set</string>
+    <string name="bill_due_on">Bill due on:</string>
+    <string name="bill_click_to_due_date">Tap to set due date</string>
+
+    //CheckList
+    <string name="checklist_action_bar_title">Checklist</string>
+    <string name="title">Title</string>
+    <string name="create">Create</string>
+    <string name="todo">Todo</string>
+    <string name="completed">Completed</string>
 
     //Settings
     <string name="set_passcode">Set Passcode</string>
@@ -63,7 +87,8 @@
     //Dashboard
     <string name="dashboard_action_bar_title">Dashboard</string>
 
-    //Create Account
+    //Create Account/View Account
+    <string name="view_profile_action_bar_title">User Profile</string>
     <string name="create_account_action_bar_title">Create Account</string>
     <string name="edit_account_action_bar_title">Edit Account</string>
     <string name="first_name">First Name</string>
@@ -111,7 +136,7 @@
     <string name="sign_out">Sign Out</string>
     <string name="sign_out_message">Are you sure you want to sign out?</string>
 
-    //Accesibility
+    //Accessibility
     <string name="image_no_wifi">Wifi image</string>
     <string name="feature_icon">Feature Icon</string>
     <string name="server_error_image">Server Error image</string>

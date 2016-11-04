@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.apolloapps.theledger.AccountManagement.AccountManagementActivity;
 import com.apolloapps.theledger.Dashboard.DashboardActivity;
 import com.apolloapps.theledger.DataManager.DataManager;
 import com.apolloapps.theledger.DataManager.Utilities.UrlConstructor;
@@ -41,6 +42,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
         super.onCreate(savedInstanceState);
         mDataManager = new DataManager(this, new UrlConstructor(), Preferences.INSTANCE);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,7 +79,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                 onBackPressed();
+                    BaseActivity.this.onBackPressed();
                 }
             });
         }
@@ -103,7 +105,6 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void setUpLowerMenu(LinearLayout layout, boolean visible) {
-
         if (visible) {
             layout.setVisibility(View.VISIBLE);
             setUpOnClickListener();
@@ -134,7 +135,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 1) {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
@@ -204,7 +205,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     private void startProfile() {
-        //placeholder
+        startActivity(new Intent(this, AccountManagementActivity.class));
     }
 
     private void startHelp() {

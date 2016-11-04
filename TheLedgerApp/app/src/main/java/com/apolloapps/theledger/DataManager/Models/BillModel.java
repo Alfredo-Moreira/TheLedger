@@ -7,23 +7,60 @@ import com.google.gson.annotations.SerializedName;
  */
 public class BillModel {
 
-    @SerializedName("BillID")
+    @SerializedName("accountUserId")
+    private int mUserId;
+
+    @SerializedName("_id")
     private int mBillId;
 
-    @SerializedName("BillName")
+    @SerializedName("billName")
     private String mBillName;
 
-    @SerializedName("BillDueDate")
+    @SerializedName("billType")
+    private String mBillType;
+
+    @SerializedName("billDueDate")
     private String mBillDueDate;
 
-    @SerializedName("BillComments")
+    @SerializedName("billComments")
     private String mBillComments;
+
+    @SerializedName("billReminderSet")
+    private boolean mIsReminderSet;
+
+
+    @SerializedName("billReminderDate")
+    private String mBillReminderDate;
+
+    public String getmBillReminderDate() {
+        return mBillReminderDate;
+    }
+
+    public void setmBillReminderDate(String mBillReminderDate) {
+        this.mBillReminderDate = mBillReminderDate;
+    }
+
+    public boolean isIsRemiderSet() {
+        return mIsReminderSet;
+    }
+
+    public void setIsRemiderSet(boolean mIsRemiderSet) {
+        this.mIsReminderSet = mIsRemiderSet;
+    }
+
+    public int getUserId() {
+        return mUserId;
+    }
+
+    public void setUserId(int mUserId) {
+        this.mUserId = mUserId;
+    }
 
     public String getBillComments() {
         return mBillComments;
     }
 
-    public void setBBillComments(String mBillComments) {
+    public void setBillComments(String mBillComments) {
         this.mBillComments = mBillComments;
     }
 
@@ -35,7 +72,7 @@ public class BillModel {
         this.mBillDueDate = mBillDueDate;
     }
 
-    public int getBBillId() {
+    public int getBillId() {
         return mBillId;
     }
 
@@ -49,5 +86,21 @@ public class BillModel {
 
     public void setBillName(String mBillName) {
         this.mBillName = mBillName;
+    }
+
+    public String getBillType() {
+        return mBillType;
+    }
+
+    public void setBillType(String mBillType) {
+        this.mBillType = mBillType;
+    }
+
+    public boolean getIsIsReminderSet() {
+        return mIsReminderSet;
+    }
+
+    public void setIsReminderSet(boolean mIsReminderSet) {
+        this.mIsReminderSet = mIsReminderSet;
     }
 }

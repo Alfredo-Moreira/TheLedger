@@ -1,6 +1,9 @@
 package com.apolloapps.theledger.Help;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -14,7 +17,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 
-import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
 
@@ -43,6 +45,21 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof SendFeedbackFragmentListener) {
+            mListener = (SendFeedbackFragmentListener) context;
+        } else {
+            throw new RuntimeException(getString(R.string.listener_not_implemented));
+        }
+
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
@@ -51,7 +68,6 @@ public class SendFeedbackFragment extends BaseFragment implements View.OnClickLi
         } else {
             throw new RuntimeException(getString(R.string.listener_not_implemented));
         }
-
     }
 
     @Override

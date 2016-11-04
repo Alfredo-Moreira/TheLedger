@@ -1,6 +1,9 @@
 package com.apolloapps.theledger.Settings;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -33,9 +36,22 @@ public class SettingsFragment extends BaseFragment implements View.OnClickListen
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof SettingsFragmentListener) {
+            mListener = (SettingsFragmentListener) context;
+        } else {
+            throw new RuntimeException(getStringResource(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         if (activity instanceof SettingsFragmentListener) {
             mListener = (SettingsFragmentListener) activity;
         } else {

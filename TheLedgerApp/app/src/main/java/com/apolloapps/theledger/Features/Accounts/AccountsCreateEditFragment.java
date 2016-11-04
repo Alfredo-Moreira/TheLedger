@@ -1,6 +1,9 @@
 package com.apolloapps.theledger.Features.Accounts;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,16 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.Common.AppConstants;
 import com.apolloapps.theledger.DataManager.Models.AccountModel;
-import com.apolloapps.theledger.DataManager.Responses.AccountCreateResponse;
 import com.apolloapps.theledger.DataManager.Responses.AccountGetDetailsResponse;
-import com.apolloapps.theledger.DataManager.Responses.AccountUpdateResponse;
+import com.apolloapps.theledger.DataManager.Responses.BaseResponse;
 import com.apolloapps.theledger.DataManager.Utilities.NetworkError;
 import com.apolloapps.theledger.DataManager.Utilities.ServiceCallback;
 import com.apolloapps.theledger.R;
@@ -36,6 +38,7 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
     EditText mUsername;
     @Bind(R.id.account_feature_password_text_input)
     EditText mPassword;
+    public static boolean mIsAccount;
     public static int mAccountId;
     @Bind(R.id.account_feature_type_view)
     RadioGroup mAccountTypeRadio;
@@ -52,14 +55,15 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
     @Bind(R.id.create_account_feature_button)
     Button mCreateSaveButton;
     @Bind(R.id.fragment_root)
-    FrameLayout mFragmentRoot;
+    RelativeLayout mFragmentRoot;
     private RadioButton mSelectedRadio;
     public static AccountModel mEditModel;
 
 
     public AccountsCreateFragmentListener mListener;
 
-    public static AccountsCreateEditFragment newInstance(int accountId) {
+    public static AccountsCreateEditFragment newInstance(boolean isAccount, int accountId) {
+        mIsAccount = isAccount;
         mAccountId = accountId;
         return new AccountsCreateEditFragment();
     }
@@ -70,9 +74,22 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof AccountsCreateFragmentListener) {
+            mListener = (AccountsCreateFragmentListener) context;
+        } else {
+            throw new RuntimeException(getStringResource(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         if(activity instanceof AccountsCreateFragmentListener) {
             mListener = (AccountsCreateFragmentListener) activity;
         } else {
@@ -80,20 +97,16 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
         }
     }
 
-
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener = null;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (mAccountId == AppConstants.NO_ACCOUNT) {
-            setToolBarTitle(getStringResource(R.string.create_account));
-        } else {
-            setToolBarTitle(getStringResource(R.string.edit_account_action_bar_title));
-        }
+        setUp();
     }
 
 
@@ -104,17 +117,18 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_create_account_feature,container,false);
         ButterKnife.bind(this,view);
         setRootView(mFragmentRoot);
-        setUp();
         return view;
     }
 
     private void setUp(){
         mCreateSaveButton.setOnClickListener(this);
         mAccountTypeRadio.setOnCheckedChangeListener(this);
-        if (mAccountId == AppConstants.NO_ACCOUNT) {
+        if (!mIsAccount) {
             mCreateSaveButton.setText(getString(R.string.create_account));
+            setToolBarTitle(getStringResource(R.string.create_account));
         } else {
             mCreateSaveButton.setText(getString(R.string.save_changes));
+            setToolBarTitle(getStringResource(R.string.edit_account_action_bar_title));
             getAccountModel(mAccountId);
         }
     }
@@ -155,7 +169,7 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
             mValidForm = false;
         }
         if(mValidForm) {
-            if (mAccountId == AppConstants.NO_ACCOUNT) {
+            if (!mIsAccount) {
                 createAccount(createAccountModel());
             } else {
                 updateAccount(createAccountModel());
@@ -169,9 +183,9 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
 
 
     private void createAccount(AccountModel model) {
-        mDataManager.doCreateAccount(getUserId(), model, new ServiceCallback<AccountCreateResponse>() {
+        mDataManager.doCreateAccount(getUserId(), model, new ServiceCallback<BaseResponse>() {
             @Override
-            public void onSuccess(AccountCreateResponse response) {
+            public void onSuccess(BaseResponse response) {
                 dismissProgressBar();
                 mListener.returnToAccountList();
             }
@@ -192,12 +206,13 @@ public class AccountsCreateEditFragment extends BaseFragment implements View.OnC
     }
 
     private void updateAccount(AccountModel model) {
-        mDataManager.doUpdateAccount(mAccountId, model, new ServiceCallback<AccountUpdateResponse>() {
+        mDataManager.doUpdateAccount(mAccountId, model, new ServiceCallback<BaseResponse>() {
             @Override
-            public void onSuccess(AccountUpdateResponse response) {
+            public void onSuccess(BaseResponse response) {
                 dismissProgressBar();
                 showMainScreen();
-                getActivity().onBackPressed();
+                showToastShort(getString(R.string.account_updated));
+                mListener.returnToAccountList();
             }
 
             @Override

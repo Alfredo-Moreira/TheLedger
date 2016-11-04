@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apolloapps.theledger"
-    android:versionCode="1000008"
+    android:versionCode="1000009"
     android:versionName="1.0.0">
 
     <uses-sdk
@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/NoTitleBaseTheme">
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".Launch.LaunchActivity"
@@ -55,6 +55,9 @@
             android:windowSoftInputMode="adjustResize|adjustPan"/>
         <activity android:name=".Features.CheckList.CheckListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".Features.Bills.BillsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|adjustPan"/>
 
         <activity android:name=".BaseActivity"/>
 

@@ -1,7 +1,9 @@
 package com.apolloapps.theledger.Launch;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -25,10 +27,24 @@ public class LaunchFragment extends BaseFragment {
         return new LaunchFragment();
     }
 
+
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof LaunchFragmentListener) {
+            mListener = (LaunchFragmentListener) context;
+        } else {
+            throw new RuntimeException(getStringResource(R.string.listener_not_implemented));
+        }
+    }
+
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         if (activity instanceof LaunchFragmentListener) {
             mListener = (LaunchFragmentListener) activity;
         } else {

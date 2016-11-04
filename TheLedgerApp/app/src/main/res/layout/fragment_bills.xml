@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/fragment_root">
+
+    <FrameLayout
+        android:id="@+id/secondary_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/no_network_screen"
+            layout="@layout/view_no_network" />
+
+        <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingTop="@dimen/twenty_five_padding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_list_view"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/create_bill_float_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/fifteen_padding"
+        android:layout_marginEnd="@dimen/fifteen_padding"
+        android:background="@drawable/add_button_selector"
+        android:clickable="true"
+        android:contentDescription="@string/create_new_icon"
+        android:src="@drawable/ic_create_white_48dp" />
+
+</RelativeLayout>

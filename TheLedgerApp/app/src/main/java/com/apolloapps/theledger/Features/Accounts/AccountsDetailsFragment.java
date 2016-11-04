@@ -1,13 +1,16 @@
 package com.apolloapps.theledger.Features.Accounts;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.apolloapps.theledger.BaseFragment;
@@ -26,7 +29,7 @@ import butterknife.ButterKnife;
 public class AccountsDetailsFragment extends BaseFragment implements View.OnClickListener {
 
     @Bind(R.id.fragment_root)
-    FrameLayout mFragmentRoot;
+    RelativeLayout mFragmentRoot;
     @Bind(R.id.account_title_text)
     TextView mAccountTitle;
     @Bind(R.id.account_username_text)
@@ -41,6 +44,8 @@ public class AccountsDetailsFragment extends BaseFragment implements View.OnClic
     AppCompatButton mEditButton;
     @Bind(R.id.view_details_delete_button)
     AppCompatButton mDeleteButton;
+    @Bind(R.id.retry_button)
+    RelativeLayout mRetryButton;
 
 
     public AccountDetailsFragmentListener mListener;
@@ -54,9 +59,22 @@ public class AccountsDetailsFragment extends BaseFragment implements View.OnClic
 
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof AccountDetailsFragmentListener) {
+            mListener = (AccountDetailsFragmentListener) context;
+        } else {
+            throw new RuntimeException(getString(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         if(activity instanceof AccountDetailsFragmentListener) {
             mListener = (AccountDetailsFragmentListener) activity;
         } else {
@@ -78,8 +96,9 @@ public class AccountsDetailsFragment extends BaseFragment implements View.OnClic
     @Override
     public void onResume() {
         super.onResume();
-        getAccountDetails();
         setToolBarTitle(getString(R.string.account_details_action_bar_title));
+        getAccountDetails();
+
     }
 
     @Override
@@ -146,6 +165,8 @@ public class AccountsDetailsFragment extends BaseFragment implements View.OnClic
             case R.id.view_details_delete_button:
                 mListener.deleteAccount(mAccountId);
                 break;
+            case R.id.retry_button:
+                onResume();
             default:
                 break;
         }

@@ -60,4 +60,8 @@ public class MainApplication extends MultiDexApplication {
         mSessionStorage = new SessionStorage();
     }
 
+    public boolean isSessionStorageNull() {
+        return (mSessionStorage == null);
+    }
+
 }   

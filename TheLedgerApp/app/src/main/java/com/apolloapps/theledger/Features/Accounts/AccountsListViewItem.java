@@ -46,22 +46,22 @@ public class AccountsListViewItem extends RelativeLayout {
 
     public AccountsListViewItem(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.view_account_item,null);
         mContext = context;
+        ViewGroup view = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.view_account_item, null);
         ButterKnife.bind(this,view);
         addView(view);
     }
 
 
-    public void setContents(Context context, AccountModel account, OnClickListener listener , OnLongClickListener longListener) {
+    public void setContents(AccountModel account, OnClickListener listener, OnLongClickListener longListener) {
 
         mAccountTitle.setText(account.getAccountTitle());
-        if(account.getAccountComments()!=null) {
+        if(!account.getAccountComments().isEmpty()) {
             mAccountDescription.setText(account.getAccountComments());
         } else {
             mAccountDescription.setText(mContext.getString(R.string.no_decription));
         }
-        mOverFlowMenu.setOnClickListener(new OverFlowMenu(context,account.getAccountId(), AppConstants.FEATURE_TYPE_ACCOUNT));
+        mOverFlowMenu.setOnClickListener(new OverFlowMenu(mContext, account.getAccountId(), AppConstants.FEATURE_TYPE_ACCOUNT));
         mListener = listener;
         mLongListener = longListener;
     }

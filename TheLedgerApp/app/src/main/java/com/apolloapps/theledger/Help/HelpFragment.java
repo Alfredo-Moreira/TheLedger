@@ -1,17 +1,16 @@
 package com.apolloapps.theledger.Help;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
-import com.apolloapps.theledger.BaseActivity;
 import com.apolloapps.theledger.BaseFragment;
 import com.apolloapps.theledger.R;
 
@@ -41,9 +40,22 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.M)
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof HelpFragmentListener) {
+            mListener = (HelpFragmentListener) context;
+        } else {
+            throw new RuntimeException(getString(R.string.listener_not_implemented));
+        }
+    }
+
+    @Override
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         if (activity instanceof HelpFragmentListener) {
             mListener = (HelpFragmentListener) activity;
         } else {
@@ -98,11 +110,14 @@ public class HelpFragment extends BaseFragment implements View.OnClickListener {
         setSelectedMenuState(R.id.lower_menu_help);
         mSendFeedback.setOnClickListener(this);
         mViewTutorial.setOnClickListener(this);
+        mListener.setLowerMenu();
     }
 
     public interface HelpFragmentListener {
         void sendFeedbackFragment();
         void viewTutorialFragment();
+
+        void setLowerMenu();
 
     }
 }

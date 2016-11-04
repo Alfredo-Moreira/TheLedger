@@ -15,7 +15,7 @@ public class NetworkConstants {
     //Status Codes
     public static final int STATUS_0 = 0;
     public static final int STATUS_200 = 200;
-    public static final int STATUS_401 = 401;
+    public static final int STATUS_403 = 403;
     public static final int STATUS_500 = 500;
 
     //URL and EndPoints
@@ -27,6 +27,16 @@ public class NetworkConstants {
     public static final String CREATE_ACCOUNT = "/Account/CreateAccount";
     public static final String DELETE_ACCOUNT = "/Account/DeleteAccount";
     public static final String UPDATE_ACCOUNT = "/Account/UpdateAccount";
+    public static final String GET_BILLS_LIST = "/Bill";
+    public static final String CREATE_BILL = "/Bill/CreateBill";
+    public static final String UPDATE_BILL = "/Bill/UpdateBill";
+    public static final String DELETE_BILL = "/Bill/DeleteBill";
+    public static final String GET_CHECKLIST = "/CheckList";
+    public static final String CREATE_CHECKLIST_ITEM = "/CheckList/CreateCheckListItem";
+    public static final String UPDATE_CHECKED_STATE = "/CheckList/CheckItem";
+    public static final String UPDATE_CHECKLIST_ITEM = "/CheckList/UpdateCheckListItem";
+    public static final String DELETE_CHECKLIST_ITEM = "/CheckList/DeleteCheckListItem";
+    public static final String DELETE_CHECKLIST = "/CheckList/DeleteCheckList";
 
     //JSON keys
     //Global
@@ -46,6 +56,18 @@ public class NetworkConstants {
     public static final String PARAM_ACCOUNT_PASSWORD = "accountPassword";
     public static final String PARAM_ACCOUNT_TYPE = "accountType";
     public static final String PARAM_ACCOUNT_COMMENTS = "accountComments";
+
+    //Feature Bill
+    public static final String PARAM_BILL_NAME = "billName";
+    public static final String PARAM_BILL_TYPE = "billType";
+    public static final String PARAM_BILL_DUE_DATE = "billDueDate";
+    public static final String PARAM_BILL_REMINDER_SET = "billReminderSet";
+    public static final String PARAM_BILL_REMINDER_DATE = "billReminderDate";
+    public static final String PARAM_BILL_COMMENTS = "billComments";
+
+    //Feature CheckList
+    public static final String PARAM_CHECKLIST_ITEM_TITLE = "checkListTitle";
+    public static final String PARAM_CHECKLIST_CHECKED = "checkListChecked";
 
 }
 

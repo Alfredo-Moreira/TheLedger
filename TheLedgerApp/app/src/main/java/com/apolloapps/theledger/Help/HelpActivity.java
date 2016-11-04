@@ -1,7 +1,6 @@
 package com.apolloapps.theledger.Help;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.Toast;
 
 import com.apolloapps.theledger.BaseActivity;
@@ -18,8 +17,13 @@ public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container_actionbar);
         setUpToolBar(getToolBar(),true,true);
-        setUpLowerMenu(getLowerMenu(),true);
-        getFragmentManager().beginTransaction().replace(R.id.container,HelpFragment.newInstance(),null).addToBackStack(null).commit();
+        setLowerMenu();
+        startHelpFragment();
+
+    }
+
+    private void startHelpFragment() {
+        getFragmentManager().beginTransaction().replace(R.id.container, HelpFragment.newInstance(), null).commit();
     }
 
     @Override
@@ -54,5 +58,10 @@ public class HelpActivity extends BaseActivity implements HelpFragment.HelpFragm
         //On Success
         Toast.makeText(this,getString(R.string.thank_you_for_feedback),Toast.LENGTH_SHORT).show();
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void setLowerMenu() {
+        setUpLowerMenu(getLowerMenu(), true);
     }
 }

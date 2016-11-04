@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:id="@+id/fragment_root">
+
+    <FrameLayout
+        android:id="@+id/secondary_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/no_network_screen"
+            layout="@layout/view_no_network" />
+
+        <include
+            android:id="@+id/no_data_server_error_screen"
+            layout="@layout/view_no_data_server_error" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/root">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/ten_padding"
+        android:layout_marginBottom="@dimen/fifty_padding">
+
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/ten_padding"
+    android:textColor="@color/text_caption"
+    android:textSize="@dimen/text_caption"
+    android:text="@string/bill_title"
+    fontPath="@string/regular_font"/>
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/bill_feature_title_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        android:labelFor="@string/account_title"
+        android:textColor="@color/text_color"
+        fontPath="@string/regular_font"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten_padding"
+            android:textColor="@color/text_caption"
+            android:textSize="@dimen/text_caption"
+            android:text="@string/bill_type"
+            fontPath="@string/regular_font"/>
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/bill_feature_type_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_body"
+            android:labelFor="@string/account_title"
+            android:textColor="@color/text_color"
+            fontPath="@string/regular_font"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten_padding"
+            android:textColor="@color/text_caption"
+            android:textSize="@dimen/text_caption"
+            android:text="@string/bill_due_date"
+            fontPath="@string/regular_font"/>
+
+        <TextView
+            android:id="@+id/bill_due_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten_padding"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_caption"
+            fontPath="@string/regular_font"
+            android:clickable="true"/>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_gravity="start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/ten_padding"
+                android:textColor="@color/text_caption"
+                android:textSize="@dimen/text_caption"
+                android:text="@string/bill_reminder_set"
+                fontPath="@string/regular_font"/>
+
+            <CheckBox
+                android:id="@+id/bill_feature_reminder_set_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_body"
+                android:labelFor="@string/account_title"
+                android:textColor="@color/text_color"
+                fontPath="@string/regular_font"
+                android:checked="false"
+                android:layout_gravity="right|center_vertical" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/bill_reminder_date_text"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:padding="@dimen/ten_padding"
+            android:textSize="@dimen/text_caption"
+            fontPath="@string/regular_font"/>
+
+        <TextView
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ten_padding"
+        android:textColor="@color/text_caption"
+        android:textSize="@dimen/text_caption"
+        android:text="@string/bill_comments"
+        fontPath="@string/regular_font"/>
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/bill_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_body"
+            android:labelFor="@string/bill_comments"
+            android:textColor="@color/text_color"
+            fontPath="@string/regular_font"/>
+
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/save_changes_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/save_changes"
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/button_selector"
+            fontPath="@string/medium_font"/>
+    </RelativeLayout>
+</RelativeLayout>
